@@ -36,8 +36,8 @@ glows anywhere in this product is a payment whose outcome is not yet known.
 
 | | |
 |---|---|
-| ![Product Screenshot](docs/screenshots/product-1-in-flight.png) | ![Product Screenshot](docs/screenshots/product-2-resolved.png) |
-| ![Product Screenshot](docs/screenshots/product-3-the-circle.png) | ![Product Screenshot](docs/screenshots/product-4-killed.png) |
+| ![Product Screenshot](docs/screenshots/desktop-1-hero.jpg) | ![Product Screenshot](docs/screenshots/desktop-2-demo.jpg) |
+| ![Product Screenshot](docs/screenshots/desktop-3-circle.jpg) | ![Product Screenshot](docs/screenshots/desktop-4-proof.jpg) |
 
 ---
 
