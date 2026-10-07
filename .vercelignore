@@ -1,0 +1,50 @@
+# The web build only needs: web/, packages/ (for @quittance/engine), the
+# program's IDL-adjacent source (not its build output), evidence/, and the
+# workspace root files pnpm needs to install. Everything else here is for the
+# Android app, the devnet harness, or local tooling and would just blow past
+# Vercel's 100MB-per-file / upload-size limits for no reason.
+#
+# Every pattern below is anchored with a leading slash where it names a
+# repo-root directory or file. An unanchored "app/" previously matched
+# web/app/ too — the Next.js App Router directory — which silently excluded
+# it from the upload and left Vercel building an empty shell with no routes.
+
+/app/
+/probe/
+/reference/
+/docs/
+/QUITTANCE_BUILD_INSTRUCTION.md
+/ARCHITECTURE.md
+/EVIDENCE.md
+/LIMITATIONS.md
+/MILESTONES.md
+/PROGRESS.md
+/README.md
+/SECURITY.md
+/TASK.md
+
+/.anchor-build.err
+/.anchor-build.log
+/.anchor-install.err
+/.anchor-install.log
+/.sbf-install.err
+/.sbf-install.log
+/.cache/
+/.keys/
+/.git/
+
+/program/
+/target/
+
+**/node_modules/
+**/.next/
+**/.turbo/
+**/*.tsbuildinfo
+**/dist/
+**/build/
+**/coverage/
+
+web/test-results/
+web/playwright-report/
+web/blob-report/
+web/tests/

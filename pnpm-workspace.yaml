@@ -1,0 +1,32 @@
+packages:
+  - 'packages/*'
+  - 'program'
+  - 'web'
+# `app` is deliberately NOT a pnpm workspace package.
+#
+# Expo's Android autolinking generates a Gradle project per native module and
+# resolves their paths by walking node_modules. Under pnpm's symlinked layout
+# those projects configure with no variants and the build fails with
+# "No matching variant of project :solana-mobile_mobile-wallet-adapter-protocol".
+#
+# Hoisting the whole workspace fixes Expo and breaks the web package, which
+# needs React 19 while Expo SDK 52 needs React 18. So the app keeps its own
+# flat `npm install` and consumes the engine over a file: dependency.
+# See docs/DEV-CLIENT.md.
+  - 'scripts'
+
+# bufferutil and utf-8-validate are optional native speedups for the ws
+# transport that @solana/web3.js pulls in. They are deliberately not built:
+# this repository must install and run identically on a machine with no native
+# toolchain, and nothing in the build depends on them.
+allowBuilds:
+  # bigint-buffer ships a native addon for faster bigint conversion and falls
+  # back to a pure-JS path when it is absent. Not built, for the same reason.
+  bigint-buffer: false
+  bufferutil: false
+  # sharp is Next's image optimiser. Allowed to build because the landing page
+  # ships a generated icon and Next falls back to an unoptimised path without
+  # it, which would change what a judge sees.
+  sharp: true
+  utf-8-validate: false
+

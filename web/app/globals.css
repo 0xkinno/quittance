@@ -1,0 +1,378 @@
+/*
+ * Quittance — design tokens.
+ *
+ * The design idea, in one sentence:
+ *
+ *   The page is a ledger printed on good paper. The only thing that glows is
+ *   money that is currently in flight.
+ *
+ * Paper carries structure, type and settled state. Light carries live state
+ * only. That restraint is the entire reason the one element that *does* glow
+ * reads as meaningful rather than decorative — a page where everything glows
+ * is a page where nothing does.
+ *
+ * These values match `app/src/design/tokens.ts` exactly, so the product shot
+ * and the product are the same object.
+ */
+
+@import './ledger.css';
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/Fraunces-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('/fonts/GeistMono-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  /* paper — cool bond, deliberately NOT warm cream */
+  --paper: #eaebe6;
+  --paper-sunk: #dddfd7;
+  --paper-raised: #f4f5f1;
+
+  /* ink — blue-black, never #111 */
+  --ink: #15181c;
+  --ink-soft: #596069;
+  /*
+   * Darkened from the #8E959C the design brief specifies.
+   *
+   * At the specified value this measured 2.25–2.77:1 against the three paper
+   * grounds. The same brief requires WCAG AA, and this token carries text
+   * that means something — section labels, the "not paid" state mark, the
+   * program id — so the contrast requirement wins over the swatch.
+   *
+   * #5A6168 is the lightest value that clears 4.5:1 on `--paper-sunk`, the
+   * darkest ground it sits on. That puts it close to `--ink-soft`, which is
+   * the honest outcome: on paper this light, a third *text* tier below
+   * `--ink-soft` cannot pass AA at all. `--ink-faint` therefore survives as a
+   * tier for weight and placement rather than for lightness.
+   *
+   * Recorded in LIMITATIONS.md against the claim it affects.
+   */
+  --ink-faint: #5a6168;
+  /* Hairlines only. Never used for text, so AA does not apply to it. */
+  --rule: #c4c7bd;
+
+  /* state — four colours, because a contribution has four terminal outcomes */
+  --settled: #0e6e4e;
+  --inflight: #2b5fd9;
+  --ambiguous: #a8500d;
+  --rejected: #7a2e2e;
+
+  /*
+   * The single glow. Applied to exactly one thing in the entire product: a
+   * contribution whose outcome is not yet known. Never to a card, a button,
+   * a heading, or a section.
+   */
+  --glow-inflight:
+    0 0 0 1px rgba(43, 95, 217, 0.35),
+    0 0 24px -4px rgba(43, 95, 217, 0.45),
+    0 0 64px -16px rgba(43, 95, 217, 0.3);
+
+  /*
+   * Hover response on interactive surfaces.
+   *
+   * Deliberately not the signal blue: that colour is reserved. This is a
+   * paper response — the sheet lifts a little and its hairline sharpens, the
+   * way a card lifts off a desk under a lamp. It reads as premium without
+   * spending the one piece of boldness the design has to spend.
+   */
+  --lift:
+    0 1px 2px rgba(21, 24, 28, 0.04),
+    0 8px 24px -12px rgba(21, 24, 28, 0.18);
+  --lift-strong:
+    0 1px 2px rgba(21, 24, 28, 0.06),
+    0 18px 48px -20px rgba(21, 24, 28, 0.28);
+
+  --measure: 68ch;
+  --gutter: 24px;
+  --max: 1200px;
+}
+
+/* The page gutter tightens at phone width. Declared here rather than in a CSS
+   module, because a module may only contain pure (class) selectors. */
+@media (max-width: 560px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #15181c;
+    --paper-sunk: #101316;
+    --paper-raised: #1d2126;
+    --ink: #eaebe6;
+    --ink-soft: #9ba3ac;
+    --ink-faint: #6b737c;
+    --rule: #2c3238;
+    --settled: #39a97f;
+    --inflight: #5b86f0;
+    --ambiguous: #d98a3d;
+    --rejected: #c26a6a;
+    --glow-inflight:
+      0 0 0 1px rgba(91, 134, 240, 0.4),
+      0 0 28px -4px rgba(91, 134, 240, 0.5),
+      0 0 72px -16px rgba(91, 134, 240, 0.35);
+    --lift:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 8px 24px -12px rgba(0, 0, 0, 0.6);
+    --lift-strong:
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      0 18px 48px -20px rgba(0, 0, 0, 0.7);
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #15181c;
+  --paper-sunk: #101316;
+  --paper-raised: #1d2126;
+  --ink: #eaebe6;
+  --ink-soft: #9ba3ac;
+  --ink-faint: #6b737c;
+  --rule: #2c3238;
+  --settled: #39a97f;
+  --inflight: #5b86f0;
+  --ambiguous: #d98a3d;
+  --rejected: #c26a6a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* No horizontal scroll at any viewport. Asserted in tests/viewports.spec.ts */
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  /* Sentence case everywhere. No tracked-out capitals anywhere in this page. */
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  /* Body copy stays under 72 characters. */
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+/* Tabular figures on every amount, count and timestamp. A ledger whose digits
+   do not line up column to column is not a ledger. */
+.mono,
+.amount {
+  font-family: 'GeistMono', ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/*
+ * The in-flight treatment. One element on the page carries this.
+ * `prefers-reduced-motion` substitutes a static ring rather than removing the
+ * signal, because the glow carries information: this one is still moving.
+ */
+.inflight {
+  box-shadow: var(--glow-inflight);
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow: var(--glow-inflight);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(43, 95, 217, 0.18),
+      0 0 14px -6px rgba(43, 95, 217, 0.22),
+      0 0 38px -18px rgba(43, 95, 217, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .inflight {
+    animation: none;
+    box-shadow: 0 0 0 1px rgba(43, 95, 217, 0.45);
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--inflight);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------------------
+ * The navigation bar.
+ *
+ * Transparent over the hero so it never competes with the headline, gaining a
+ * paper background and a hairline only once the hero is behind you.
+ * --------------------------------------------------------------------------- */
+
+.qnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.qnav-lifted {
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--rule);
+}
+
+.qnav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 62px;
+}
+
+.qnav-mark {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.qnav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qnav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 12px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.qnav-links a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.qnav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qnav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding-inline: 14px;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.qnav-cta::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--settled);
+}
+
+.qnav-cta:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* The links collapse first; the mark and the chain status always survive. */
+@media (max-width: 760px) {
+  .qnav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .qnav-cta {
+    display: none;
+  }
+}
+
+/* Anchored sections clear the sticky nav instead of starting under it. */
+section[id] {
+  scroll-margin-top: 74px;
+}

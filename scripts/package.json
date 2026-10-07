@@ -1,0 +1,16 @@
+{
+  "name": "@quittance/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence manifest, README generation, and environment bring-up helpers.",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@quittance/engine": "workspace:*",
+    "@solana/web3.js": "1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "typescript": "5.9.3"
+  }
+}

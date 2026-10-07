@@ -1,0 +1,482 @@
+/*
+ * The judge demo.
+ *
+ * A phone frame beside a narration rail. The frame is deliberately plain — no
+ * glossy device render, no drop shadow theatre — because the thing being shown
+ * is the screen, not the hardware.
+ */
+
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  margin-top: clamp(28px, 3.4vw, 44px);
+}
+
+.phoneColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 28px;
+}
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+  aspect-ratio: 9 / 19.5;
+  margin-inline: auto;
+  background: var(--ink);
+  border-radius: 34px;
+  padding: 9px;
+  box-shadow: var(--lift-strong);
+}
+
+.notch {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 20px;
+  background: var(--ink);
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+  z-index: 2;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--paper);
+  position: relative;
+}
+
+.screenInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- controls -------------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.play,
+.step {
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  min-height: 40px;
+  padding-inline: 16px;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.play {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.play:hover,
+.step:hover {
+  transform: translateY(-1px);
+  border-color: var(--ink);
+}
+
+/* --- narration ------------------------------------------------------------- */
+
+.narration {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 2px;
+}
+
+.stepButton {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  text-align: left;
+  padding: 9px 11px;
+  border: none;
+  border-left: 2px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: 'Geist', sans-serif;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.stepButton:hover {
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.stepActive {
+  border-left-color: var(--inflight);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.stepNumber {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.stepLabel {
+  min-width: 0;
+}
+
+.detailBox {
+  border-left: 2px solid var(--ink);
+  padding: 2px 0 2px 18px;
+  min-height: 112px;
+}
+
+.detailCaption {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(19px, 1.9vw, 24px);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+
+.detailText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+/* --- the screens ----------------------------------------------------------- */
+
+.ledgerScreen,
+.payScreen,
+.walletScreen,
+.killedScreen,
+.recoverScreen,
+.settledScreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 0 0;
+}
+
+.ledgerHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px 16px 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ledgerTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.ledgerWeek {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.ledgerRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.ledgerRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 18px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rowName {
+  font-size: 12.5px;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+
+.rowYou {
+  font-style: normal;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+.rowAmount {
+  font-size: 11.5px;
+  color: var(--ink);
+}
+
+.rowMark {
+  font-size: 11px;
+  text-align: right;
+}
+
+.ledgerFoot {
+  padding: 11px 16px 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ledgerCount {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.payoutOn {
+  display: block;
+  text-align: center;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  padding: 11px;
+}
+
+.payoutOff {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-size: 11px;
+  padding: 11px 8px;
+}
+
+/* --- pay --- */
+
+.payScreen {
+  justify-content: center;
+  padding: 34px 20px 20px;
+  gap: 6px;
+}
+
+.payContext {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.payAmount {
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.payRecipient {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.payFooter {
+  margin-top: auto;
+}
+
+.payButton {
+  text-align: center;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+  padding: 13px;
+}
+
+/* --- wallet --- */
+
+.walletScreen {
+  justify-content: center;
+  gap: 8px;
+  padding: 34px 20px 20px;
+  background: var(--paper-sunk);
+  text-align: center;
+}
+
+.walletApp {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.walletAsk {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.walletAmount {
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.walletButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.walletApprove {
+  background: var(--settled);
+  color: var(--paper);
+  font-size: 13px;
+  padding: 11px;
+}
+
+.walletDecline {
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 13px;
+  padding: 11px;
+}
+
+.walletNote {
+  margin-top: 14px;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+
+/* --- killed --- */
+
+.killedScreen {
+  justify-content: center;
+  gap: 10px;
+  padding: 34px 22px 22px;
+  background: var(--ink);
+  text-align: center;
+}
+
+.killedTag {
+  font-size: 10.5px;
+  color: var(--rejected);
+  letter-spacing: 0.05em;
+}
+
+.killedText {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--paper);
+}
+
+.killedMeta {
+  margin-top: 10px;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+/* --- recovering --- */
+
+.recoverScreen {
+  justify-content: center;
+  gap: 10px;
+  padding: 34px 20px 20px;
+}
+
+.recoverEyebrow {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.recoverLine {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+
+.recoverLineLive {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* --- settled --- */
+
+.settledScreen {
+  justify-content: center;
+  gap: 8px;
+  padding: 34px 20px 20px;
+}
+
+.settledRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.settledDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--settled);
+}
+
+.settledTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  color: var(--ink);
+}
+
+.settledAmount {
+  font-size: 26px;
+  color: var(--ink);
+}
+
+.settledBody {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.settledTiming {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
+/* --- responsive ------------------------------------------------------------ */
+
+@media (max-width: 880px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .phoneColumn {
+    position: static;
+  }
+  .steps {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@quittance/harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fault-injection campaign driver over adb. Two arms, identical corpus, never pooled.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types test/*.test.ts",
+    "campaign": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@quittance/engine": "workspace:*",
+    "@solana/web3.js": "1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,118 @@
+/* The proof page. Denser than the landing page, because its reader came here
+   to check something rather than to be persuaded. */
+
+.back {
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.back:hover {
+  border-color: var(--ink);
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.metaMono {
+  font-size: 12px;
+  color: var(--ink-faint);
+  overflow-wrap: anywhere;
+  margin-bottom: 22px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(16px, 2vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemHead {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.itemTitle {
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.claim {
+  font-size: 14px;
+  line-height: 1.58;
+  color: var(--ink-soft);
+  padding-left: 64px;
+}
+
+.observed {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  padding-left: 64px;
+  overflow-wrap: anywhere;
+}
+
+.invariants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.invariant {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  padding: clamp(18px, 2vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invariantId {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.invariant .claim,
+.invariant .observed {
+  padding-left: 0;
+}
+
+.enforced {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.enforcedLabel {
+  color: var(--ink-faint);
+}
+
+@media (max-width: 560px) {
+  .itemHead {
+    grid-template-columns: 44px 1fr;
+  }
+  .claim,
+  .observed {
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,104 @@
+/* The wallet button and its dropdown, styled as the ledger's own controls
+   rather than a wallet-adapter default. */
+
+.wrap {
+  position: relative;
+}
+
+.connect,
+.connected {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding-inline: 14px;
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s, transform 0.2s, background-color 0.2s;
+}
+
+.connect:hover:not(:disabled),
+.connected:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.connect:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.connected {
+  background: color-mix(in srgb, var(--settled) 7%, var(--paper-raised));
+  border-color: color-mix(in srgb, var(--settled) 30%, var(--rule));
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--settled);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift-strong);
+  z-index: 70;
+  padding: 6px;
+}
+
+.menuWallet {
+  font-size: 11px;
+  color: var(--ink-faint);
+  padding: 6px 10px 4px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  font-family: 'Geist', sans-serif;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.menuItem:hover {
+  background: var(--paper-sunk);
+}
+
+.menuIcon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.empty {
+  padding: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 220px;
+}
+
+.empty a {
+  color: var(--ink);
+  text-decoration: underline;
+}

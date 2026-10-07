@@ -1,0 +1,81 @@
+{
+  "generatedAtIso": "2026-10-05T20:01:27.446Z",
+  "rpcHost": "devnet.helius-rpc.com",
+  "cluster": "devnet",
+  "payer": "4v73b7ZtKVitN2zcZHfDgWon4CqPTB1UT2zDwGyr85Jm",
+  "nonceAccount": "7v119bouZwmiGuhcbkuVZcQVs1xSqWzETTRJhQdwjASb",
+  "createSignature": "2NQNWB7tWRf2XBAqafwrpvCi5ocS3YfnJZGvQEDh8qE2srY55T6QWnbsVWcchq8oDTS1Nw1nXZXbxHLzoZQ3zfnU",
+  "results": [
+    {
+      "id": "E5",
+      "title": "one account read answers whether the payment happened",
+      "claim": "If the stored nonce still equals the value the transaction was built against, it was never processed. If it has advanced, exactly one transaction consumed it.",
+      "observed": "nonce moved from 6X7AfAtEJ2ugNyMiQzQz3XG2pyQERbatBh6ZjPXVGEaR to 4aACtQp3v3exfYt21YJ1tgvxiTb1qP7sjfW31AMFUQj6",
+      "passed": true,
+      "evidence": {
+        "noncePubkey": "7v119bouZwmiGuhcbkuVZcQVs1xSqWzETTRJhQdwjASb",
+        "nonceBefore": "6X7AfAtEJ2ugNyMiQzQz3XG2pyQERbatBh6ZjPXVGEaR",
+        "nonceAfter": "4aACtQp3v3exfYt21YJ1tgvxiTb1qP7sjfW31AMFUQj6",
+        "signature": "3JcxzARNGdii7fmvALbP4fYYeY5BDSA4jf8JsbPqm3WaCjJ3oR3AsJfhikoxx22y9MKZNQYacGD9k7V6n3H7Eui6"
+      }
+    },
+    {
+      "id": "E5b",
+      "title": "the nonce account is also the index",
+      "claim": "getSignaturesForAddress on the nonce account returns exactly the transactions that touched it, so the consuming signature is recoverable from one pubkey.",
+      "observed": "2 signatures on the account; the sent transaction was among them",
+      "passed": true,
+      "evidence": {
+        "signatures": [
+          "3JcxzARNGdii7fmvALbP4fYYeY5BDSA4jf8JsbPqm3WaCjJ3oR3AsJfhikoxx22y9MKZNQYacGD9k7V6n3H7Eui6",
+          "2NQNWB7tWRf2XBAqafwrpvCi5ocS3YfnJZGvQEDh8qE2srY55T6QWnbsVWcchq8oDTS1Nw1nXZXbxHLzoZQ3zfnU"
+        ]
+      }
+    },
+    {
+      "id": "E6a",
+      "title": "ten rebroadcasts, one effect",
+      "claim": "A dumb retry loop cannot double-charge. Identical bytes carry an identical signature, so the cluster answers from the transaction it already has rather than processing a second one. The measurement that matters is the effect, not the RPC response.",
+      "observed": "10 of 10 resends answered by the cluster, 0 refused; recipient holds 1000000 lamports against 1000000 transferred once",
+      "passed": true,
+      "evidence": {
+        "resendsAnswered": 10,
+        "resendsRefused": 0,
+        "recipientBalance": 1000000,
+        "transferLamports": 1000000,
+        "effects": 1,
+        "note": "Identical bytes are deduplicated by signature before the nonce check is reached. E6b exercises the nonce check itself."
+      }
+    },
+    {
+      "id": "E6b",
+      "title": "the runtime rejects a transaction whose nonce has been consumed",
+      "claim": "This is invariant I1, and it is enforced by the validator rather than by Quittance. A nonce transaction validates only while the stored value equals the value in its blockhash field, and processing advances that value before execution.",
+      "observed": "refused for the nonce — Simulation failed. Message: Transaction simulation failed: Blockhash not found. Logs: []. Catch the `SendTransactionError` and call `getLogs()` on it ; recipient still holds 1000000",
+      "passed": true,
+      "evidence": {
+        "accepted": false,
+        "refusedForNonce": true,
+        "sendError": "Simulation failed. Message: Transaction simulation failed: Blockhash not found. Logs: []. Catch the `SendTransactionError` and call `getLogs()` on it for full details.",
+        "logs": [],
+        "recipientBalance": 1000000,
+        "expectedBalance": 1000000
+      }
+    },
+    {
+      "id": "E-R",
+      "title": "a failed transfer still advances the nonce",
+      "claim": "The runtime rolls the accounts back and then stores the advanced nonce anyway, to stop replay of a failed nonce transaction. So \"advanced\" means processed, not paid, and there are three terminal on-chain outcomes rather than two.",
+      "observed": "nonce moved from 4aACtQp3v3exfYt21YJ1tgvxiTb1qP7sjfW31AMFUQj6 to 4DnbVc7DpNfCDch8xLsdQYucH5QLZpoqVmEq1poDWtgw while the transfer failed and the recipient balance stayed at 1000000",
+      "passed": true,
+      "evidence": {
+        "nonceBeforeFailure": "4aACtQp3v3exfYt21YJ1tgvxiTb1qP7sjfW31AMFUQj6",
+        "nonceAfterFailure": "4DnbVc7DpNfCDch8xLsdQYucH5QLZpoqVmEq1poDWtgw",
+        "signature": "6H1BVyRzuyF4o7WuMVCbCVZhaM3hMf1Bq65LTL77vDHY5ZtKDqFcMspmyXxV25T3M3nAQahC1g8fkpPJUy7dtab",
+        "error": "{\"InstructionError\":[1,{\"Custom\":1}]}",
+        "recipientBalance": 1000000
+      }
+    }
+  ],
+  "allPassed": true
+}

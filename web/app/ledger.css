@@ -1,0 +1,176 @@
+/*
+ * The ledger.
+ *
+ * A ruling, not a card grid. Members are rows separated by hairlines on paper,
+ * name left, amount right-aligned on a tabular baseline, state mark in the
+ * right gutter. No rounded card per member, no shadow per member — the rows
+ * are the structure.
+ *
+ * One row glows, and only while its outcome is unknown.
+ */
+
+.ledger {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift);
+}
+
+.sectionSunk .ledger,
+:global(.sectionSunk) .ledger {
+  background: var(--paper);
+}
+
+.ledger-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(18px, 2.2vw, 26px) clamp(16px, 2vw, 26px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.ledger-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.ledger-sub {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.ledger-week {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.ledger-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ledger-row {
+  display: grid;
+  /* name | amount | state. Fixed trailing columns keep every amount on one
+     tabular baseline and every mark in the same gutter, which is the whole
+     point of a ledger. */
+  grid-template-columns: minmax(0, 1fr) auto 128px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px clamp(16px, 2vw, 26px);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  background: transparent;
+}
+
+.ledger-rows li:last-child {
+  border-bottom: none;
+}
+
+/* The one glowing element in the entire product. */
+.ledger-row.inflight {
+  cursor: pointer;
+  z-index: 1;
+  background: var(--paper-raised);
+}
+
+.ledger-row.inflight:hover {
+  background: var(--paper);
+}
+
+.ledger-name {
+  font-size: 15.5px;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ledger-amount {
+  font-size: 15px;
+  color: var(--ink);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ledger-state {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.ledger-label {
+  color: inherit;
+}
+
+.ledger-mark {
+  font-size: 13px;
+  width: 14px;
+  text-align: center;
+}
+
+.ledger-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(14px, 1.8vw, 20px) clamp(16px, 2vw, 26px);
+  border-top: 1px solid var(--rule);
+}
+
+.ledger-counts {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.ledger-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--inflight);
+}
+
+.ledger-reset {
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ledger-reset:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+  .ledger-row {
+    /* The state label drops at phone width and the mark carries the meaning,
+       so the amount never wraps and the gutter stays aligned. */
+    grid-template-columns: minmax(0, 1fr) auto 26px;
+    gap: 10px;
+    padding-inline: 16px;
+  }
+  .ledger-label {
+    display: none;
+  }
+  .ledger-name {
+    font-size: 14.5px;
+  }
+  .ledger-amount {
+    font-size: 14px;
+  }
+}

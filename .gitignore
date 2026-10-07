@@ -1,0 +1,87 @@
+# ---------------------------------------------------------------------------
+# Reference material — local study only, never published, never part of the
+# build. Nothing inside this directory is referenced by any shipped file.
+# ---------------------------------------------------------------------------
+reference/
+
+# The master build instruction is a private working document.
+QUITTANCE_BUILD_INSTRUCTION.md
+
+# ---------------------------------------------------------------------------
+# Secrets. Nothing below this line may ever reach a commit.
+#
+# `.keys/` holds funded devnet keypairs in plaintext, which is how the Solana
+# CLI stores them. They are devnet-only and hold no real value, but they are
+# still signing keys and they stay out of history.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*-keypair.json
+keys/
+.keys/
+**/.keys/
+id.json
+payer.json
+adversary.json
+
+# Node
+node_modules/
+.pnpm-store/
+*.tsbuildinfo
+dist/
+build/
+coverage/
+.turbo/
+
+# Expo / React Native
+app/.expo/
+app/android/
+app/ios/
+app/*.apk
+app/*.aab
+probe/*/android/
+probe/*/ios/
+probe/*/.expo/
+
+# Next.js
+web/.next/
+web/out/
+web/.vercel/
+web/test-results/
+web/playwright-report/
+web/blob-report/
+
+# Anchor / Rust
+program/target/
+program/.anchor/
+target/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Background install logs
+.anchor-install.log
+.anchor-install.err
+
+# Downloaded toolchain archives, not source
+.cache/
+
+# Background install logs
+.sbf-install.log
+.sbf-install.err
+.anchor-build.log
+.anchor-build.err
+
+.vercel

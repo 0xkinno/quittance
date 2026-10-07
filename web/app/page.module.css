@@ -1,0 +1,830 @@
+/*
+ * The landing page.
+ *
+ * A magazine on good paper: a strict column grid, generous rules, type doing
+ * the structural work, and one piece of colour spent where it means something.
+ *
+ * The layout is explicitly column-assigned at the hero so the headline and the
+ * token can never occupy the same cells — the brief requires that no glyph
+ * ever overlaps the artwork, at any viewport, and a grid assignment is the
+ * only way to guarantee that rather than hope for it.
+ */
+
+/* --- hero ------------------------------------------------------------------
+ *
+ * The photograph is the background of the section at full bleed. The headline
+ * sits in the upper left on empty paper and the token occupies the lower right
+ * third, exactly as the brief composes it.
+ *
+ * A scrim carries the typography: solid paper under the text columns, fading
+ * to fully transparent before the token. That is what guarantees no glyph ever
+ * sits over the image rather than merely hoping the crop cooperates, and
+ * `tests/viewports.spec.ts` asserts it at every size.
+ */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  /* Less the sticky nav, so the hero still fills the first screen. */
+  min-height: min(86vh, 760px);
+  margin-top: -62px;
+  padding-top: calc(clamp(72px, 9vw, 120px) + 62px);
+  display: flex;
+  align-items: center;
+  padding-block: clamp(72px, 9vw, 120px);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The token is right of centre in the source frame; anchoring right keeps it
+     there as the viewport narrows instead of drifting under the headline. */
+  object-position: 62% 46%;
+  /* Pulled back a little so the token reads at the size it was photographed
+     rather than magnified by the crop. */
+  transform: scale(1.02);
+}
+
+/*
+ * The scrim.
+ *
+ * Opaque paper under columns 1–7, gone by column 8. The second layer lifts the
+ * top edge so the eyebrow never sits on a dark band of the photograph.
+ */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      100deg,
+      var(--paper) 0%,
+      var(--paper) 38%,
+      color-mix(in srgb, var(--paper) 88%, transparent) 50%,
+      color-mix(in srgb, var(--paper) 40%, transparent) 60%,
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--paper) 55%, transparent) 0%,
+      transparent 22%,
+      transparent 78%,
+      color-mix(in srgb, var(--paper) 45%, transparent) 100%
+    );
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  width: 100%;
+}
+
+/* Text occupies columns 1–7. The token's region, 8–12, is left empty. */
+.heroText {
+  grid-column: 1 / span 7;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  letter-spacing: 0.015em;
+  width: fit-content;
+  padding: 7px 14px 7px 11px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper-raised) 76%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--settled);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--settled) 18%, transparent);
+}
+
+.headline {
+  font-size: clamp(40px, 6.4vw, 82px);
+  line-height: 0.99;
+  font-variation-settings: 'SOFT' 0, 'WONK' 1, 'opsz' 140;
+}
+
+.lede {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 54ch;
+}
+
+.subLede {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  padding-left: 16px;
+  border-left: 1px solid var(--rule);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.buttonPrimary,
+.buttonGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding-inline: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.22s,
+    background-color 0.22s;
+}
+
+.buttonPrimary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.buttonGhost {
+  border-color: var(--rule);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper-raised) 70%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.buttonPrimary:hover,
+.buttonGhost:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--lift-strong);
+}
+
+.buttonGhost:hover {
+  border-color: var(--ink);
+}
+
+/* A quiet row of facts under the buttons: credibility without a claim. */
+.heroFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: clamp(20px, 2.6vw, 30px) 0 0;
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--rule);
+  max-width: 50ch;
+}
+
+.heroFact {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.heroFactValue {
+  font-family: 'GeistMono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.heroFactLabel {
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* --- sections ------------------------------------------------------------ */
+
+.section {
+  padding-block: clamp(64px, 9vw, 120px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.sectionSunk {
+  background: var(--paper-sunk);
+}
+
+.sectionLabel {
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 3.8vw, 46px);
+  line-height: 1.08;
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+  max-width: 20ch;
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+
+.proseEmphasis {
+  color: var(--ink);
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  border-left: 2px solid var(--ink);
+  padding-left: 18px;
+}
+
+/* --- the ledger ---------------------------------------------------------- *
+ *
+ * The product shot sits in the wide column with a legend rail beside it, so
+ * the marks in the gutter are explained next to the thing they appear on
+ * rather than in a caption somewhere below it.
+ */
+
+.circleGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(18px, 2.6vw, 34px);
+  align-items: start;
+  margin-top: clamp(26px, 3vw, 40px);
+}
+
+.ledgerWrap {
+  min-width: 0;
+}
+
+.legend {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift);
+  padding: clamp(20px, 2.2vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.legendTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.legendList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.legendRow {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding-block: 13px;
+  border-top: 1px solid var(--rule);
+}
+
+.legendRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.legendMark {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.legendName {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.legendDesc {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.legendNote {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--rule);
+  padding-top: 13px;
+}
+
+/* --- diagram ------------------------------------------------------------- */
+
+.diagram {
+  margin-top: clamp(26px, 3.2vw, 40px);
+  padding: clamp(16px, 2.4vw, 32px);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift);
+  max-width: 100%;
+  /* The diagram scales to the column rather than scrolling: an SVG viewBox
+     keeps every label legible down to phone width, which is the whole reason
+     it is drawn rather than typeset. */
+  overflow: hidden;
+}
+
+.sectionSunk .diagram {
+  background: var(--paper);
+}
+
+/* --- cards --------------------------------------------------------------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+  margin-top: clamp(28px, 3.4vw, 44px);
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  padding: clamp(20px, 2.2vw, 28px);
+  box-shadow: var(--lift);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionSunk .card {
+  background: var(--paper);
+}
+
+.cardTitle {
+  font-size: clamp(18px, 1.6vw, 21px);
+  line-height: 1.22;
+}
+
+.cardBody {
+  font-size: 14.5px;
+  line-height: 1.58;
+  color: var(--ink-soft);
+}
+
+/* --- proof --------------------------------------------------------------- */
+
+.notRun {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ambiguous);
+  padding: clamp(22px, 2.6vw, 32px);
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notRunHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.notRunBadge {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ambiguous);
+  border: 1px solid color-mix(in srgb, var(--ambiguous) 40%, transparent);
+  background: color-mix(in srgb, var(--ambiguous) 8%, transparent);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+/* The gate, as a sequence rather than a paragraph: a reader can see exactly
+   where the evidence stops and what unlocks the rest. */
+.gateList {
+  list-style: none;
+  margin: 2px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gateList li {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding-block: 11px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.gateList li:first-child {
+  border-top: none;
+}
+
+.gateDone,
+.gateNow,
+.gateNext {
+  font-family: 'GeistMono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.gateDone {
+  color: var(--settled);
+}
+
+.gateNow {
+  color: var(--inflight);
+}
+
+.gateNext {
+  color: var(--ink-faint);
+}
+
+/* The fault corpus, as a grid of plates. Ten specific ways a payment on a
+   phone can be interrupted, each one named. */
+.faultGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 10px;
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+.fault {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: start;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+}
+
+.faultId {
+  font-size: 12px;
+  color: var(--inflight);
+}
+
+.faultLabel {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.tableWrap {
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 14px clamp(12px, 1.6vw, 20px);
+  border-bottom: 1px solid var(--rule);
+  font-size: 14.5px;
+}
+
+.table thead th {
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.table td {
+  text-align: right;
+  width: 110px;
+  font-variant-numeric: tabular-nums;
+}
+
+.table tbody th {
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tableNote {
+  margin-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.experiments {
+  margin-top: clamp(28px, 3.2vw, 42px);
+  padding: clamp(20px, 2.4vw, 30px);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.experimentList {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.experimentRow {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  padding-block: 12px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  align-items: start;
+}
+
+.experimentText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.experimentObserved {
+  font-family: 'GeistMono', monospace;
+  font-style: normal;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  overflow-wrap: anywhere;
+}
+
+.verify {
+  margin-top: clamp(28px, 3.2vw, 42px);
+}
+
+.verifyLabel {
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.command {
+  margin: 0;
+  padding: clamp(16px, 2vw, 22px);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: clamp(11px, 1.1vw, 13px);
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.verifyNote {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+/* --- footer -------------------------------------------------------------- */
+
+.footer {
+  padding-block: clamp(48px, 6vw, 80px);
+  background: var(--paper);
+}
+
+.footerGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footerMark {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.footerNote {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+
+.footerLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.footerLinks a:hover {
+  border-color: var(--ink);
+}
+
+.programId {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--ink-faint);
+  overflow-wrap: anywhere;
+}
+
+/* --- responsive ---------------------------------------------------------- */
+
+@media (max-width: 1040px) {
+  .circleGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroText {
+    grid-column: 1 / -1;
+  }
+  .sectionTitle {
+    max-width: 24ch;
+  }
+
+  /*
+   * There is no reserved empty column on a stacked mobile layout for the
+   * photograph to occupy, so the composition rule changes: rather than text
+   * beside the token, the photograph becomes a quiet textured edge and the
+   * paper underneath the copy goes fully opaque. The alternative — the
+   * desktop gradient at mobile width — let the coin's ruled-paper texture
+   * show directly behind body copy, which is the one thing Section 12
+   * explicitly forbids: type competing with the image.
+   */
+  .heroScrim {
+    background:
+      radial-gradient(
+        ellipse 120% 90% at 30% 35%,
+        var(--paper) 0%,
+        var(--paper) 55%,
+        color-mix(in srgb, var(--paper) 94%, transparent) 72%,
+        color-mix(in srgb, var(--paper) 80%, transparent) 100%
+      );
+  }
+}
+
+@media (max-width: 560px) {
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .buttonPrimary,
+  .buttonGhost {
+    justify-content: center;
+  }
+  .experimentRow {
+    grid-template-columns: 44px 1fr;
+  }
+  .table th,
+  .table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  .table td {
+    width: 72px;
+  }
+}
+
+/* --- who this is for -------------------------------------------------------
+ *
+ * A portrait-width column of prose beside a photograph of the person it is
+ * about. The brief asks for one portrait-width column; the image sits beside
+ * it rather than behind it, so no glyph ever competes with the picture.
+ */
+
+.whoGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.whoFigure {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  top: 90px;
+}
+
+.whoImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift);
+  /* Pulled toward the page's own palette so the photograph sits on the paper
+     rather than on top of it. */
+  filter: saturate(0.82) contrast(1.02);
+}
+
+.whoCredit {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.whoCredit a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.whoCredit a:hover {
+  border-color: var(--ink);
+}
+
+.whoText {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .whoGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .whoFigure {
+    position: static;
+    order: 2;
+  }
+  .whoText {
+    order: 1;
+  }
+}
+
+/* --- prove it yourself ----------------------------------------------------- */
+
+.liveCard {
+  margin-top: clamp(24px, 3vw, 40px);
+  padding: clamp(22px, 2.6vw, 34px);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow: var(--lift);
+}
+
+.prose code {
+  font-family: 'GeistMono', monospace;
+  font-size: 0.92em;
+  background: var(--paper-sunk);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
