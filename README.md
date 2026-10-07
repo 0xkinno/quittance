@@ -34,15 +34,10 @@ already happened.
 The circle, and the moment a contribution resolves. The only element that
 glows anywhere in this product is a payment whose outcome is not yet known.
 
-| In flight | Resolved |
+| | |
 |---|---|
-| ![The circle, with one contribution in flight](docs/screenshots/recovering.png) | ![The same circle after the chain answered](docs/screenshots/resolve.png) |
-
-| The proof page | On a phone |
-|---|---|
-| ![The public proof page](docs/screenshots/pay.png) | ![The circle at phone width](docs/screenshots/mobile-circle.png) |
-
-![How a contribution resolves](docs/screenshots/diagram.png)
+| ![Product Screenshot](docs/screenshots/product-1-in-flight.png) | ![Product Screenshot](docs/screenshots/product-2-resolved.png) |
+| ![Product Screenshot](docs/screenshots/product-3-the-circle.png) | ![Product Screenshot](docs/screenshots/product-4-killed.png) |
 
 ---
 
