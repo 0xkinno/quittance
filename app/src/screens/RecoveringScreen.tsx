@@ -206,7 +206,7 @@ function ReadingState({
       {lines.slice(0, step + 1).map((line, index) => (
         <Animated.Text
           key={line}
-          entering={reducedMotion ? undefined : FadeIn.duration(220)}
+          {...(reducedMotion ? {} : { entering: FadeIn.duration(220) })}
           style={[
             styles.readingLine,
             {

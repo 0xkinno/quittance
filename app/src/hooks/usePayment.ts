@@ -128,7 +128,7 @@ export function usePayment(args: UsePaymentArgs): UsePaymentResult {
       }
 
       // --- steps 3 and 4: build and hash -----------------------------------
-      const { intent: record, built } = createIntentRecord({
+      const { intent: record } = createIntentRecord({
         slotId,
         circleId: args.circleId,
         roundIndex: args.roundIndex,

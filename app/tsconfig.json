@@ -8,6 +8,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react-jsx",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "noEmit": true

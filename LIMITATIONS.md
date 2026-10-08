@@ -4,7 +4,7 @@ Every substitution, every stand-in, and every `UNKNOWN`, stated against the
 specific claim it affects. This section is written before the roadmap because
 it buys more credibility than any feature.
 
-**Updated:** 2026-10-05
+**Updated:** 2026-10-08
 
 ---
 
@@ -114,18 +114,54 @@ teaches the legend the ledger then uses, and is readable by a screen reader
 through a title and description. The ASCII form is kept verbatim in the README,
 where a monospace block is the right medium.
 
-## L8 — Not yet proven
+## L8 — Measurements that need a person holding the phone
 
-These are not limitations of the design. They are statements that the evidence
-does not exist yet, recorded so that nothing in this repository reads as though
-it does.
+These are not limitations of the design. They are two measurements whose
+instruments are built and shipped, and whose results are published by script
+the moment they exist. Until then no document states them.
 
-| Claim | Status | Settled by |
+| Claim | Instrument | Result |
 |---|---|---|
-| A compliant wallet preserves the durable nonce rather than substituting a recent blockhash | `UNKNOWN` | Experiment E8 — the gate |
-| Which signing methods each wallet actually implements | `UNKNOWN` | Experiment E7 |
-| Android kills the dApp during the wallet handoff often enough to matter | `UNKNOWN` | Experiments E1–E5 |
-| The campaign's headline numbers | **do not exist** | The break campaign, once the device is attached |
+| A compliant wallet preserves the durable nonce rather than substituting a recent blockhash | **E8**, in the shipped app — long-press the circle name, *Run E8* | Published to `evidence/` and the README when run |
+| Which signing methods each wallet actually implements | **E7**, the same probe screen | Same |
+| The break campaign's headline numbers (both arms, ten faults) | `pnpm campaign` | `evidence/campaign.json` |
 
-No document in this repository states a campaign number, and none will until a
-script has produced it from a real results file.
+They need a person because each involves a wallet approval or physical fault
+injection (force-stop, airplane mode, reboot) on a real device. No document in
+this repository states a campaign number, and none will until a script has
+produced it from a real results file.
+
+## L9 — The release APK is signed with the debug keystore
+
+**Affects:** distribution, not behaviour.
+
+Expo's generated Android project signs `release` with the debug keystore. The
+APK installs and runs identically, which is what review needs. A production or
+dApp Store release needs its own upload key; that is a one-time step recorded
+in the roadmap rather than something to improvise before a deadline.
+
+## L10 — Scope of the evidence
+
+**Affects:** how far any single result generalises.
+
+- **Devnet only.** Every on-chain result is against devnet. The runtime
+  behaviours measured (nonce rollback-then-advance, replay refusal) are
+  properties of the validator and are not cluster-specific, but they were
+  measured here.
+- **One reference device.** The device of record is a Samsung Galaxy A71 on
+  Android 12. Android's process-kill policy varies by vendor; other devices may
+  kill a backgrounded app more or less aggressively.
+- **One reference wallet** for E8 (Solflare). A different wallet may behave
+  differently, which is exactly why E8 records the wallet and version.
+- **Not audited.** The program and engine have been tested and checked against
+  six invariants, not independently audited.
+
+## L11 — The web demo runs on the public devnet RPC
+
+**Affects:** latency and rate limits of the in-browser live check.
+
+The deployed site deliberately carries no API key: it talks to the public
+devnet endpoint. That keeps the bundle free of secrets and is why the live check
+polls for confirmation rather than subscribing, but the public endpoint can
+rate-limit under load. Re-running the check is safe — every run creates a fresh
+nonce account.

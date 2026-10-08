@@ -46,7 +46,7 @@ packages/
   verifier/         Standalone Node CLI. Recomputes every verdict from an
                     exported intent log plus chain. No app, no wallet.
   harness/          Fault-injection campaign driver over adb. Two arms.
-app/                React Native (Expo dev client). The Seeker app.
+app/                React Native (Expo). The Seeker app — ships as a standalone release APK.
 web/                Next.js. Landing page and the public /proof route.
 evidence/           Generated JSON. Never hand-edited.
 scripts/            Environment, experiments, manifest, README generation.
@@ -245,3 +245,39 @@ history scan on recovery. It is not tuned to lose. Its structural limit is a
 property of the approach rather than of the code — a history scan cannot
 distinguish one member's payment from another's when the contribution amount
 is fixed, and it collapses entirely with more than one payment pending.
+
+## Deployment topology
+
+| Surface | Where it runs | Notes |
+|---|---|---|
+| Program | Solana devnet, `BXFpbaNWBy2ZJeQLE3bhRSSRfBqZgP3CVTtFoxCqyvFP` | Upgrade authority held by the deployer; see `EVIDENCE.md` |
+| Android app | A physical device, as a standalone release APK | JS is bundled into the APK at build time — no Metro, no dev server, no network requirement to launch |
+| Web (landing, judge demo, `/proof`) | Vercel, `quittance-inky.vercel.app` | Static prerender; reads `evidence/` at build time, so every number on the page is the number in the results file |
+| Verifier / harness | Developer machine | The verifier needs only an RPC URL; the harness needs `adb` and a device |
+
+Configuration crosses each boundary through environment variables only:
+`HELIUS_RPC_URL` (secret, build-time, app and scripts only) and the
+`NEXT_PUBLIC_*` family (public by design, web only). The web bundle never
+contains an RPC key — it talks to the public devnet endpoint.
+
+## One engine, three consumers
+
+`packages/engine` has no React and no network inside the verdict machine, which
+is what lets the same code run in three places:
+
+1. **The app** — creates intents, writes them ahead, and resolves on reopen.
+2. **The verifier** — recomputes every verdict offline from the exported log.
+3. **The browser** — the "Prove it yourself" section on the landing page runs a
+   real durable-nonce round trip with the visitor's own wallet using the
+   identical hashing and comparison functions.
+
+A bug in the engine is therefore a bug in all three, and a test against the
+engine is a test of all three.
+
+## Reaching the wallet gate on a device
+
+`ProbeScreen` (E7 capability probe and E8 gate) is wired into the app's route
+state. It is reached by long-pressing the circle name on the home screen —
+deliberately not a visible button, because the home screen's design contract is
+one button and no blockchain vocabulary. It creates its own nonce account owned
+by the member, so it needs no funded service key and anyone can reproduce it.

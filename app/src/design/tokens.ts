@@ -54,7 +54,7 @@ export const darkPalette = {
   rejected: '#C26A6A',
 } as const;
 
-export type Palette = typeof palette;
+export type Palette = { readonly [K in keyof typeof palette]: string };
 
 /**
  * The in-flight glow. The single most restricted token in the system: it is
