@@ -49,6 +49,10 @@ export interface CircleScreenProps {
   readonly onPayPress: () => void;
   readonly onMemberPress: (memberPubkey: string) => void;
   readonly onCollectionDayPress: () => void;
+  /** Long-press the title to reach E8. Deliberately not a visible button —
+   *  see the file header: this screen is one button, and the wallet-gate
+   *  probe is a verification tool, not something a member taps through. */
+  readonly onDebugPress: () => void;
   /** Set while the first resolve pass after launch is still running. */
   readonly isResolving: boolean;
   /** Non-null when the chain could not be reached. Never a guess. */
@@ -77,7 +81,9 @@ export function CircleScreen(props: CircleScreenProps): React.JSX.Element {
         }
       >
         <View style={styles.header}>
-          <Text style={[styles.title, { color: colors.ink }]}>{props.circleName}</Text>
+          <Text style={[styles.title, { color: colors.ink }]} onLongPress={props.onDebugPress}>
+            {props.circleName}
+          </Text>
           <Text style={[styles.week, { color: colors.inkSoft }]}>
             Week {props.roundIndex + 1} of {props.roundCount}
           </Text>

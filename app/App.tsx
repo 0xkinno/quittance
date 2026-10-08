@@ -27,6 +27,7 @@ import { MmkvIntentStore } from './src/storage/mmkv-store';
 import { CircleScreen } from './src/screens/CircleScreen';
 import { CollectionDayScreen } from './src/screens/CollectionDayScreen';
 import { PayScreen } from './src/screens/PayScreen';
+import { ProbeScreen } from './src/screens/ProbeScreen';
 import { ProofScreen } from './src/screens/ProofScreen';
 import { ReceiptScreen } from './src/screens/ReceiptScreen';
 import { RecoveringScreen } from './src/screens/RecoveringScreen';
@@ -41,7 +42,8 @@ type Route =
   | { readonly name: 'COLLECTION' }
   | { readonly name: 'RESOLVE'; readonly slotId: string }
   | { readonly name: 'RECEIPT'; readonly slotId: string }
-  | { readonly name: 'PROOF' };
+  | { readonly name: 'PROOF' }
+  | { readonly name: 'PROBE' };
 
 export default function App(): React.JSX.Element {
   const scheme = useColorScheme();
@@ -132,6 +134,7 @@ export default function App(): React.JSX.Element {
             onRefresh={() => void circle.refresh()}
             onPayPress={() => setRoute({ name: 'PAY' })}
             onCollectionDayPress={() => setRoute({ name: 'COLLECTION' })}
+            onDebugPress={() => setRoute({ name: 'PROBE' })}
             onMemberPress={(memberPubkey) => {
               const slot = circle.slots.find(
                 (candidate) =>
@@ -300,6 +303,9 @@ export default function App(): React.JSX.Element {
             onBack={() => setRoute({ name: 'CIRCLE' })}
           />
         );
+
+      case 'PROBE':
+        return <ProbeScreen colors={colors} onBack={() => setRoute({ name: 'CIRCLE' })} />;
     }
   }
 }
