@@ -49,9 +49,9 @@ export interface CircleScreenProps {
   readonly onPayPress: () => void;
   readonly onMemberPress: (memberPubkey: string) => void;
   readonly onCollectionDayPress: () => void;
-  /** Long-press the title to reach E8. Deliberately not a visible button —
-   *  see the file header: this screen is one button, and the wallet-gate
-   *  probe is a verification tool, not something a member taps through. */
+  /** Opens the wallet-gate probe (E7/E8). A quiet text link under the one
+   *  button, and also a long-press on the title. It is a verification tool,
+   *  so it is kept visually subordinate, but it must be findable. */
   readonly onDebugPress: () => void;
   /** Set while the first resolve pass after launch is still running. */
   readonly isResolving: boolean;
@@ -153,6 +153,13 @@ export function CircleScreen(props: CircleScreenProps): React.JSX.Element {
             colors={colors}
             variant="secondary"
           />
+          <Text
+            accessibilityRole="button"
+            onPress={props.onDebugPress}
+            style={[styles.walletCheck, { color: colors.inkSoft }]}
+          >
+            Wallet check (E8)
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -267,6 +274,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.lg,
     paddingTop: space.lg,
     gap: space.xs,
+  },
+  walletCheck: {
+    fontFamily: 'Geist',
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
+    paddingVertical: space.md,
+    textDecorationLine: 'underline',
   },
   summaryLine: { fontFamily: 'Geist', fontSize: 14, lineHeight: 20 },
   total: {

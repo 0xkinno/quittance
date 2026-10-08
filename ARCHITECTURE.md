@@ -277,7 +277,8 @@ engine is a test of all three.
 ## Reaching the wallet gate on a device
 
 `ProbeScreen` (E7 capability probe and E8 gate) is wired into the app's route
-state. It is reached by long-pressing the circle name on the home screen —
-deliberately not a visible button, because the home screen's design contract is
-one button and no blockchain vocabulary. It creates its own nonce account owned
+state. It is reached from a quiet *Wallet check (E8)* text link under the home
+screen's single button — kept
+visually subordinate because the home screen's design contract is one button
+and no blockchain vocabulary on it. It creates its own nonce account owned
 by the member, so it needs no funded service key and anyone can reproduce it.

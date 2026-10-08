@@ -129,7 +129,7 @@ experiment got both wrong and the corrections are the interesting part:
 
 | Experiment | How to run | Status |
 |---|---|---|
-| E7 — capability probe, E8 — wallet preserves the durable nonce | Long-press the circle name in the app → *Run E8* → approve in the wallet | Instrument shipped in the release APK; result recorded here and in `evidence/` when run |
+| E7 — capability probe, E8 — wallet preserves the durable nonce | Home screen → *Wallet check (E8)* → *Run E8* → approve in the wallet | Instrument shipped in the release APK; result recorded here and in `evidence/` when run |
 | Break campaign (F1–F10, both arms) | `pnpm campaign` with the phone attached | Instrument built; results recorded in `evidence/campaign.json` when run |
 
 ## Release build
@@ -143,8 +143,8 @@ experiment got both wrong and the corrections are the interesting part:
 | Verified | Launches to the circle screen standalone, no dev server, no network required to start |
 | Typecheck | `tsc --noEmit` on `app/` exits 0 |
 
-The SHA-256 of the submitted APK is recorded below at build time by
-`sha256sum` rather than typed by hand.
+| SHA-256 | `a4dd75bec6bd76439461b1205e74d2595163f8be4672202418ba0cc612096dff` (from `sha256sum`, 69,788,345-byte build of 2026-10-08) |
+| On-device check | Home screen → *Wallet check (E8)* opens the E8 gate screen with *Run E8*, on the release build, no dev server |
 
 ## Web deployment
 

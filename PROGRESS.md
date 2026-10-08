@@ -28,7 +28,7 @@ Remaining work is two *measurements* (E8 and the break campaign), not features.
   honestly rather than strawmanned.
 - **Android app** — seven screens plus the E8/E7 probe, design tokens, MMKV
   write-ahead store, MWA integration. Typechecks clean (`tsc --noEmit`, exit 0).
-  The probe is reachable on-device by long-pressing the circle name.
+  The probe is reachable on-device from the home screen (*Wallet check (E8)*).
 - **Release APK** — built with `./gradlew assembleRelease`, installed on a
   Samsung Galaxy A71 (Android 12) and confirmed running standalone with no dev
   server. Record in `EVIDENCE.md`.
@@ -46,7 +46,7 @@ wallet approval and physical fault injection.
 
 | | Step | Needs |
 |---|---|---|
-| 1 | **E8 — the gate.** Long-press the circle name → *Run E8* → approve in the wallet. | Phone + Solflare on devnet with a little SOL |
+| 1 | **E8 — the gate.** Home screen → *Wallet check (E8)* → *Run E8* → approve in the wallet. | Phone + Solflare on devnet with a little SOL |
 | 2 | **The break campaign.** `pnpm campaign` | Phone attached over `adb`; run after E8 |
 
 E8 goes first on purpose. If a wallet rewrites the transaction it was handed,
@@ -80,7 +80,7 @@ person will hit them:
    `app/metro.config.js` maps
    `@solana-mobile/mobile-wallet-adapter-protocol/encoding`.
 7. The probe screen existed but was never reachable from the app's route state;
-   it is now, via long-press on the circle name.
+   it is now, via a *Wallet check (E8)* link on the home screen.
 
 ## Deployment notes
 

@@ -122,7 +122,7 @@ the moment they exist. Until then no document states them.
 
 | Claim | Instrument | Result |
 |---|---|---|
-| A compliant wallet preserves the durable nonce rather than substituting a recent blockhash | **E8**, in the shipped app — long-press the circle name, *Run E8* | Published to `evidence/` and the README when run |
+| A compliant wallet preserves the durable nonce rather than substituting a recent blockhash | **E8**, in the shipped app — *Wallet check (E8)* on the home screen, then *Run E8* | Published to `evidence/` and the README when run |
 | Which signing methods each wallet actually implements | **E7**, the same probe screen | Same |
 | The break campaign's headline numbers (both arms, ten faults) | `pnpm campaign` | `evidence/campaign.json` |
 

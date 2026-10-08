@@ -138,7 +138,7 @@ than it earned.
 | **Our program** | I3 and I4 are enforced on chain; I2 is enforced by a vault check the client cannot talk its way past | Deployed Anchor program, [`SECURITY.md`](SECURITY.md) | **Deployed to devnet** |
 | **The shipped app** | The Android app runs standalone on a physical phone with no dev server | Release APK built and installed on a Samsung Galaxy A71 (Android 12) | **Done** |
 | **Product UX** | No overflow, overlap, hidden content, unloaded fonts or sub-AA contrast at eight viewports | 17 Playwright assertions | **Done — 17 passing** |
-| **Wallet behaviour** | A real wallet broadcasts the exact message it was handed | **E8**, built into the app — long-press the circle name, tap *Run E8*, approve in your wallet | **Instrumented; result published by script when run** |
+| **Wallet behaviour** | A real wallet broadcasts the exact message it was handed | **E8**, built into the app — tap *Wallet check (E8)* on the home screen, then *Run E8*, and approve in your wallet | **Instrumented; result published by script when run** |
 | **Fault campaign** | Both arms through ten injected faults on a physical device | `pnpm campaign` drives `adb`; results land in `evidence/campaign.json` | **Instrumented; result published by script when run** |
 
 The last two rows are the only ones that need a human holding the phone, and
@@ -341,7 +341,7 @@ and the order is deliberate:
 1. **E8 — the gate.** Does the wallet broadcast the message it was handed? If a
    wallet rewrites the transaction, the nonce the app recorded is not the nonce
    the chain saw and every verdict degrades to `AMBIGUOUS`. So it runs first.
-   It is built into the shipped app (long-press the circle name → *Run E8*),
+   It is built into the shipped app (home screen → *Wallet check (E8)* → *Run E8*),
    and works by comparing a hash recorded *before* the wallet opened against the
    bytes the chain returned — a wallet cannot pass it by claiming success.
 2. **The campaign.** Both arms through the ten faults below, on one device,
@@ -613,7 +613,7 @@ cd android && ./gradlew assembleRelease
 adb install -r app/build/outputs/apk/release/app-release.apk
 ```
 
-Then, to run the wallet gate on the device: long-press the circle name on the
+Then, to run the wallet gate on the device: tap **Wallet check (E8)** on the
 home screen → **Run E8** → approve in your wallet. Step-by-step device setup is
 in [`docs/DEV-CLIENT.md`](docs/DEV-CLIENT.md).
 

@@ -19,7 +19,7 @@ the release APK installed, and a terminal for the verifier.
 
 ## Optional beat — E8 on the device (adds ~25 s)
 
-If you want the gate on camera: on the phone, **long-press the circle name →
+If you want the gate on camera: on the phone, **tap Wallet check (E8) at the bottom of the home screen →
 Run E8 → approve in Solflare**. The screen lists each step as PASS or FAIL and
 ends with a verdict. Record it only if it completes; the result is whatever the
 wallet actually did.
