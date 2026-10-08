@@ -93,7 +93,7 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       let authToken = '';
       let rawCapabilities: unknown = null;
 
-      await transact(async (wallet) => {
+      await withRetry(() => transact(async (wallet) => {
         const authorization = await wallet.authorize({
           chain: CHAIN,
           identity: APP_IDENTITY,
@@ -108,7 +108,7 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
         } catch {
           rawCapabilities = null;
         }
-      });
+      }));
 
       if (account === null) throw new Error('no account');
       const member: PublicKey = account;
@@ -157,10 +157,12 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       // through the wallet.
       create.partialSign(nonceKeypair);
 
-      const createSignatures = await transact(async (wallet) => {
-        await wallet.reauthorize({ auth_token: authToken, identity: APP_IDENTITY });
-        return wallet.signAndSendTransactions({ transactions: [create] });
-      });
+      const createSignatures = await withRetry(() =>
+        transact(async (wallet) => {
+          await wallet.reauthorize({ auth_token: authToken, identity: APP_IDENTITY });
+          return wallet.signAndSendTransactions({ transactions: [create] });
+        }),
+      );
 
       collected['nonceAccount'] = nonceKeypair.publicKey.toBase58();
       collected['createSignature'] = createSignatures[0];
@@ -209,10 +211,12 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
 
       push({ label: 'E8 · handing it to the wallet', detail: 'awaiting approval', state: 'running' });
 
-      const signatures = await transact(async (wallet) => {
-        await wallet.reauthorize({ auth_token: authToken, identity: APP_IDENTITY });
-        return wallet.signAndSendTransactions({ transactions: [durable] });
-      });
+      const signatures = await withRetry(() =>
+        transact(async (wallet) => {
+          await wallet.reauthorize({ auth_token: authToken, identity: APP_IDENTITY });
+          return wallet.signAndSendTransactions({ transactions: [durable] });
+        }),
+      );
 
       const signature = signatures[0] as string;
       collected['sentSignature'] = signature;
@@ -363,6 +367,28 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       </ScrollView>
     </SafeAreaView>
   );
+}
+
+/**
+ * Retry a wallet session that failed to *connect*.
+ *
+ * Mobile Wallet Adapter opens a local websocket to the wallet after launching
+ * it by intent; if the wallet activity is slow to start the handshake throws
+ * `ConnectionFailedException` before anything has been signed, so repeating it
+ * is safe. Anything else — a declined request, a wallet error — is rethrown
+ * untouched, because retrying those could ask a person to approve twice.
+ */
+async function withRetry<T>(attempt: () => Promise<T>): Promise<T> {
+  for (let tries = 1; ; tries += 1) {
+    try {
+      return await attempt();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const connectOnly = /ConnectionFailed|Unable to connect to websocket/i.test(message);
+      if (!connectOnly || tries >= 3) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 1_500));
+    }
+  }
 }
 
 async function readNonce(connection: Connection, pubkey: PublicKey): Promise<string | null> {

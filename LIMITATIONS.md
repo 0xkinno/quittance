@@ -126,6 +126,11 @@ the moment they exist. Until then no document states them.
 | Which signing methods each wallet actually implements | **E7**, the same probe screen | Same |
 | The break campaign's headline numbers (both arms, ten faults) | `pnpm campaign` | `evidence/campaign.json` |
 
+A first E8 attempt on 2026-10-08 completed its first wallet approval (nonce
+account creation) but lost the wallet connection before the durable-nonce
+payment, so it is recorded in `EVIDENCE.md` as inconclusive rather than as a
+pass or a fail.
+
 They need a person because each involves a wallet approval or physical fault
 injection (force-stop, airplane mode, reboot) on a real device. No document in
 this repository states a campaign number, and none will until a script has

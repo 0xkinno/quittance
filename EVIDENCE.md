@@ -132,6 +132,18 @@ experiment got both wrong and the corrections are the interesting part:
 | E7 — capability probe, E8 — wallet preserves the durable nonce | Home screen → *Wallet check (E8)* → *Run E8* → approve in the wallet | Instrument shipped in the release APK; result recorded here and in `evidence/` when run |
 | Break campaign (F1–F10, both arms) | `pnpm campaign` with the phone attached | Instrument built; results recorded in `evidence/campaign.json` when run |
 
+### E8 attempt log
+
+| Date | Outcome | Detail |
+|---|---|---|
+| 2026-10-08, attempt 1 | **Inconclusive — did not reach the gate** | Step 1 landed on devnet: the wallet approved creation of nonce account `DsgNUyu69nMq2M5FmE34pgSBhcwRuEYhLQLZ6G81SxJd` (signature `5jmSnBTLVPddNUgMRiMhQGreGAzvnhnWnnggGvRHp5EuhStb44Hu46yx8taiN1nfc116SZo2rfnViuZvFWdNY7QN`, slot 508770752, no error). Step 2, the durable-nonce payment E8 actually measures, never reached the chain: the nonce account has exactly one signature on it, the creation. The app reported `ConnectionFailedException: Unable to connect to websocket server` from the Mobile Wallet Adapter session. No hash comparison was made, so E8 neither passed nor failed. |
+
+A transaction appearing on Solscan is not an E8 result: the creation
+transaction is a precondition, and the measurement is the *second* transaction
+read back and compared against the hash recorded before the wallet opened.
+The probe now retries a session that fails to connect (before anything is
+signed) up to three times; a declined request is never retried.
+
 ## Release build
 
 | | |
