@@ -132,11 +132,24 @@ experiment got both wrong and the corrections are the interesting part:
 | E7 — capability probe, E8 — wallet preserves the durable nonce | Home screen → *Wallet check (E8)* → *Run E8* → approve in the wallet | Instrument shipped in the release APK; result recorded here and in `evidence/` when run |
 | Break campaign (F1–F10, both arms) | `pnpm campaign` with the phone attached | Instrument built; results recorded in `evidence/campaign.json` when run |
 
+### E7 — capability probe, Solflare 2.29.1 (recorded on device)
+
+| Field | Value |
+|---|---|
+| `supports_sign_and_send_transactions` | `true` |
+| `features` | `solana:signTransactions` |
+| `supported_transaction_versions` | `legacy`, `0`, `1` |
+| `max_transactions_per_request` / `max_messages_per_request` | 20 / 20 |
+| `supports_clone_authorization` | `false` |
+
 ### E8 attempt log
 
 | Date | Outcome | Detail |
 |---|---|---|
 | 2026-10-08, attempt 1 | **Inconclusive — did not reach the gate** | Step 1 landed on devnet: the wallet approved creation of nonce account `DsgNUyu69nMq2M5FmE34pgSBhcwRuEYhLQLZ6G81SxJd` (signature `5jmSnBTLVPddNUgMRiMhQGreGAzvnhnWnnggGvRHp5EuhStb44Hu46yx8taiN1nfc116SZo2rfnViuZvFWdNY7QN`, slot 508770752, no error). Step 2, the durable-nonce payment E8 actually measures, never reached the chain: the nonce account has exactly one signature on it, the creation. The app reported `ConnectionFailedException: Unable to connect to websocket server` from the Mobile Wallet Adapter session. No hash comparison was made, so E8 neither passed nor failed. |
+
+| 2026-10-08, attempt 2 | **Reached the gate; the wallet refused to sign** | Nonce account `FnJfenQekP9aqzdxXCTAGwdKasiRUb9aHjfkpNxkufbn` created (`5FaVKne1uf26UpNk8gKXrPKUXq8RMbnRxWXMdGJ9KgHnC1KPwSWrab7uKJoAQCVk9c7NmQS2kdwbv2Y9EVuaJrQr`). The app built the durable-nonce payment against nonce value `GUcjJC4im9bj7MwgKMP5p8U99t6eXTpRYzm3jfEYxAvj` and recorded message hash `7e3b1f99e8c37d6466e750ca07ba572902fc1c11cc8c28f47e4c3b4547accdcf` **before** opening the wallet. Solflare 2.29.1 then showed *Network mismatch — current network is devnet, this transaction is for mainnet* with no approve option, and the session ended in `CancellationException`. Verified on chain: the nonce account still holds the value built against and has one signature (the creation), so nothing was broadcast and nothing was rewritten. Not a pass, not a hash mismatch: the wallet declined. |
+| 2026-10-08, attempts 3–5 | Creation only | Further nonce accounts created; no durable-nonce payment has landed in any run. |
 
 A transaction appearing on Solscan is not an E8 result: the creation
 transaction is a precondition, and the measurement is the *second* transaction
@@ -155,7 +168,7 @@ signed) up to three times; a declined request is never retried.
 | Verified | Launches to the circle screen standalone, no dev server, no network required to start |
 | Typecheck | `tsc --noEmit` on `app/` exits 0 |
 
-| SHA-256 | `a4dd75bec6bd76439461b1205e74d2595163f8be4672202418ba0cc612096dff` (from `sha256sum`, 69,788,345-byte build of 2026-10-08) |
+| SHA-256 | `9c3def1491c37622aa8c5b4e2e99d695dba72b1ff0da03daf109406230aac16c` (from `sha256sum`, 2026-10-08 build with probe retry and propagation wait) |
 | On-device check | Home screen → *Wallet check (E8)* opens the E8 gate screen with *Run E8*, on the release build, no dev server |
 
 ## Web deployment

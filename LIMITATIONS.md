@@ -126,10 +126,14 @@ the moment they exist. Until then no document states them.
 | Which signing methods each wallet actually implements | **E7**, the same probe screen | Same |
 | The break campaign's headline numbers (both arms, ten faults) | `pnpm campaign` | `evidence/campaign.json` |
 
-A first E8 attempt on 2026-10-08 completed its first wallet approval (nonce
-account creation) but lost the wallet connection before the durable-nonce
-payment, so it is recorded in `EVIDENCE.md` as inconclusive rather than as a
-pass or a fail.
+E7 has been run on Solflare 2.29.1 and is recorded in `EVIDENCE.md`. E8 has been
+attempted on-device: the app built and hashed the durable-nonce payment, and
+Solflare declined to sign it with a "network mismatch" warning, so nothing was
+broadcast. That is a wallet refusal, not a pass and not a hash mismatch; it is
+recorded as such, and the probe now waits for the wallet's own RPC to see the
+new nonce account before retrying. If Solflare keeps refusing, that is the
+finding, and another wallet (for example a Seeker's built-in one) is the
+next measurement.
 
 They need a person because each involves a wallet approval or physical fault
 injection (force-stop, airplane mode, reboot) on a real device. No document in

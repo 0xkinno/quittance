@@ -175,6 +175,17 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
         state: 'pass',
       });
 
+      // The wallet validates the transaction against its own RPC, which can
+      // trail ours by several seconds. A durable nonce transaction names an
+      // account that did not exist a moment ago, and a wallet that cannot see
+      // it may misreport the network. Give it time before handing it over.
+      push({
+        label: 'letting the wallet RPC see the new account',
+        detail: 'waiting 25 seconds',
+        state: 'running',
+      });
+      await new Promise((resolve) => setTimeout(resolve, 25_000));
+
       // --- build, hash, then hand over -------------------------------------
 
       const nonceInfo = await readNonce(connection, nonceKeypair.publicKey);
