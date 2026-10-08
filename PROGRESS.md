@@ -28,37 +28,30 @@ Remaining work is two *measurements* (E8 and the break campaign), not features.
   honestly rather than strawmanned.
 - **Android app** — seven screens plus the E8/E7 probe, design tokens, MMKV
   write-ahead store, MWA integration. Typechecks clean (`tsc --noEmit`, exit 0).
-  The probe is reachable on-device from the home screen (*Wallet check (E8)*).
+  The wallet probe is reachable on-device from the home screen (*Wallet check (E8)*).
 - **Release APK** — built with `./gradlew assembleRelease`, installed on a
   Samsung Galaxy A71 (Android 12) and confirmed running standalone with no dev
   server. Record in `EVIDENCE.md`.
 - **Web** — landing page with an interactive eight-step judge demo, `/proof`,
-  wallet connect, and an in-browser live check that runs the real mechanism with
-  the visitor's wallet. 17 Playwright assertions across eight viewports.
+  wallet connect, and an in-browser live check with two independent parts: the
+  mechanism (a throwaway key signs the durable payment inside the tab; the
+  visitor's wallet only funds it, and gets the SOL back) and an optional wallet
+  test that compares what a wallet returns with what was built before sending.
+  17 viewport assertions plus an 11-assertion Chromium end-to-end test against
+  real devnet (`web/tests/live-check.e2e.mjs`).
 - **Deployed** — Vercel, `https://quittance-inky.vercel.app`, public devnet RPC,
   non-sensitive `NEXT_PUBLIC_*` variables only.
 - **Repository** — `https://github.com/0xkinno/quittance`, single author.
 
-## What remains, and what it needs
+## Open items
 
-Two measurements. Both need a human holding the phone because they involve a
-wallet approval and physical fault injection.
-
-| | Step | Needs |
+| | Item | State |
 |---|---|---|
-| 1 | **E8 — the gate.** Home screen → *Wallet check (E8)* → *Run E8* → approve in the wallet. | Phone + Solflare on devnet with a little SOL |
-| 2 | **The break campaign.** `pnpm campaign` | Phone attached over `adb`; run after E8 |
+| 1 | **Wallet handling of durable-nonce transactions** | Not confirmed on Solflare 2.29.1 (MWA) or Phantom (MWA); recorded in `LIMITATIONS.md` L8 and `EVIDENCE.md`. Our payment is valid (lands when signed locally; passes the Chromium end-to-end test). The live site's *Test my wallet* shows what any wallet does. Next measurement: a wallet other than these two, or a Seeker's built-in wallet. |
+| 2 | **The break campaign** | `pnpm campaign` with a phone attached. Not run; no figure is stated anywhere. |
 
-E8 goes first on purpose. If a wallet rewrites the transaction it was handed,
-the nonce the app recorded is not the nonce the chain saw, every verdict
-resolves to `AMBIGUOUS`, and the thesis changes. After a run, regenerate the
-README so its figures come from `evidence/` and nowhere else:
-
-```bash
-node scripts/generate_readme.mjs
-```
-
-No document states a campaign number until that file exists.
+Nothing in the README depends on either. After a run, regenerate it so figures
+come from `evidence/` and nowhere else: `node scripts/generate_readme.mjs`.
 
 ## The Android build — what it took
 
@@ -93,7 +86,7 @@ unanchored `app/` once excluded `web/app/` and produced an empty deploy.
 
 | | |
 |---|---|
-| E8 and campaign run | Phone in hand — see above |
+| Campaign run | Phone attached; `pnpm campaign` |
 | Demo video | Script and shot list in `docs/DEMO-SCRIPT.md` |
 | Pitch deck | Attach to the portal submission |
 | SKR devnet mint | Or confirmation it is mainnet-only; the lease uses a labelled stand-in until then |

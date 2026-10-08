@@ -17,12 +17,14 @@ the release APK installed, and a terminal for the verifier.
 | 2:20–2:45 | The **phone**: open the installed app, show the circle; then **Prove it yourself** on the site with a connected devnet wallet | "This is the standalone release app on a real Android phone, and this is the same mechanism running live with my own wallet against the cluster." |
 | 2:45–3:00 | Terminal: the verifier command, then the repo | "Anyone can recompute every verdict from chain state, with no app and no key. Quittance: nobody gets charged twice." |
 
-## Optional beat — E8 on the device (adds ~25 s)
+## What to run on camera in the live section
 
-If you want the gate on camera: on the phone, **tap Wallet check (E8) at the bottom of the home screen →
-Run E8 → approve in Solflare**. The screen lists each step as PASS or FAIL and
-ends with a verdict. Record it only if it completes; the result is whatever the
-wallet actually did.
+Use **1 · The mechanism** on the landing page: connect a devnet wallet, press
+*Run the mechanism check*, approve the single funding transfer, and let the
+steps resolve (about a minute). It ends with *Confirmed* and the leftover SOL
+returned. Leave **2 · Your wallet** out of the take unless you want to show a
+wallet being caught altering a payment — it reports whatever the wallet
+actually does.
 
 ## Recording notes
 

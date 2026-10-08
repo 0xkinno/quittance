@@ -128,8 +128,7 @@ cannot run at all while any contribution is unresolved.
 
 ## What has been verified, and how
 
-Three tiers, kept apart on purpose so that nothing is claimed at a higher tier
-than it earned.
+Each claim sits at the tier it earned, and nothing is stated at a higher one.
 
 | Tier | Claim | How it is established | Status |
 |---|---|---|---|
@@ -138,13 +137,11 @@ than it earned.
 | **Our program** | I3 and I4 are enforced on chain; I2 is enforced by a vault check the client cannot talk its way past | Deployed Anchor program, [`SECURITY.md`](SECURITY.md) | **Deployed to devnet** |
 | **The shipped app** | The Android app runs standalone on a physical phone with no dev server | Release APK built and installed on a Samsung Galaxy A71 (Android 12) | **Done** |
 | **Product UX** | No overflow, overlap, hidden content, unloaded fonts or sub-AA contrast at eight viewports | 17 Playwright assertions | **Done — 17 passing** |
-| **Wallet behaviour** | A real wallet broadcasts the exact message it was handed | **E8**, built into the app — tap *Wallet check (E8)* on the home screen, then *Run E8*, and approve in your wallet | **Instrumented; result published by script when run** |
-| **Fault campaign** | Both arms through ten injected faults on a physical device | `pnpm campaign` drives `adb`; results land in `evidence/campaign.json` | **Instrumented; result published by script when run** |
+| **The live mechanism check** | The in-browser check runs the real mechanism against devnet, catches a wallet that alters a payment *before* sending it, and returns the visitor's SOL | A Chromium end-to-end test with an injected wallet, real devnet, 11 assertions — [`web/tests/live-check.e2e.mjs`](web/tests/live-check.e2e.mjs) | **Done — 11 passing** |
 
-The last two rows are the only ones that need a human holding the phone, and
-they are measurements, not features: the instrument is built and shipped, and
-this README fills in its numbers from the results file rather than from
-anyone's expectations.
+Anything that is not in this table is not claimed. What is *not* established —
+how particular wallets handle durable-nonce transactions — is stated plainly
+under [Honesty: limitations](#honesty-limitations).
 
 ## How it works
 
@@ -325,27 +322,33 @@ I1 actually lives.
 
 ### Run it on your own wallet
 
-The same mechanism, in your browser, against devnet, with a wallet you
-control: on the [live site](https://quittance-inky.vercel.app/#live) connect a
-devnet wallet and press run. It creates a nonce account, builds a durable-nonce
-payment, hashes the message **before** anything is signed, sends it, reads the
-chain back, recomputes the hash from what the cluster returned, rebroadcasts
-the identical bytes three times, and reports PASS or FAIL for each step. It
-imports the very `@quittance/engine` package the app ships.
+The same mechanism, in your browser, against devnet, on the
+[live site](https://quittance-inky.vercel.app/#live). Two independent checks,
+kept apart on purpose:
 
-### Device gate (E8) and the break campaign
+1. **The mechanism.** Your wallet approves one ordinary transfer to fund a
+   throwaway key held in the tab. That key creates a slot account, builds a
+   durable-nonce payment, **hashes it before anything is sent**, signs and
+   sends it; the page then reads the chain back, recomputes the hash from the
+   message the cluster confirmed, rebroadcasts the identical bytes three times
+   and measures the effect as a balance change. The leftover SOL is returned to
+   your wallet. It imports the very `@quittance/engine` package the app ships.
+2. **Your wallet** (optional). Asks your wallet to sign the durable-nonce
+   payment itself and compares what it hands back with what was built, *before*
+   sending. A wallet that alters or refuses the transaction is reported
+   precisely — with the blockhash that changed — instead of failing somewhere
+   downstream.
 
-The gate and the campaign are the two measurements that need a physical phone,
-and the order is deliberate:
+Both are covered by an end-to-end test in Chromium against real devnet
+(`web/tests/live-check.e2e.mjs`): the mechanism passes, a faithful wallet
+passes through unchanged, and a wallet that rewrites the blockhash is caught
+before anything is sent.
 
-1. **E8 — the gate.** Does the wallet broadcast the message it was handed? If a
-   wallet rewrites the transaction, the nonce the app recorded is not the nonce
-   the chain saw and every verdict degrades to `AMBIGUOUS`. So it runs first.
-   It is built into the shipped app (home screen → *Wallet check (E8)* → *Run E8*),
-   and works by comparing a hash recorded *before* the wallet opened against the
-   bytes the chain returned — a wallet cannot pass it by claiming success.
-2. **The campaign.** Both arms through the ten faults below, on one device,
-   in one session, never pooled.
+### The fault-injection harness
+
+`packages/harness` drives a physical Android device over `adb` and runs the same
+ten faults against two arms — a competent baseline and Quittance — on one
+device in one session, never pooled.
 
 | ID | Fault |
 |---|---|
@@ -360,30 +363,13 @@ and the order is deliberate:
 | F9 | Two concurrent disburse calls on one round |
 | F10 | Kill during the recovery resolver itself |
 
-Results are written by `pnpm campaign` to `evidence/campaign.json` and
-substituted here by `scripts/generate_readme.mjs`. Until that file exists a
-cell reads *not yet measured*: this repository never estimates a number.
-
-| | baseline | quittance |
-|---|---|---|
-| fault-injected contributions | {{B_RUNS}} | {{Q_RUNS}} |
-| double debits (I1) | {{B_DOUBLE_DEBITS}} | {{Q_DOUBLE_DEBITS}} |
-| false credits (I2) | {{B_PHANTOM_CREDITS}} | {{Q_PHANTOM_CREDITS}} |
-| unresolved after 5 min | {{B_UNRESOLVED}} | {{Q_UNRESOLVED}} |
-| ambiguous escalations | — | {{Q_ESCALATIONS}} |
-| median time to terminal verdict (ms) | — | {{Q_MEDIAN_MS}} |
-
-Reference device: Samsung Galaxy A71 (`SM-A715F`), Android 12, Solflare on
-devnet — fingerprinted in [`EVIDENCE.md`](EVIDENCE.md). Every campaign row
-records its own device, wallet, run id and commit, so a number from an
-unidentified device cannot enter the table.
-
 The baseline is the standard mobile pattern written honestly and competently:
 recent blockhash, `signAndSendTransactions`, one retry after reconnecting, and
-a history scan on recovery. It is not tuned to lose. Its limit is a property
-of the approach, not of the code — a history scan cannot distinguish one
-member's fixed contribution from another's, and collapses with more than one
-payment pending.
+a history scan on recovery. It is not tuned to lose. Its limit is a property of
+the approach, not of the code — a history scan cannot distinguish one member's
+fixed contribution from another's, and collapses with more than one payment
+pending. Any figure the harness produces is written to `evidence/campaign.json`;
+this README states none until that file exists.
 
 ### Verify it yourself
 
@@ -548,7 +534,7 @@ program/                Anchor program — 7 instructions, 4 accounts, 24 errors
 packages/engine/           Verdict machine, write-ahead store, invariants (TypeScript, zero React, 113 tests)
 packages/verifier/         Offline verifier: recomputes every verdict from the log plus chain
 packages/harness/          adb fault-injection harness: ten faults, two arms
-app/                       Expo / React Native Android app (7 screens + E8 probe)
+app/                       Expo / React Native Android app (7 screens + wallet probe)
 web/                       Next.js landing page, judge demo, /proof, live in-browser check
 evidence/                  Generated results — the only source of any number in the docs
 scripts/                   Experiments, env check, README generator, toolchain helpers
@@ -559,12 +545,18 @@ docs/                      Runtime citations, dev-client guide, demo script, rul
 
 Full detail in [`LIMITATIONS.md`](LIMITATIONS.md). The short version:
 
-- **E8 and the fault campaign are instruments that ship in this repository;
-  their numbers are published by script when they run.** Nothing here estimates
-  them.
-- **A malicious wallet that rewrites transactions can move funds.** Quittance
-  detects it and never credits it, but does not prevent it. E8 measures whether
-  real wallets do this.
+- **Wallet pass-through of durable-nonce transactions is not confirmed on the
+  wallets tried.** On 2026-10-08 Solflare 2.29.1 (via Mobile Wallet Adapter)
+  declined to sign the durable-nonce payment with a "network mismatch" warning,
+  and a Phantom session failed at authorization; in a desktop browser, a
+  wallet-signed durable-nonce payment failed at send. The same payment, signed
+  locally, lands on devnet and passes the end-to-end test, so the fault is in
+  how those wallets handle such a transaction, not in how it is built. The live
+  site's *Test my wallet* reports exactly what a given wallet does.
+- **A wallet that rewrites a transaction can move funds.** Quittance detects a
+  rewritten payment and never credits it, but does not prevent it.
+- **The fault campaign has not been run**, so this repository states no
+  campaign figure.
 - **The SKR mint is a labelled stand-in** until the real devnet address is
   confirmed. Nothing presents it as real.
 - **The program cannot re-derive `REJECTED` from `NOT_SENT`.** Neither credits
@@ -613,9 +605,7 @@ cd android && ./gradlew assembleRelease
 adb install -r app/build/outputs/apk/release/app-release.apk
 ```
 
-Then, to run the wallet gate on the device: tap **Wallet check (E8)** on the
-home screen → **Run E8** → approve in your wallet. Step-by-step device setup is
-in [`docs/DEV-CLIENT.md`](docs/DEV-CLIENT.md).
+Step-by-step device setup is in [`docs/DEV-CLIENT.md`](docs/DEV-CLIENT.md).
 
 ## Roadmap
 

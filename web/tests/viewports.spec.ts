@@ -43,6 +43,10 @@ async function settle(page: Page): Promise<void> {
     window.scrollTo(0, 0);
     await new Promise((r) => setTimeout(r, 400));
   });
+  // Every Reveal has a 900ms deadline after hydration (see Motion.tsx) and a
+  // 0.5s fade. Waiting past that is waiting for the documented guarantee, not
+  // papering over a race: content is allowed to arrive late, never to be missing.
+  await page.waitForTimeout(1800);
 
   // Images are lazy-loaded, so scrolling starts them but does not finish them.
   // Waiting for decode here keeps the broken-image assertion about genuinely

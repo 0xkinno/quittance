@@ -130,3 +130,25 @@
   border-color: var(--ink);
   color: var(--ink);
 }
+
+.groupTitle {
+  margin: 32px 0 8px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.groupNote {
+  margin: 0 0 16px;
+  max-width: 62ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.runButtonSecondary {
+  composes: runButton;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}

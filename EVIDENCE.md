@@ -149,7 +149,8 @@ experiment got both wrong and the corrections are the interesting part:
 | 2026-10-08, attempt 1 | **Inconclusive — did not reach the gate** | Step 1 landed on devnet: the wallet approved creation of nonce account `DsgNUyu69nMq2M5FmE34pgSBhcwRuEYhLQLZ6G81SxJd` (signature `5jmSnBTLVPddNUgMRiMhQGreGAzvnhnWnnggGvRHp5EuhStb44Hu46yx8taiN1nfc116SZo2rfnViuZvFWdNY7QN`, slot 508770752, no error). Step 2, the durable-nonce payment E8 actually measures, never reached the chain: the nonce account has exactly one signature on it, the creation. The app reported `ConnectionFailedException: Unable to connect to websocket server` from the Mobile Wallet Adapter session. No hash comparison was made, so E8 neither passed nor failed. |
 
 | 2026-10-08, attempt 2 | **Reached the gate; the wallet refused to sign** | Nonce account `FnJfenQekP9aqzdxXCTAGwdKasiRUb9aHjfkpNxkufbn` created (`5FaVKne1uf26UpNk8gKXrPKUXq8RMbnRxWXMdGJ9KgHnC1KPwSWrab7uKJoAQCVk9c7NmQS2kdwbv2Y9EVuaJrQr`). The app built the durable-nonce payment against nonce value `GUcjJC4im9bj7MwgKMP5p8U99t6eXTpRYzm3jfEYxAvj` and recorded message hash `7e3b1f99e8c37d6466e750ca07ba572902fc1c11cc8c28f47e4c3b4547accdcf` **before** opening the wallet. Solflare 2.29.1 then showed *Network mismatch — current network is devnet, this transaction is for mainnet* with no approve option, and the session ended in `CancellationException`. Verified on chain: the nonce account still holds the value built against and has one signature (the creation), so nothing was broadcast and nothing was rewritten. Not a pass, not a hash mismatch: the wallet declined. |
-| 2026-10-08, attempts 3–5 | Creation only | Further nonce accounts created; no durable-nonce payment has landed in any run. |
+| 2026-10-08, attempts 3–6 | Same refusal | Further nonce accounts created (five creation transactions on-chain from the payer `DftHxmZFyWfoSNw3YUbUQpfegJ8vfoPW2yPyRJZ3nWN8`); with a 25-second propagation wait the wallet still declined. No durable-nonce payment landed in any run. |
+| 2026-10-08, Phantom | Failed before any transaction | MWA authorization returned `-1/authorization request failed`. Capabilities recorded: `signAndSendTransactions` true, versions legacy/0, 1 message and 10 transactions per request. |
 
 A transaction appearing on Solscan is not an E8 result: the creation
 transaction is a precondition, and the measurement is the *second* transaction
@@ -185,3 +186,44 @@ signed) up to three times; a declined request is never retried.
 
 `node --test` over `packages/engine/test`: 113 tests, 27 suites, 0 failures, no
 network.
+
+## Local-key reproduction (2026-10-08)
+
+To separate a fault in our construction from a fault in a wallet, the identical
+durable-nonce payment was signed with a local key and sent to devnet:
+
+| Case | Endpoint | Result |
+|---|---|---|
+| Nonce value as blockhash, `AdvanceNonce` first, 1-lamport self-transfer | Helius, finalized | landed |
+| Same | public devnet, finalized | landed |
+| Same | public devnet, confirmed | landed |
+
+Our payment is valid; the failures above occur only when a wallet is in the path.
+
+## Live-check end-to-end test
+
+`web/tests/live-check.e2e.mjs` — Chromium (Playwright) against real devnet, with a
+Wallet Standard test wallet injected into the page and backed by the repository's
+funded devnet key.
+
+| Assertion | Result |
+|---|---|
+| Wallet discovered, connected, live check ready | pass |
+| Mechanism check passes end to end | pass |
+| Throwaway key returns the leftover SOL | pass |
+| Confirmed message matches the hash recorded before sending | pass |
+| Rebroadcasts changed nothing | pass |
+| Faithful wallet: durable-nonce payment passes through unchanged | pass |
+| Rewriting wallet: reported as a failure | pass |
+| Rewriting wallet: caught as a change, before sending | pass |
+| The report names the blockhash that changed | pass |
+| No confusing downstream send error | pass |
+| No console errors | pass |
+
+11 of 11, against the local production build and against
+`https://quittance-inky.vercel.app`. The viewport suite (17 tests) passes on a
+fresh build. Separately, the mechanism check was run on the deployed site with a
+real desktop wallet on devnet and ended *Confirmed*: slot account created,
+payment built and hashed before sending, slot account advanced, confirmed
+message matched the recorded hash, rebroadcasts changed nothing, leftover SOL
+returned.

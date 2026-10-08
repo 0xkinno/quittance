@@ -114,31 +114,44 @@ teaches the legend the ledger then uses, and is readable by a screen reader
 through a title and description. The ASCII form is kept verbatim in the README,
 where a monospace block is the right medium.
 
-## L8 — Measurements that need a person holding the phone
+## L8 — Wallet handling of durable-nonce transactions is not confirmed
 
-These are not limitations of the design. They are two measurements whose
-instruments are built and shipped, and whose results are published by script
-the moment they exist. Until then no document states them.
+**Affects:** the one step of the design that depends on a wallet.
 
-| Claim | Instrument | Result |
+Quittance's chain-side claims do not depend on any wallet: they are properties
+of the Solana runtime, measured in the five devnet experiments and re-run live
+in the browser. The step that does depend on a wallet is the user's approval of
+a durable-nonce payment, and on the wallets tried that step did not complete:
+
+| Date | Wallet and path | What happened |
 |---|---|---|
-| A compliant wallet preserves the durable nonce rather than substituting a recent blockhash | **E8**, in the shipped app — *Wallet check (E8)* on the home screen, then *Run E8* | Published to `evidence/` and the README when run |
-| Which signing methods each wallet actually implements | **E7**, the same probe screen | Same |
-| The break campaign's headline numbers (both arms, ten faults) | `pnpm campaign` | `evidence/campaign.json` |
+| 2026-10-08 | Solflare 2.29.1, Mobile Wallet Adapter, on-device probe | The app built and hashed the payment, then Solflare showed *Network mismatch — current network is devnet, this transaction is for mainnet* with no approve option; the session ended in `CancellationException`. Repeated, including with a 25-second wait for the wallet's RPC to see the new account. Nothing was broadcast. |
+| 2026-10-08 | Phantom, Mobile Wallet Adapter, on-device probe | The session failed at authorization (`-1/authorization request failed`) before any transaction. |
+| 2026-10-08 | A desktop-browser wallet on devnet, live check (earlier version) | The wallet-signed durable-nonce payment failed at send with `Blockhash not found`. |
 
-E7 has been run on Solflare 2.29.1 and is recorded in `EVIDENCE.md`. E8 has been
-attempted on-device: the app built and hashed the durable-nonce payment, and
-Solflare declined to sign it with a "network mismatch" warning, so nothing was
-broadcast. That is a wallet refusal, not a pass and not a hash mismatch; it is
-recorded as such, and the probe now waits for the wallet's own RPC to see the
-new nonce account before retrying. If Solflare keeps refusing, that is the
-finding, and another wallet (for example a Seeker's built-in one) is the
-next measurement.
+What is established, and what is not:
 
-They need a person because each involves a wallet approval or physical fault
-injection (force-stop, airplane mode, reboot) on a real device. No document in
-this repository states a campaign number, and none will until a script has
-produced it from a real results file.
+- **Our payment is valid.** Signed locally, the identical payment (nonce value as
+  the blockhash, `AdvanceNonce` first, self-transfer) lands on devnet on both
+  the public and Helius endpoints, and the live check's end-to-end test passes in
+  Chromium against real devnet with a faithful wallet.
+- **A wallet that alters the transaction is caught before anything is sent.** The
+  live check's wallet test compares the message the wallet returns with the
+  message that was built, and the end-to-end test asserts this with a wallet that
+  deliberately rewrites the blockhash.
+- **The cause on the real wallets is not determined.** The Solflare warning is
+  consistent with a network heuristic that does not recognise a nonce value as a
+  valid blockhash for the selected cluster; that is a hypothesis, not a finding.
+  The browser failure could be the wallet replacing the blockhash or a state
+  difference at simulation. The site's *Test my wallet* distinguishes these for
+  any wallet.
+- **Consequence for the product.** On the wallets tried, a member could not
+  complete a durable-nonce payment. That is a compatibility risk for the
+  wallet-dependent step, stated here rather than worked around, and it is why the
+  live check isolates the mechanism from the wallet.
+
+The fault campaign (`pnpm campaign`) has not been run, and no document states a
+campaign figure.
 
 ## L9 — The release APK is signed with the debug keystore
 

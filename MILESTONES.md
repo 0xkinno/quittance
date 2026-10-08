@@ -15,5 +15,7 @@ backdated.
 | 2026-10-08 | Release APK on a physical device | `4bfe5c1` | Standalone, no dev server; probe wired into navigation |
 | 2026-10-08 | Documentation pass | see `git log` | README, scorecard, demo script, evidence |
 
-Open: the E8 gate and the break campaign — measurements that need a person
-holding the phone. See `PROGRESS.md`.
+| 2026-10-08 | Live check reworked and end-to-end tested | see `git log` | Mechanism isolated from wallet behaviour; Chromium E2E, 11 assertions, real devnet |
+
+Open: wallet compatibility for durable-nonce payments and the break campaign.
+See `PROGRESS.md` and `LIMITATIONS.md` L8.
