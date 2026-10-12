@@ -48,7 +48,7 @@ answers, forever and offline, whether a given payment happened.
 |---|---|
 | Live site | [quittance-inky.vercel.app](https://quittance-inky.vercel.app) — landing page, interactive judge demo, in-browser live check |
 | Public proof page | [/proof](https://quittance-inky.vercel.app/proof) — every experiment result, read from generated files |
-| Demo Video | [Watch on YouTube](https://youtu.be/LUg_nuNFlrA) · script and shot list in [`docs/DEMO-SCRIPT.md`](docs/DEMO-SCRIPT.md) |
+| Demo Video | [Watch on YouTube](https://youtu.be/7sv2vz8uo5I) · script and shot list in [`docs/DEMO-SCRIPT.md`](docs/DEMO-SCRIPT.md) |
 | Android APK | Release build, installable, runs standalone with no dev server — `app/android/app/build/outputs/apk/release/app-release.apk`, built by `./gradlew assembleRelease` ([steps](docs/DEV-CLIENT.md)); SHA-256 in [`EVIDENCE.md`](EVIDENCE.md) |
 | Program ({{CLUSTER}}) | [`{{PROGRAM_ID}}`](https://explorer.solana.com/address/{{PROGRAM_ID}}?cluster=devnet) |
 | Pitch deck | Attached to the portal submission |
