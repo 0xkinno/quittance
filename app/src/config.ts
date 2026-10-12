@@ -45,9 +45,13 @@ export const config = {
   skrMintIsGenuine: fromExtra('skrMintIsGenuine', 'false') === 'true',
   skrMint: fromExtra('skrMint', ''),
 
-  /** Filled once the member connects a wallet. */
-  youPubkey: '',
-  organizerPubkey: '',
+  /**
+   * Who "you" are in the demo circle: Ngozi, with Adaeze as organizer, so the
+   * home screen shows the single Pay button the product is built around.
+   * Replaced by the connected wallet's address once a wallet is connected.
+   */
+  youPubkey: 'member-3' as string,
+  organizerPubkey: 'member-1' as string,
 
   roundIndex: 0,
 

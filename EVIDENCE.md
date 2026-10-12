@@ -169,7 +169,7 @@ signed) up to three times; a declined request is never retried.
 | Verified | Launches to the circle screen standalone, no dev server, no network required to start |
 | Typecheck | `tsc --noEmit` on `app/` exits 0 |
 
-| SHA-256 | `9c3def1491c37622aa8c5b4e2e99d695dba72b1ff0da03daf109406230aac16c` (from `sha256sum`, 2026-10-08 build with probe retry and propagation wait) |
+| SHA-256 | `2e26dd66c885ce7a4c97467888cb43d5fbbc5aa8b24564852707ec06fa5869ae` (from `sha256sum`, 2026-10-12 build: corrected wallet identity, E8 plus two controls, twelve member circle, Pay button) |
 | On-device check | Home screen → *Wallet check (E8)* opens the E8 gate screen with *Run E8*, on the release build, no dev server |
 
 ## Web deployment
