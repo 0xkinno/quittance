@@ -27,7 +27,8 @@
  */
 
 import React, { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { MMKV } from 'react-native-mmkv';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Connection,
@@ -51,6 +52,21 @@ import { space, type Palette } from '../design/tokens';
 import { APP_IDENTITY, CHAIN, describeWalletFailure } from '../wallet/mwa';
 import { config } from '../config';
 
+/**
+ * Which second transaction the probe hands the wallet.
+ *
+ * - `E8`: the gate. Nonce value in the blockhash field, `AdvanceNonce` first.
+ * - `CONTROL`: a recent blockhash, no `AdvanceNonce`. An ordinary payment.
+ * - `CONTROL_B`: a recent blockhash *with* `AdvanceNonce`. Not durable, so a
+ *   diagnostic only, but it separates "the instruction" from "the field".
+ *
+ * Run back to back they say which part of the durable shape a wallet refuses.
+ */
+export type ProbeMode = 'E8' | 'CONTROL' | 'CONTROL_B';
+
+/** The last measured result per wallet, read by the Pay screen. */
+export const walletRecord = new MMKV({ id: 'quittance-wallet-record' });
+
 export interface ProbeStep {
   readonly label: string;
   readonly detail: string;
@@ -68,19 +84,20 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
   const [running, setRunning] = useState(false);
   const [verdict, setVerdict] = useState<null | { pass: boolean; summary: string }>(null);
   const [report, setReport] = useState<string>('');
+  const [operatorNote, setOperatorNote] = useState('');
 
   const push = useCallback((step: ProbeStep) => {
     setSteps((current) => [...current, step]);
   }, []);
 
-  const run = useCallback(async () => {
+  const run = useCallback(async (mode: ProbeMode) => {
     setSteps([]);
     setVerdict(null);
     setReport('');
     setRunning(true);
 
     const connection = new Connection(config.rpcUrl, 'finalized');
-    const collected: Record<string, unknown> = {};
+    const collected: Record<string, unknown> = { mode };
 
     try {
       // --- connect ---------------------------------------------------------
@@ -192,11 +209,22 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       if (nonceInfo === null) throw new Error('the nonce account did not initialize');
 
       const durable = new Transaction();
+      // E8 carries the nonce value in the blockhash field. The controls carry a
+      // fresh recent blockhash, so the only thing that changes between runs is
+      // the part of the durable shape being isolated.
+      const fieldValue =
+        mode === 'E8'
+          ? nonceInfo
+          : (await connection.getLatestBlockhash('confirmed')).blockhash;
+      if (mode !== 'CONTROL') {
+        durable.add(
+          SystemProgram.nonceAdvance({
+            noncePubkey: nonceKeypair.publicKey,
+            authorizedPubkey: member,
+          }),
+        );
+      }
       durable.add(
-        SystemProgram.nonceAdvance({
-          noncePubkey: nonceKeypair.publicKey,
-          authorizedPubkey: member,
-        }),
         SystemProgram.transfer({
           fromPubkey: member,
           toPubkey: member,
@@ -205,7 +233,7 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       );
       durable.feePayer = member;
       // The substitution under test.
-      durable.recentBlockhash = nonceInfo;
+      durable.recentBlockhash = fieldValue;
 
       const builtMessage = new Uint8Array(durable.serializeMessage());
       const builtHash = hashCompiledMessage(builtMessage);
@@ -252,7 +280,7 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       collected['landedError'] = landed.meta?.err ?? null;
 
       const preserved = digestsEqual(landedHash, builtHash);
-      const nonceStillInField = landedBlockhashField === nonceInfo;
+      const nonceStillInField = landedBlockhashField === fieldValue;
 
       push({
         label: 'E8 · comparing what the chain received',
@@ -263,7 +291,7 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
       });
 
       push({
-        label: 'the nonce value survived in the blockhash field',
+        label: 'the blockhash field survived',
         detail: nonceStillInField
           ? `${landedBlockhashField.slice(0, 16)}… matches the value built against`
           : `REWRITTEN to ${landedBlockhashField.slice(0, 16)}…`,
@@ -274,6 +302,8 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
 
       const nonceAfter = await readNonce(connection, nonceKeypair.publicKey);
       const advanced = nonceAfter !== null && nonceAfter !== nonceInfo;
+      // CONTROL has no AdvanceNonce, so the nonce is expected to stay put.
+      const advanceOk = mode === 'CONTROL' ? !advanced : advanced;
       collected['nonceAfter'] = nonceAfter;
 
       push({
@@ -281,17 +311,24 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
         detail: advanced
           ? `${nonceInfo.slice(0, 10)}… → ${(nonceAfter ?? '').slice(0, 10)}…`
           : 'it did not advance',
-        state: advanced ? 'pass' : 'fail',
+        state: advanceOk ? 'pass' : 'fail',
       });
 
-      const pass = preserved && nonceStillInField && advanced;
+      const pass = preserved && nonceStillInField && advanceOk;
       collected['verdict'] = pass ? 'PASS' : 'FAIL';
+      if (operatorNote.trim().length > 0) collected['operatorNote'] = operatorNote.trim();
+      walletRecord.set(
+        `result.${mode}`,
+        JSON.stringify({ wallet: walletLabel, mode, pass, at: Date.now() }),
+      );
 
       setVerdict({
         pass,
         summary: pass
-          ? `${walletLabel} preserves durable nonces. The thesis holds on this wallet.`
-          : `${walletLabel} does not preserve the transaction it was given. Quittance cannot guarantee payments through this wallet.`,
+          ? mode === 'E8'
+            ? `${walletLabel} preserves durable nonces. The thesis holds on this wallet.`
+            : `${walletLabel} passed the ${mode === 'CONTROL' ? 'plain-payment' : 'recent-blockhash-with-advance'} control.`
+          : `${walletLabel} did not hand back the transaction it was given. Nothing here says which part it objected to; compare the controls.`,
       });
       setReport(JSON.stringify(collected, null, 2));
     } catch (error) {
@@ -301,11 +338,22 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
         state: 'fail',
       });
       collected['error'] = error instanceof Error ? error.message : String(error);
+      // The raw error, so the record shows what the wallet layer actually
+      // returned rather than only the sentence we chose for the screen.
+      collected['walletError'] = {
+        name: error instanceof Error ? error.name : typeof error,
+        message: error instanceof Error ? error.message : String(error),
+      };
+      if (operatorNote.trim().length > 0) collected['operatorNote'] = operatorNote.trim();
+      walletRecord.set(
+        `result.${mode}`,
+        JSON.stringify({ wallet: 'unknown', mode, pass: false, refused: true, at: Date.now() }),
+      );
       setReport(JSON.stringify(collected, null, 2));
     } finally {
       setRunning(false);
     }
-  }, [push]);
+  }, [push, operatorNote]);
 
   return (
     <SafeAreaView style={[styles.screen, { backgroundColor: colors.paper }]} edges={['top']}>
@@ -368,10 +416,31 @@ export function ProbeScreen(props: ProbeScreenProps): React.JSX.Element {
         <View style={styles.actions}>
           <PrimaryButton
             label={running ? 'Running' : 'Run E8'}
-            onPress={() => void run()}
+            onPress={() => void run('E8')}
             colors={colors}
             busy={running}
             disabled={running}
+          />
+          <PrimaryButton
+            label="Run control (recent blockhash, no advance)"
+            onPress={() => void run('CONTROL')}
+            colors={colors}
+            variant="secondary"
+            disabled={running}
+          />
+          <PrimaryButton
+            label="Run control B (recent blockhash, with advance)"
+            onPress={() => void run('CONTROL_B')}
+            colors={colors}
+            variant="secondary"
+            disabled={running}
+          />
+          <TextInput
+            value={operatorNote}
+            onChangeText={setOperatorNote}
+            placeholder="What the wallet showed, in your words"
+            placeholderTextColor={colors.inkFaint}
+            style={[styles.note, { color: colors.ink, borderColor: colors.rule }]}
           />
           <PrimaryButton label="Back" onPress={props.onBack} colors={colors} variant="secondary" />
         </View>
@@ -451,4 +520,5 @@ const styles = StyleSheet.create({
   report: { padding: space.md },
   reportText: { fontFamily: 'GeistMono', fontSize: 10, lineHeight: 16 },
   actions: { paddingTop: space.lg, gap: space.md },
+  note: { fontFamily: 'Geist', fontSize: 14, borderWidth: 1, padding: space.sm },
 });

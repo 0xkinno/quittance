@@ -27,7 +27,7 @@ import { MmkvIntentStore } from './src/storage/mmkv-store';
 import { CircleScreen } from './src/screens/CircleScreen';
 import { CollectionDayScreen } from './src/screens/CollectionDayScreen';
 import { PayScreen } from './src/screens/PayScreen';
-import { ProbeScreen } from './src/screens/ProbeScreen';
+import { ProbeScreen, walletRecord } from './src/screens/ProbeScreen';
 import { ProofScreen } from './src/screens/ProofScreen';
 import { ReceiptScreen } from './src/screens/ReceiptScreen';
 import { RecoveringScreen } from './src/screens/RecoveringScreen';
@@ -163,6 +163,7 @@ export default function App(): React.JSX.Element {
             errorMessage={null}
             colors={colors}
             leaseIsStandIn={!config.skrMintIsGenuine}
+            walletStatus={readWalletStatus()}
             onPay={() => setRoute({ name: 'CIRCLE' })}
             onDone={() => setRoute({ name: 'CIRCLE' })}
             onRetry={() => setRoute({ name: 'PAY' })}
@@ -307,6 +308,18 @@ export default function App(): React.JSX.Element {
       case 'PROBE':
         return <ProbeScreen colors={colors} onBack={() => setRoute({ name: 'CIRCLE' })} />;
     }
+  }
+}
+
+/** The Pay screen's one line about wallets, from the last measured E8 on this phone. */
+function readWalletStatus(): 'carries' | 'refuses' | 'unchecked' {
+  const raw = walletRecord.getString('result.E8');
+  if (raw === undefined) return 'unchecked';
+  try {
+    const record = JSON.parse(raw) as { pass?: boolean };
+    return record.pass === true ? 'carries' : 'refuses';
+  } catch {
+    return 'unchecked';
   }
 }
 

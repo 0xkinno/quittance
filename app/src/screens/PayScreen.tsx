@@ -47,6 +47,12 @@ export interface PayScreenProps {
   readonly onRetry: () => void;
   /** Rendered when the lease runs against a stand-in mint. Never hidden. */
   readonly leaseIsStandIn: boolean;
+  /**
+   * What the wallet check last measured on this phone. `unchecked` is shown as
+   * a prompt to run it, never as a pass; `refuses` says so in one sentence so a
+   * member is not sent into a refusal blind.
+   */
+  readonly walletStatus: 'carries' | 'refuses' | 'unchecked';
 }
 
 export function PayScreen(props: PayScreenProps): React.JSX.Element {
@@ -88,6 +94,18 @@ export function PayScreen(props: PayScreenProps): React.JSX.Element {
         {props.leaseIsStandIn ? (
           <Text style={[styles.standIn, { color: colors.inkFaint }]}>
             This circle runs on a stand-in test asset, not the real one.
+          </Text>
+        ) : null}
+
+        {props.walletStatus === 'refuses' ? (
+          <Text style={[styles.standIn, { color: colors.ambiguous }]}>
+            This wallet refuses this kind of payment today. Nothing was sent. Use a wallet
+            that carries it.
+          </Text>
+        ) : props.walletStatus === 'unchecked' ? (
+          <Text style={[styles.standIn, { color: colors.inkFaint }]}>
+            This wallet has not been checked yet. Run the wallet check from the home screen
+            first.
           </Text>
         ) : null}
 

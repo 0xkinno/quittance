@@ -62,13 +62,21 @@ function readExperiments(): {
   readonly total: number;
   readonly at: string;
   readonly nonceAccount: string;
+  /** Transfers produced by the identical rebroadcasts, read from E6a, never typed. */
+  readonly e6aEffects: number | null;
+  readonly e6aResends: number | null;
   readonly results: ReadonlyArray<{ id: string; title: string; observed: string; passed: boolean }>;
 } | null {
   const file = path.join(process.cwd(), '..', 'evidence', 'experiments.json');
   if (!existsSync(file)) return null;
   try {
     const data = JSON.parse(readFileSync(file, 'utf8'));
+    const e6a = data.results.find((r: { id: string }) => r.id === 'E6a');
+    const held = /holds (\d+) lamports against (\d+) transferred once/.exec(e6a?.observed ?? '');
+    const sent = /(\d+) of (\d+) resends/.exec(e6a?.observed ?? '');
     return {
+      e6aEffects: held === null ? null : Number(held[1]) / Number(held[2]),
+      e6aResends: sent === null ? null : Number(sent[2]),
       passed: data.results.filter((r: { passed: boolean }) => r.passed).length,
       total: data.results.length,
       at: String(data.generatedAtIso).slice(0, 10),
@@ -140,7 +148,16 @@ export default function Home(): React.JSX.Element {
                         v: `${experiments.passed}/${experiments.total}`,
                         l: 'mechanism experiments passed',
                       },
-                  { v: '0', l: 'double debits by design' },
+                  ...(experiments !== null &&
+                  experiments.e6aEffects !== null &&
+                  experiments.e6aResends !== null
+                    ? [
+                        {
+                          v: String(experiments.e6aEffects),
+                          l: `transfer from ${experiments.e6aResends} identical rebroadcasts`,
+                        },
+                      ]
+                    : []),
                   { v: '113', l: 'engine tests, no network' },
                 ].map((fact) => (
                   <div key={fact.l} className={styles.heroFact}>

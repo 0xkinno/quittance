@@ -40,8 +40,8 @@ import {
 /** Shown to the wallet so the member knows what is asking. */
 export const APP_IDENTITY = {
   name: 'Quittance',
-  uri: 'https://quittance.app',
-  icon: 'favicon.ico',
+  uri: 'https://quittance-inky.vercel.app',
+  icon: '/icon.png',
 } as const;
 
 /** Devnet for this build. See `.env` and `LIMITATIONS.md`. */
@@ -214,7 +214,10 @@ export function describeWalletFailure(error: unknown): string {
     return 'No Solana wallet is installed. Install one that supports Mobile Wallet Adapter, then open Quittance again.';
   }
   if (/declin|reject|cancel/i.test(text)) {
-    return 'You declined the request in your wallet. Nothing was sent.';
+    // The app cannot see why a wallet closed a request: a member's decline and
+    // a wallet's own refusal both arrive as a cancellation. It does not invent
+    // a reason either way.
+    return 'The wallet closed the request without signing. Nothing was sent.';
   }
   if (/timeout|timed out/i.test(text)) {
     return 'The wallet did not respond. Quittance will check the chain and tell you where this payment stands.';

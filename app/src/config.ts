@@ -70,10 +70,16 @@ export const DEMO_CIRCLE = {
     { pubkey: 'member-4', name: 'Emeka U.' },
     { pubkey: 'member-5', name: 'Funmi A.' },
     { pubkey: 'member-6', name: 'Tunde B.' },
+    { pubkey: 'member-7', name: 'Ifeoma K.' },
+    { pubkey: 'member-8', name: 'Obinna D.' },
+    { pubkey: 'member-9', name: 'Chiamaka R.' },
+    { pubkey: 'member-10', name: 'Kelechi M.' },
+    { pubkey: 'member-11', name: 'Amara S.' },
+    { pubkey: 'member-12', name: 'Uche P.' },
   ],
-  rotationOrder: [0, 1, 2, 3, 4, 5],
+  rotationOrder: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
   /** 20,000.00 of a six-decimal mint. */
   contributionRaw: 20_000_000_000n,
   mintDecimals: 6,
-  roundCount: 6,
+  roundCount: 12,
 } as const;

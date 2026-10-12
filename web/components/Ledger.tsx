@@ -55,6 +55,10 @@ const INITIAL: readonly Row[] = [
   { name: 'Tunde B.', state: 'SETTLED' },
   { name: 'Ifeoma K.', state: 'NOT_SENT' },
   { name: 'Obinna D.', state: 'SETTLED' },
+  { name: 'Chiamaka R.', state: 'SETTLED' },
+  { name: 'Kelechi M.', state: 'SETTLED' },
+  { name: 'Amara S.', state: 'NOT_SENT' },
+  { name: 'Uche P.', state: 'SETTLED' },
 ];
 
 const AMOUNT = '20,000.00';
