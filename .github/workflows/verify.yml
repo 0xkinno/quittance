@@ -1,0 +1,43 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  engine:
+    name: engine, verifier, harness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build packages
+        run: pnpm --filter "./packages/*" run build
+      - name: Typecheck packages
+        run: pnpm --filter "./packages/*" run typecheck
+      - name: Engine tests
+        run: pnpm --filter @quittance/engine run test
+
+  web:
+    name: web build and viewport suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build engine for the web package
+        run: pnpm --filter @quittance/engine run build
+      - name: Install Chromium
+        run: pnpm --filter @quittance/web exec playwright install --with-deps chromium
+      - name: Viewport suite
+        run: pnpm --filter @quittance/web run test

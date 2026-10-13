@@ -5,6 +5,7 @@
 [![live site](https://img.shields.io/badge/live-quittance--inky.vercel.app-15181C)](https://quittance-inky.vercel.app)
 [![program](https://img.shields.io/badge/program-devnet-0E6E4E)](https://explorer.solana.com/address/{{PROGRAM_ID}}?cluster=devnet)
 [![experiments](https://img.shields.io/badge/devnet%20experiments-{{EXPERIMENTS_PASSED}}%2F{{EXPERIMENTS_TOTAL}}-0E6E4E)](#proof)
+[![verify](https://github.com/0xkinno/quittance/actions/workflows/verify.yml/badge.svg)](https://github.com/0xkinno/quittance/actions/workflows/verify.yml)
 [![engine tests](https://img.shields.io/badge/engine%20tests-113%20passing-0E6E4E)](#run-it-locally)
 [![viewport suite](https://img.shields.io/badge/viewport%20suite-17%20passing-0E6E4E)](#user-experience)
 [![license](https://img.shields.io/badge/license-MIT-15181C)](LICENSE)
@@ -52,7 +53,7 @@ answers, forever and offline, whether a given payment happened.
 | Android APK | Release build, installable, runs standalone with no dev server — `app/android/app/build/outputs/apk/release/app-release.apk`, built by `./gradlew assembleRelease` ([steps](docs/DEV-CLIENT.md)); SHA-256 in [`EVIDENCE.md`](EVIDENCE.md) |
 | Program ({{CLUSTER}}) | [`{{PROGRAM_ID}}`](https://explorer.solana.com/address/{{PROGRAM_ID}}?cluster=devnet) |
 | Pitch deck | Attached to the portal submission |
-| Repository | [github.com/0xkinno/quittance](https://github.com/0xkinno/quittance) |
+| Repository | [github.com/0xkinno/quittance](https://github.com/0xkinno/quittance) · audit path in [`AUDIT.md`](AUDIT.md) |
 
 ## Screenshots
 
