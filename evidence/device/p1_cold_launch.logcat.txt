@@ -1,0 +1,403 @@
+--------- beginning of main
+10-13 01:14:42.167  2300  2300 D SemBigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+--------- beginning of system
+10-13 01:14:42.174  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:14:42.174  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:14:42.174  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:14:42.175  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:14:42.175  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:14:42.175  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:14:42.175  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:14:42.175  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:14:42.177  1152  4906 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: packageName = com.android.systemui,userId = 0
+10-13 01:14:42.177  1152  4906 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: packageName = com.android.systemui,userId = -1
+10-13 01:14:42.177  1152  4906 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: converting userId from USER_ALLto 0
+10-13 01:14:42.179  2314  2314 D PowerUI : Battery swelling mode - priorBatterySwellingMode = 0 mBatterySwellingMode = 0 mBatteryStatus = 2
+10-13 01:14:42.179  2314  2314 I PowerUI : mBatteryMiscEvent = 0
+10-13 01:14:42.181  2314  2314 D KeyguardUpdateMonitor: received broadcast android.intent.action.BATTERY_CHANGED
+10-13 01:14:42.185  2314  2314 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED
+10-13 01:14:42.187  2314  2314 I AODBatteryManager: saveBatteryData : AOD BatteryData [mBatteryLevel=27, mBatteryStatus=CHARGING, mBatteryPlugType=USB, mBatteryPlugged=true, mRemainingChargeTime=5852000, mBatteryChargingType=1, mBatteryChargerType=NORMAL, mBatteryOnline=NOT_DEFINED, mBatterySwellingMode=NONE, mBatteryProtectMode=false]
+10-13 01:14:42.187  2314  2314 I ChargingInfoManager: updateChargingInfo: newState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsFullyCharged=false, mIsBatteryProtectMode=false], oldState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsFullyCharged=false, mIsBatteryProtectMode=false]
+10-13 01:14:42.188  2314  2314 D KeyguardUpdateMonitor: handleBatteryUpdate
+10-13 01:14:42.191  2314  2314 D KeyguardSecIndicationController: addIndicationTimeout() returned - unlocking
+10-13 01:14:42.191  2314  2314 D KeyguardSecIndicationController: addIndication() returned - unlocking
+10-13 01:14:42.191  2314  2314 D KeyguardSecIndicationController: addBatteryIndication() status = BatteryStatus{status=2,level=27,plugged=2,health=2,maxChargingWattage=-1,remaining=5852000ultraFastCharger=0}
+10-13 01:14:42.197  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.200  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.201  2314  2314 V SecQSFragmentAnimatorBase: setQsExpansionPosition 0.0
+10-13 01:14:42.201  2314  2314 V QsExpandAnimator: setQsExpansionPosition 0.0 0
+10-13 01:14:42.202  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.209  2314  2314 D IndicatorGardenInputProperty: updateRotation() prv:-1 >> new:0
+10-13 01:14:42.209  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 72
+10-13 01:14:42.209  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 36
+10-13 01:14:42.209  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 17
+10-13 01:14:42.280 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:42.283 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0928, 0.0557, t(848800)], [0.0879, 0.0762, t(848804)], [0.0869, 0.1016, t(848808)], [0.0625, 0.1123, t(848812)], [0.1045, 0.0693, t(848816)], RMS: 41
+10-13 01:14:42.404  1152  1152 D SmartAlertController: SmartAlert - Found Missed Event
+10-13 01:14:42.407  2776  2776 I Launcher.NotificationListener: onNotificationPosted : com.android.systemui number : 0
+10-13 01:14:42.408  9824  9824 I Edge.badge: updateBadge item=key=-1|com.android.systemui|2131428820|charging_state|10052, count=1
+10-13 01:14:42.418  2314  2314 D InterruptionStateProvider: No bubble up: not allowed to bubble: -1|com.android.systemui|2131428820|charging_state|10052
+10-13 01:14:42.422  2314  2314 D InterruptionStateProvider: No heads up: unimportant notification: -1|com.android.systemui|2131428820|charging_state|10052
+10-13 01:14:42.438  2314  2451 D PeopleSpaceWidgetMgr: Sbn doesn't contain valid PeopleTileKey: null/-1/com.android.systemui
+10-13 01:14:42.441  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.442  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.480 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:42.483 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1504, 0.0527, t(848820)], [0.1436, 0.0732, t(848824)], [0.1387, 0.0635, t(848828)], [0.1035, 0.0762, t(848832)], [0.1143, 0.0596, t(848836)], RMS: 44
+10-13 01:14:42.527  1152  1163 W System  : A resource failed to call close. 
+10-13 01:14:42.529  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.529  1152  1163 W System  : A resource failed to call release. 
+10-13 01:14:42.529  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:14:42.689 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:42.694 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0967, 0.0547, t(848840)], [0.1504, 0.0498, t(848844)], [0.0938, 0.0918, t(848848)], [0.1045, 0.0791, t(848852)], [0.1826, 0.0576, t(848856)], RMS: 42
+10-13 01:14:42.880 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:42.884 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0508, 0.1562, t(848860)], [0.0791, 0.0527, t(848864)], [0.1426, 0.0430, t(848868)], [0.1133, 0.0498, t(848872)], [0.0635, 0.0762, t(848876)], RMS: 46
+10-13 01:14:43.082 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:43.087 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0889, 0.0352, t(848880)], [0.1074, 0.0566, t(848884)], [0.0732, 0.0732, t(848888)], [0.0703, 0.1055, t(848892)], [0.0293, 0.1680, t(848896)], RMS: 44
+10-13 01:14:43.194  1152  1962 E Watchdog: !@Sync: 801 heap: 144 / 154 [2026-10-13 01:14:43.193] sdogWay: softdog FD: 960
+10-13 01:14:43.284 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:43.288 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0674, 0.1123, t(848900)], [0.1201, 0.0771, t(848904)], [0.0850, 0.0557, t(848908)], [0.0928, 0.0752, t(848912)], [0.1299, 0.0654, t(848916)], RMS: 41
+10-13 01:14:43.487 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:43.491 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0938, 0.0869, t(848920)], [0.1357, 0.0547, t(848924)], [0.1357, 0.0469, t(848928)], [0.1113, 0.0537, t(848932)], [0.1064, 0.0303, t(848936)], RMS: 45
+10-13 01:14:43.546 24391 24399 I MediaCodec: setCodecState state(0), called in 6
+10-13 01:14:43.548  1152  4906 V ResourceManagerHelper-JNI: JNIMediaResourceHelper::notify eventType : 3, ext1 : 0, ext2 : 0
+10-13 01:14:43.548  1152  4906 V ResourceManagerHelper-JNI: notify eventType : 3, ext1 : 0, ext2 : 0
+10-13 01:14:43.549  1152  2106 I SemMediaResourceHelper: onState
+10-13 01:14:43.549  4763  4763 I SemMediaResourceHelper: onState
+10-13 01:14:43.549 21726 21918 V ResourceManagerHelper-JNI: JNIMediaResourceHelper::notify eventType : 3, ext1 : 0, ext2 : 0
+10-13 01:14:43.549 21726 21918 V ResourceManagerHelper-JNI: notify eventType : 3, ext1 : 0, ext2 : 0
+10-13 01:14:43.550 21726 21740 I SemMediaResourceHelper: onState
+10-13 01:14:43.550 21726 21740 I DrmMediaResourceHelper: onStateChanged size = 1
+10-13 01:14:43.550 21726 21740 I DrmMediaResourceHelper: resource type: 2,,,isSecured :  falseIsEncoder : truegetCodecState : 0getpid : 24391
+10-13 01:14:43.597  1152  2188 D UsbStatsMonitor: 0 0 0 0 2 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10-13 01:14:43.634   565   565 I hwservicemanager: Notifying android.hardware.dumpstate@1.1::IDumpstateDevice/default they have clients: 0
+10-13 01:14:43.636 24388 24388 I android.hardware.dumpstate@1.1-service-lazy: Process has 0 (of 1 available) client(s) in use after notification android.hardware.dumpstate@1.1::IDumpstateDevice has clients: 0
+10-13 01:14:43.636 24388 24388 I android.hardware.dumpstate@1.1-service-lazy: Trying to exit HAL. No clients in use for any service in process.
+10-13 01:14:43.637   565   565 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+10-13 01:14:43.638 24388 24388 I android.hardware.dumpstate@1.1-service-lazy: Unregistered all clients and exiting
+10-13 01:14:43.638   565   565 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+10-13 01:14:43.653   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:43.662  1152  1152 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10270; state: DISABLED
+10-13 01:14:43.689 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:43.691 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0889, 0.0459, t(848940)], [0.1016, 0.0342, t(848944)], [0.1279, 0.0264, t(848948)], [0.1064, 0.0605, t(848952)], [0.0615, 0.1191, t(848956)], RMS: 43
+10-13 01:14:43.697  1152  4906 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:14:43.697  1152  4906 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:14:43.732  1152  4906 D CompatibilityChangeReporter: Compat change id reported: 343977174; UID 10270; state: ENABLED
+10-13 01:14:43.750  1152 17616 D NandswapHandler: nandswap start for non-activity 22317 com.google.process.gservices action:3 adj:250 type:1
+10-13 01:14:43.775  1152  4906 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10270; state: ENABLED
+10-13 01:14:43.777  1152  4886 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10270; state: ENABLED
+10-13 01:14:43.777  1152  4886 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10270; state: DISABLED
+10-13 01:14:43.782 24391 24413 I MPEG4Writer: setStartTimestampUs: 24048102624 from Metadata track
+10-13 01:14:43.782   985  2490 I SurfaceFlinger: destroyDisplay:ScreenRecorder
+10-13 01:14:43.792 24391 24400 I ACodec  : [OMX.qcom.video.encoder.avc] Now Executing->Idle
+10-13 01:14:43.801  1250 11448 W GraphicBufferSource: released unpopulated slots: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+10-13 01:14:43.805  1152 17616 D NandswapHandler: nandswap end for non-activity 22317 com.google.process.gservices ret:1 adj:250 sadj:250
+10-13 01:14:43.811 24391 24400 I ACodec  : [OMX.qcom.video.encoder.avc] Now Idle->Loaded
+10-13 01:14:43.811 24391 24400 I ACodec  : [OMX.qcom.video.encoder.avc] Now Loaded
+10-13 01:14:43.811 24391 24400 I ACodec  :  [OMX.qcom.video.encoder.avc] Now kWhatShutdownCompleted event : 7985
+10-13 01:14:43.812 24391 24391 D MPEG4Writer: reset()
+10-13 01:14:43.812 24391 24412 V MediaWriter: Track event err/info msg:101, trackId:1, type:1000,val:-1011
+10-13 01:14:43.812 24391 24391 I MPEG4Writer: Normal stop process
+10-13 01:14:43.812 24391 24391 D MPEG4Writer: Video track stopping. Stop source
+10-13 01:14:43.812 24391 24391 D MPEG4Writer: Video track source stopping
+10-13 01:14:43.812 24391 24391 D MPEG4Writer: Video track source stopped
+10-13 01:14:43.812 24391 24413 V MediaWriter: Track event err/info msg:101, trackId:2, type:1000,val:-1011
+10-13 01:14:43.813 24391 24412 I MPEG4Writer: Received total/0-length (53/0) buffers and encoded 53 frames. - Video
+10-13 01:14:43.813 24391 24413 W MPEG4Writer: 0-duration samples found: 1
+10-13 01:14:43.813 24391 24413 I MPEG4Writer: Received total/0-length (1/0) buffers and encoded 1 frames. - Metadata
+10-13 01:14:43.813 24391 24391 D MPEG4Writer: Video track stopped. Status:0. Stop source
+10-13 01:14:43.813 24391 24391 D MPEG4Writer: Metadata track stopping. Stop source
+10-13 01:14:43.813 24391 24391 D MPEG4Writer: Metadata track source stopping
+10-13 01:14:43.813 24391 24391 D MPEG4Writer: Metadata track source stopped
+10-13 01:14:43.814 24391 24391 D MPEG4Writer: Metadata track stopped. Status:0. Stop source
+10-13 01:14:43.814 24391 24391 D MPEG4Writer: Duration from tracks range is [0, 9104742] us
+10-13 01:14:43.814 24391 24410 D MPEG4Writer: 0 chunks are written in the last batch
+10-13 01:14:43.815 24391 24391 D MPEG4Writer: WriterThread stopped. Status:0
+10-13 01:14:43.816 24391 24391 I MPEG4Writer: Adjust the moov start time from 24048102624 us -> 24048102624 us
+10-13 01:14:43.817 24391 24391 I MPEG4Writer: The mp4 file will not be streamable.
+10-13 01:14:43.817 24391 24391 I MPEG4Writer: MOOV atom was written to the file
+10-13 01:14:43.817 24391 24391 D MPEG4Writer: release()
+10-13 01:14:43.820 24391 24391 D MPEG4Writer: MP4WtrCtrlHlpLooper stopped
+10-13 01:14:43.820 24391 24391 D MPEG4Writer: Top 5 write durations(microseconds): #1:97 #2:109 #3:113 #4:125 #5:185
+10-13 01:14:43.821  1250 24403 E OMX-VENC: venc_dev: async_venc_message_thread interrupted to be exited
+10-13 01:14:43.823  1250 11448 I OMX-VENC: Component Deinit
+10-13 01:14:43.829 24391 24400 I ACodec  :  [OMX.qcom.video.encoder.avc] Now uninitialized
+10-13 01:14:43.829 24391 24400 I ACodec  :  [] Now kWhatShutdownCompleted event : 7985
+10-13 01:14:43.829 24391 24399 I MediaCodec: Codec shutdown complete
+10-13 01:14:43.830  1243  1847 I ResourceManagerService: removeResourceInfo pid 24391, removed 2592000 (width 1080 height 2400), isLowPriority 0, remained hw codec count 0
+10-13 01:14:43.831  1152  4886 V ResourceManagerHelper-JNI: JNIMediaResourceHelper::notify eventType : 2, ext1 : 0, ext2 : 0
+10-13 01:14:43.831  1152  4886 V ResourceManagerHelper-JNI: notify eventType : 2, ext1 : 0, ext2 : 0
+10-13 01:14:43.831 21726 21918 V ResourceManagerHelper-JNI: JNIMediaResourceHelper::notify eventType : 2, ext1 : 0, ext2 : 0
+10-13 01:14:43.831 21726 21918 V ResourceManagerHelper-JNI: notify eventType : 2, ext1 : 0, ext2 : 0
+10-13 01:14:43.831 21726 21740 I SemMediaResourceHelper: onRemove
+10-13 01:14:43.831  1152  2106 I SemMediaResourceHelper: onRemove
+10-13 01:14:43.831  4763  4763 I SemMediaResourceHelper: onRemove
+10-13 01:14:43.881 24654 24654 D ProcessState: Binder ioctl to enable oneway spam detection failed: Invalid argument
+10-13 01:14:43.886 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:43.888 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1299, 0.0537, t(848960)], [0.1006, 0.0918, t(848964)], [0.1191, 0.0430, t(848968)], [0.1191, 0.0293, t(848972)], [0.1133, 0.0449, t(848976)], RMS: 45
+10-13 01:14:43.906  4697  5851 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/p1.mp4 flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+10-13 01:14:43.907 24391 24391 D ScreenRecord: success
+10-13 01:14:43.907 24391 24391 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+10-13 01:14:43.910  4697  5851 V MediaMetadataRetriever: constructor
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: MetadataRetrieverClient constructor pid(4697)
+10-13 01:14:43.911  1243  1847 V MediaPlayerService: Create new media retriever from pid 4697
+10-13 01:14:43.911 24391 24391 I BpBinder: onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+10-13 01:14:43.911  4697  5851 V MediaMetadataRetriever: setDataSource(6, 0, 576460752303423487)
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: setDataSource fd=8, offset=0, length=576460752303423487
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: st_dev  = 68
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: st_mode = 33200
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: st_uid  = 0
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: st_gid  = 9997
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: st_size = 861203
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: calculated length = 861203
+10-13 01:14:43.911  1243  1847 V MetadataRetrieverClient: player type = 4
+10-13 01:14:43.911  1173 13534 I DrmManagerService(Native): value of perm = 2 return true from DRM FW
+10-13 01:14:43.912  1173 13534 E SEC_DRM_PLUGIN_Omafl: OmaPlugin::onOpenDecryptSession(fd)::Drm2IsDrmFileByExtFd::file is NOT DRM by extension
+10-13 01:14:43.916  1243  1847 D StagefrightMetadataRetriever: FileSource remote
+10-13 01:14:43.918 24391 24391 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+10-13 01:14:43.936  1240  1240 I MediaExtractorFactory: Created an extractor 'SECMPEG4Extractor' with confidence 0.41
+10-13 01:14:43.938  1243  1847 V MetadataRetrieverClient: setDataSource(fd) return(0)
+10-13 01:14:43.939  4697  5851 V MediaMetadataRetriever: setDataSource(fd) return(0)
+10-13 01:14:43.939  4697  5851 V MediaMetadataRetriever: extractMetadata(12)
+10-13 01:14:43.940  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.952  4697  5851 V MediaMetadataRetriever: destructor
+10-13 01:14:43.952  4697  5851 V MediaMetadataRetriever: disconnect
+10-13 01:14:43.952  1243  1847 V MetadataRetrieverClient: disconnect from pid 4697
+10-13 01:14:43.954  1243  1847 V MetadataRetrieverClient: MetadataRetrieverClient destructor
+10-13 01:14:43.954  1243  1847 V MetadataRetrieverClient: disconnect from pid 4697
+10-13 01:14:43.955  4697  5851 V MediaMetadataRetriever: constructor
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: MetadataRetrieverClient constructor pid(4697)
+10-13 01:14:43.955  1243  1847 V MediaPlayerService: Create new media retriever from pid 4697
+10-13 01:14:43.955  4697  5851 V MediaMetadataRetriever: setDataSource(6, 0, 576460752303423487)
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: setDataSource fd=8, offset=0, length=576460752303423487
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: st_dev  = 68
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: st_mode = 33200
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: st_uid  = 0
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: st_gid  = 9997
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: st_size = 861203
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: calculated length = 861203
+10-13 01:14:43.955  1243  1847 V MetadataRetrieverClient: player type = 4
+10-13 01:14:43.956  1173 13534 I DrmManagerService(Native): value of perm = 2 return true from DRM FW
+10-13 01:14:43.956  1173 13534 E SEC_DRM_PLUGIN_Omafl: OmaPlugin::onOpenDecryptSession(fd)::Drm2IsDrmFileByExtFd::file is NOT DRM by extension
+10-13 01:14:43.957  1243  1847 D StagefrightMetadataRetriever: FileSource remote
+10-13 01:14:43.962  1240 24657 I MediaExtractorFactory: Created an extractor 'SECMPEG4Extractor' with confidence 0.41
+10-13 01:14:43.964  1243  1847 V MetadataRetrieverClient: setDataSource(fd) return(0)
+10-13 01:14:43.964  4697  5851 V MediaMetadataRetriever: setDataSource(fd) return(0)
+10-13 01:14:43.964  4697  5851 V MediaMetadataRetriever: extractMetadata(12)
+10-13 01:14:43.965  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.968  4697  5851 V MediaMetadataRetriever: extractMetadata(5)
+10-13 01:14:43.969  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.969  4697  5851 V MediaMetadataRetriever: extractMetadata(0)
+10-13 01:14:43.970  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.970  4697  5851 V MediaMetadataRetriever: extractMetadata(1)
+10-13 01:14:43.970  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.971  4697  5851 V MediaMetadataRetriever: extractMetadata(2)
+10-13 01:14:43.971  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.971  4697  5851 V MediaMetadataRetriever: extractMetadata(13)
+10-13 01:14:43.972  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.972  4697  5851 V MediaMetadataRetriever: extractMetadata(3)
+10-13 01:14:43.972  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.972  4697  5851 V MediaMetadataRetriever: extractMetadata(4)
+10-13 01:14:43.973  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.973  4697  5851 V MediaMetadataRetriever: extractMetadata(6)
+10-13 01:14:43.973  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.973  4697  5851 V MediaMetadataRetriever: extractMetadata(7)
+10-13 01:14:43.974  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.974  4697  5851 V MediaMetadataRetriever: extractMetadata(8)
+10-13 01:14:43.974  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.974  4697  5851 V MediaMetadataRetriever: extractMetadata(9)
+10-13 01:14:43.974  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.975  4697  5851 V MediaMetadataRetriever: extractMetadata(10)
+10-13 01:14:43.975  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.975  4697  5851 V MediaMetadataRetriever: extractMetadata(11)
+10-13 01:14:43.975  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.975  4697  5851 V MediaMetadataRetriever: extractMetadata(13)
+10-13 01:14:43.976  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.976  4697  5851 V MediaMetadataRetriever: extractMetadata(14)
+10-13 01:14:43.976  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.976  4697  5851 V MediaMetadataRetriever: extractMetadata(15)
+10-13 01:14:43.976  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.976  4697  5851 V MediaMetadataRetriever: extractMetadata(20)
+10-13 01:14:43.977  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.977  4697  5851 V MediaMetadataRetriever: extractMetadata(25)
+10-13 01:14:43.977  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.977  4697  5851 V MediaMetadataRetriever: extractMetadata(18)
+10-13 01:14:43.977  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.978  4697  5851 V MediaMetadataRetriever: extractMetadata(19)
+10-13 01:14:43.978  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.978  4697  5851 V MediaMetadataRetriever: extractMetadata(18)
+10-13 01:14:43.978  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.978  4697  5851 V MediaMetadataRetriever: extractMetadata(19)
+10-13 01:14:43.979  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.979  4697  5851 V MediaMetadataRetriever: extractMetadata(24)
+10-13 01:14:43.979  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.980  4697  5851 V MediaMetadataRetriever: extractMetadata(35)
+10-13 01:14:43.980  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.980  4697  5851 V MediaMetadataRetriever: extractMetadata(36)
+10-13 01:14:43.980  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.980  4697  5851 V MediaMetadataRetriever: extractMetadata(37)
+10-13 01:14:43.981  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.981  4697  5851 V MediaMetadataRetriever: extractMetadata(40)
+10-13 01:14:43.981  1243  1243 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:43.981  4697  5851 V MediaMetadataRetriever: destructor
+10-13 01:14:43.981  4697  5851 V MediaMetadataRetriever: disconnect
+10-13 01:14:43.981  1243  1243 V MetadataRetrieverClient: disconnect from pid 4697
+10-13 01:14:43.984  1243  1243 V MetadataRetrieverClient: MetadataRetrieverClient destructor
+10-13 01:14:43.984  1243  1243 V MetadataRetrieverClient: disconnect from pid 4697
+10-13 01:14:44.013  1152  4886 D SyncManager: userId - 0 auto - false
+10-13 01:14:44.016  4697  5851 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///sdcard/p1.mp4 flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+10-13 01:14:44.049  4697  5037 D WM-SystemJobScheduler: Scheduling work ID b0fe12ed-55a2-474b-a4d7-90ed73b540e3Job ID 7168
+10-13 01:14:44.053  1152  2870 V SamsungAlarmManager: setLocked to kernel - W:25652575 / NW:25506826, now=25490879
+10-13 01:14:44.053  1152  2870 D SamsungAlarmManager: setInexact (T:3/F:0/AC:false) 20261013T011505 now=25490879 - CU:1000/CP:1152/L:8ecd848:*job.delay*
+10-13 01:14:44.053  1152  2870 V SamsungAlarmManager: setLocked to kernel - W:25652575 / NW:25506826, now=25490879
+10-13 01:14:44.056  4697  5037 D WM-GreedyScheduler: Ignoring {WorkSpec: 1eba2f47-b109-4d65-a203-a86e1477680b}. Requires device idle.
+10-13 01:14:44.056  4697  5037 D WM-GreedyScheduler: Ignoring {WorkSpec: 204980bc-b126-412c-be66-1d335aebc23d}. Requires device idle.
+10-13 01:14:44.076 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:44.078 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1162, 0.0400, t(848980)], [0.0986, 0.0332, t(848984)], [0.1084, 0.0420, t(848988)], [0.0684, 0.0752, t(848992)], [0.0439, 0.0859, t(848996)], RMS: 45
+10-13 01:14:44.142  5927 22734 V MediaMetadataRetriever: constructor
+10-13 01:14:44.148   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.150  1243  1243 V MetadataRetrieverClient: MetadataRetrieverClient constructor pid(5927)
+10-13 01:14:44.150  1243  1243 V MediaPlayerService: Create new media retriever from pid 5927
+10-13 01:14:44.151  5927 22734 V MediaMetadataRetriever: setDataSource(109, 0, 576460752303423487)
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: setDataSource fd=8, offset=0, length=576460752303423487
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: st_dev  = 69
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: st_mode = 33200
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: st_uid  = 0
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: st_gid  = 9997
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: st_size = 861203
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: calculated length = 861203
+10-13 01:14:44.152  1243  1243 V MetadataRetrieverClient: player type = 4
+10-13 01:14:44.153  1173 13534 I DrmManagerService(Native): value of perm = 2 return true from DRM FW
+10-13 01:14:44.153  1173 13534 E SEC_DRM_PLUGIN_Omafl: OmaPlugin::onOpenDecryptSession(fd)::Drm2IsDrmFileByExtFd::file is NOT DRM by extension
+10-13 01:14:44.155  1243  1243 D StagefrightMetadataRetriever: FileSource remote
+10-13 01:14:44.157  5927  6192 D MediaSync: loaded: 145ms, 1
+10-13 01:14:44.161  5927 24661 D LocationService: Begin: com.samsung.intent.action.UPDATE_LOCATION
+10-13 01:14:44.165  5927 24661 D LocationManager: delete null addr: 0
+10-13 01:14:44.166  8785 10743 I BaseThreadPoolExecutor: [#CMH#] Task com.samsung.cmh.core.task.MediaContentSyncTask@c57439a is submitted
+10-13 01:14:44.168  1240  2319 I MediaExtractorFactory: Created an extractor 'SECMPEG4Extractor' with confidence 0.41
+10-13 01:14:44.170  1243  1243 V MetadataRetrieverClient: setDataSource(fd) return(0)
+10-13 01:14:44.170  5927 22734 V MediaMetadataRetriever: setDataSource(fd) return(0)
+10-13 01:14:44.170  5927 22734 V MediaMetadataRetriever: extractMetadata(23)
+10-13 01:14:44.171  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.173  5927 22734 V MediaMetadataRetriever: extractMetadata(1021)
+10-13 01:14:44.174  5927 24661 D ModernSamsungCoreService: applyPending()
+10-13 01:14:44.174  5927 24661 D LocationManager: LocationTask: 12ms
+10-13 01:14:44.174  5927 24661 D LocationService: End: com.samsung.intent.action.UPDATE_LOCATION
+10-13 01:14:44.174  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.174  5927 22734 V MediaMetadataRetriever: extractMetadata(1015)
+10-13 01:14:44.175  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.176  5927 22734 V MediaMetadataRetriever: extractMetadata(1022)
+10-13 01:14:44.178  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.179  5927 22734 V MediaMetadataRetriever: extractMetadata(1027)
+10-13 01:14:44.179  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.180  5927 22734 V MediaMetadataRetriever: extractMetadata(1024)
+10-13 01:14:44.180  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.181  5927 22734 V MediaMetadataRetriever: extractMetadata(1025)
+10-13 01:14:44.181  1243  1847 V MetadataRetrieverClient: extractMetadata
+10-13 01:14:44.181  5927 22734 V MediaMetadataRetriever: destructor
+10-13 01:14:44.181  5927 22734 V MediaMetadataRetriever: disconnect
+10-13 01:14:44.181  1243  1847 V MetadataRetrieverClient: disconnect from pid 5927
+10-13 01:14:44.181   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.183  1243  1847 V MetadataRetrieverClient: MetadataRetrieverClient destructor
+10-13 01:14:44.183  1243  1847 V MetadataRetrieverClient: disconnect from pid 5927
+10-13 01:14:44.195  5927 22734 D MediaParser: scanItem: 1
+10-13 01:14:44.217 23829 23829 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10270; state: ENABLED
+10-13 01:14:44.219  1152  4295 V SamsungAlarmManager: setLocked to kernel - W:25652575 / NW:25506826, now=25491045
+10-13 01:14:44.219  1152  4295 D SamsungAlarmManager: setInexact (T:3/F:0/AC:false) 20261013T071444 now=25491046 - CU:10270/CP:23829/OP:PendingIntent{b2c8523: PendingIntentRecord{49c9907 com.google.android.apps.photos broadcastIntent}}
+10-13 01:14:44.220  1152  4295 V SamsungAlarmManager: setLocked to kernel - W:25652575 / NW:25506826, now=25491046
+10-13 01:14:44.285 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:44.287 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1240, 0.0312, t(849000)], [0.1074, 0.0273, t(849004)], [0.1270, 0.0254, t(849008)], [0.0928, 0.0615, t(849012)], [0.1074, 0.0527, t(849016)], RMS: 42
+10-13 01:14:44.430   614   614 D io_stats: !@   8,0 r 3805673 37860524 w 437431 13039168 d 0 0 f 0 0 iot 785640 0 th 0 0 0 pt 0 inp 0 0 24058.938
+10-13 01:14:44.431  2314  2314 D NetworkController.WifiSignalController: notifyListener: visible=true, enabled=true, connected=true, inetCondition=1, isDefault=true, receivedCR=true, receivedIC=-1, shouldForceHide=false, emptyConnected=false
+10-13 01:14:44.458  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-105 ber=2147483647 rscp=-105 ecno=-6 level=1,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=1 },rat=3,primary=CellSignalStrengthWcdma} level=1
+10-13 01:14:44.461  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:14:44.461  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:14:44.461  2314  2451 E CscParser: update(): xml file exist
+10-13 01:14:44.464  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:14:44.467  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:14:44.485 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:44.489 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0986, 0.0352, t(849020)], [0.1416, 0.0283, t(849024)], [0.1064, 0.0498, t(849028)], [0.1006, 0.0312, t(849032)], [0.1094, 0.0557, t(849036)], RMS: 41
+10-13 01:14:44.511   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.514   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.520  1152  4906 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:14:44.521  1152  4906 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:14:44.522   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.528   972 14091 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.534  1152  1152 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10321; state: DISABLED
+10-13 01:14:44.556   972 14096 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.559   972 14096 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:44.560 24416 24416 I SCS@AiSearch user 0: (ObserverWorker::AOSP_MP) [main] entering in startWork():  
+10-13 01:14:44.561 24416 24416 I SCS@AiSearch user 0: (BaseCollector::AOSP_MP) [main] entering in onChange():  
+10-13 01:14:44.562 24416 24565 I SCS@AiSearch user 0: (BaseCollector::AOSP_MP) [pool-12-thread-1] entering in collectChanges():  
+10-13 01:14:44.571  1152  4295 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.android.scs cmp = androidx.work.impl.background.systemalarm.RescheduleReceiver newState = 1 callingPackage = 10321/com.samsung.android.scs
+10-13 01:14:44.607  1152  3185 W NetlinkSocket: maximum read
+10-13 01:14:44.621  1152  3185 W NetlinkSocket: maximum read
+10-13 01:14:44.684 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:44.685 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0879, 0.0596, t(849040)], [0.0967, 0.0479, t(849044)], [0.1162, 0.0479, t(849048)], [0.0781, 0.1123, t(849052)], [0.0723, 0.1348, t(849056)], RMS: 40
+10-13 01:14:44.777  8785 24662 I MediaContentSyncTask: [#CMH#] No of Row (SEC MP :  80773, Max Id : 2147727046) (CMH : 80772, Max Id : 2147727045) - Time :365
+10-13 01:14:44.797  8785 24662 I MediaContentSyncTask: [#CMH#] Rebuilding contents count 1
+10-13 01:14:44.799  8785 24662 I ImageFeatures: [#CMH#] Not support file type 
+10-13 01:14:44.815  8785 24662 I MediaContentSyncTask: [#CMH#] Insert ITEM :  1
+10-13 01:14:44.881 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:44.883 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0693, 0.1221, t(849060)], [0.1396, 0.0566, t(849064)], [0.1387, 0.0234, t(849068)], [0.1006, 0.0449, t(849072)], [0.0898, 0.0625, t(849076)], RMS: 41
+10-13 01:14:44.925 23829 23829 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10270; state: ENABLED
+10-13 01:14:45.008  1152  1968 I UsageStatsService: User[0] Flushing usage stats to disk
+10-13 01:14:45.084 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:45.086 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1201, 0.0488, t(849080)], [0.1162, 0.0518, t(849084)], [0.1748, 0.0225, t(849088)], [0.0869, 0.0674, t(849092)], [0.0771, 0.0879, t(849096)], RMS: 39
+10-13 01:14:45.107   972 14096 V APM_AudioPolicyManager: setAppState(portId:111, state:2)
+10-13 01:14:45.198 17564 17662 I AsyncCachedReader: Ph_[increasing RB:, f8.b[pos=269800320 lim=271720320 cap=1920000] inner::java.nio.HeapByteBuffer[pos=1000320 lim=1920000 cap=1920000]] [VF-ATP-3] 
+10-13 01:14:45.260 23829 23880 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4736)] [android.net.ConnectivityManager.registerDefaultNetworkCallbackForUid(ConnectivityManager.java:5461)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5428)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5402)] [b$$ExternalSyntheticApiModelOutline0.m(D8$$SyntheticClass:68)] [bss.b(PG:248)] [bss.a(PG:52)] [crme.g(PG:3)] [crmb.b(PG:57)] [bezd.b(PG:67)] [cqzq.w(PG:11)] [crib.run(PG:124)] [jpw.run(PG:26)] [crsp.run(PG:3)] [crsj.e(PG:1)] [crsi.run(PG:76)]
+10-13 01:14:45.266  1152  2870 D ConnectivityService: requestNetwork for uid/pid:10270/23829 activeRequest: null callbackRequest: 1041 [NetworkRequest [ REQUEST id=1042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|BLK
+10-13 01:14:45.268  1152  2158 D ConnectivityService:    accepting network in place of null for NetworkRequest [ REQUEST id=1042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:14:45.271  1152  2148 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=1042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:14:45.271  1152  2148 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:14:45.271  1152  2158 D ConnectivityService: Rematched networks [computed 1ms] [applied 1ms] [issued 2]
+10-13 01:14:45.271  1152  2148 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:14:45.271  1152  2158 D ConnectivityService: NetworkReassignment :
+10-13 01:14:45.271  1152  2158 D ConnectivityService:   1042 : null → 100
+10-13 01:14:45.285 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:45.286 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1104, 0.0508, t(849100)], [0.1152, 0.0557, t(849104)], [0.1924, 0.0244, t(849108)], [0.1426, 0.0303, t(849112)], [0.0547, 0.0986, t(849116)], RMS: 39
+10-13 01:14:45.481 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:45.483 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0928, 0.0342, t(849120)], [0.0830, 0.1260, t(849124)], [0.1240, 0.0312, t(849128)], [0.1523, 0.0352, t(849132)], [0.1143, 0.0625, t(849136)], RMS: 41
+10-13 01:14:45.528  4697  4697 D WM-DelayedWorkTracker: Scheduling work b0fe12ed-55a2-474b-a4d7-90ed73b540e3
+10-13 01:14:45.528  4697  4697 D WM-GreedyScheduler: Starting tracking for b0fe12ed-55a2-474b-a4d7-90ed73b540e3
+10-13 01:14:45.532  8785 24662 I MediaContentSyncLocation: [#CMH#] Location Count MP :  71, CMH : 71
+10-13 01:14:45.532  8785 24662 I BaseThreadPoolExecutor: [#CMH#] afterExecute FutureTask
+10-13 01:14:45.532  8785 24662 I ControllerEventHandler: [#CMH#] New Task for wait content sync job 
+10-13 01:14:45.532  8785 24662 I BaseThreadPoolExecutor: [#CMH#] Task com.samsung.cmh.core.task.MediaContentSyncTask@c57439a is submitted
+10-13 01:14:45.534  4697  5034 D WM-ConstraintTracker: BatteryNotLowTracker: initial state = true
+10-13 01:14:45.534  4697  5034 D WM-BrdcstRcvrCnstrntTrc: BatteryNotLowTracker: registering receiver
+10-13 01:14:45.538  4697  5039 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=b0fe12ed-55a2-474b-a4d7-90ed73b540e3, generation=0)
+10-13 01:14:45.543  4697  5039 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=b0fe12ed-55a2-474b-a4d7-90ed73b540e3, generation=0)
+10-13 01:14:45.555  4697  4697 D WM-WorkerWrapper: Starting work for com.android.providers.media.photopicker.sync.ProactiveSyncWorker
+10-13 01:14:45.559  4697 24675 I PSyncWorker: Starting proactive picker sync from sync source: 1
+10-13 01:14:45.559  4697 24675 I PickerSyncTracker: Created new sync future java.util.concurrent.CompletableFuture@bb6e87f[Not completed, 1 dependents]. Future map: {b0fe12ed-55a2-474b-a4d7-90ed73b540e3=java.util.concurrent.CompletableFuture@bb6e87f[Not completed, 1 dependents]}
+10-13 01:14:45.560  4697 24675 D PickerSyncController: syncAllMediaFromProvider() LOCAL, auth=com.android.providers.media.photopicker, retry=true
+10-13 01:14:45.560  4697 24675 D PickerSyncController: getSyncRequestParams() LOCAL, auth=com.android.providers.media.photopicker
+10-13 01:14:45.656  1152  1161 I system_server: Background concurrent copying GC freed 16MB AllocSpace bytes, 16(1656KB) LOS objects, 14% free, 141MB/165MB, paused 340us,260us total 315.247ms
+10-13 01:14:45.680 17564 17585 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:14:45.682  1152  1163 W System  : A resource failed to call close. 
+10-13 01:14:45.687  1152  1163 W System  : A resource failed to call close. 
+10-13 01:14:45.689 17564 17587 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1416, 0.0381, t(849140)], [0.1172, 0.0420, t(849144)], [0.1035, 0.0430, t(849148)], [0.1309, 0.0371, t(849152)], [0.1201, 0.0518, t(849156)], RMS: 44
+10-13 01:14:45.695  4697 24675 D PickerSyncController:    Latest ID/Gen=f767e304b08e91a0:external_primary/71635
+10-13 01:14:45.695  4697 24675 D PickerSyncController:    Cached ID/Gen=f767e304b08e91a0:external_primary/71631
+10-13 01:14:45.695  4697 24675 D PickerSyncController:    RESULT=SyncRequestParams{type=MEDIA_INCREMENTAL, gen=71631, latest=Bundle[{last_media_sync_generation=71635, media_collection_id=f767e304b08e91a0:external_primary}], pageSize=1000}
+10-13 01:14:45.695  4697 24675 I PickerSyncController: Executing SyncAdd. isLocal: true. authority: com.android.providers.media.photopicker
+10-13 01:14:45.695  4697 24675 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-13 01:14:45.695  4697 24675 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Locked by thread pool-3-thread-5]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-13 01:14:45.695  4697 24675 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-13 01:14:45.695  4697 24675 D ExternalDbFacade: Token received for queryMedia = null
+10-13 01:14:45.722   932  4581 I sensors-hal: handle_sns_client_event:115, auto_rotation_event_2: mode:255, type:1:0/-0.630,-0.010,9.599
+10-13 01:14:45.796  4697 24675 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-13 01:14:45.797  4697 24675 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Locked by thread pool-3-thread-5]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-13 01:14:45.797  4697 24675 D PickerSyncController: Saving next page token: 1791850483000|1000081511 for key: local_provider:media_add:resume
+10-13 01:14:45.797  4697 24675 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@dc67ffc[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-13 01:14:45.798  1152  4886 D SyncManager: userId - 0 auto - false
+10-13 01:14:45.798  4697 24675 D PickerNotificationSender: Sending a notification for media update
+10-13 01:14:45.799  1152  4886 D SyncManager: userId - 0 auto - false
+10-13 01:14:45.799  4697 24675 D PickerNotificationSender: Sending a notification for merged album media update Videos
+10-13 01:14:45.799  4697 24675 D PickerNotificationSender: Sending a notification for album media update Videos
+10-13 01:14:45.800  1152  4886 D SyncManager: userId - 0 auto - false
+10-13 01:14:45.800  4697 24675 D PickerNotificationSender: Sending a notification for merged album media update Favorites
+10-13 01:14:45.800  4697 24675 D PickerNotificationSender: Sending a notification for album media update Favorites
+10-13 01:14:45.801  1152  4886 D SyncManager: userId - 0 auto - false
+10-13 01:14:45.801  4697 24675 D ExternalDbFacade: Token received for queryMedia = 1791850483000|1000081511

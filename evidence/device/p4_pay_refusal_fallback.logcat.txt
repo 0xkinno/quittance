@@ -1,0 +1,603 @@
+--------- beginning of main
+10-13 01:20:35.807  2314  2314 V KeyguardUpdateMonitor: action android.intent.action.SERVICE_STATE serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false} subId=8 slotId=1
+10-13 01:20:35.808  2314  2314 D MultiSIMController: MESSAGE_UPDATE_SERVICE_STATE
+10-13 01:20:35.808  2631  2822 I PdnController: isWifiConnected: [type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: , failover: false, available: true, roaming: false]
+--------- beginning of system
+10-13 01:20:35.808  1152  1969 W BroadcastQueue: Skipping delivery of excluded package Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) excludes package com.android.phone due to sender android (uid 1001)
+10-13 01:20:35.808  2631  2822 I PdnController<1>: notifySnapshotState: snapshotState=0 old=0
+10-13 01:20:35.808  2300  2300 D ServiceStateProvider: subId=8
+10-13 01:20:35.809  1152  1969 W BroadcastQueue: Skipping delivery of excluded package Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) excludes package com.android.phone due to sender android (uid 1001)
+10-13 01:20:35.809  2314  2451 D NetworkController: ServiceState from intent slotId=1
+10-13 01:20:35.809  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_NETWORK_TYPE
+10-13 01:20:35.809  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkChanged: suspendByIrat=false
+10-13 01:20:35.812  1152  1152 D SemWifiService: received: android.intent.action.SERVICE_STATE
+10-13 01:20:35.812  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged:Changed Event: isWifiConnected(false=> true), Operator(=>62130)
+10-13 01:20:35.813  2631  2822 I ImModule: onWifiConnectionChanged: true
+10-13 01:20:35.813  2631  2822 I ImModule: updateFeatures: phoneId = 1
+10-13 01:20:35.813  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.813  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.813  2314  2314 D semImsManager[0]: getImsRegistration
+10-13 01:20:35.814  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.814  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.814  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.814  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.815  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:35.818   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:35.819 26809 26809 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 cmp=com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+10-13 01:20:35.820 26809 26809 D CellBroadcastReceiver: onServiceStateChanged, ss: 1
+10-13 01:20:35.820 26809 26809 D CellBroadcastReceiver: networkOperator: 62120
+10-13 01:20:35.820 26809 26809 D CellBroadcastReceiver: update supported roaming operator as 
+10-13 01:20:35.821  2314  2314 D semImsManager[1]: getImsRegistration
+10-13 01:20:35.823  2314  2314 D KeyguardUpdateMonitor: handleServiceStateChange(subId=8, slotId=1, serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:35.823  2314  2314 D KeyguardBottomAreaShortcutView: mIndicationArea margin start : 163, end : 163, bottom : 150
+10-13 01:20:35.824  2314  2314 D CarrierTextController: onRefreshCarrierInfo(), mTelephonyCapable: true
+10-13 01:20:35.824  2314  2314 D CarrierTextController: updateCarrierText(): 2
+10-13 01:20:35.824  2314  2314 D CarrierTextController: Handling (subId=7): 5 Airtel NG
+10-13 01:20:35.824  2314  2314 D CarrierTextController: carrierTextForSimState = Airtel NG
+10-13 01:20:35.824  2314  2314 D CarrierTextController: SIM ready and in service: subId=7, ss={mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=3256, duplexMode()=1, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=IN_SERVICE, MobileDataRoamingType=home, MobileDataRat=LTE_CA, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 3 } nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:35.824  2314  2314 D CarrierTextController: Handling (subId=8): 5 Emergency calls only
+10-13 01:20:35.824  2314  2314 D CarrierTextController: carrierTextForSimState = Emergency calls only
+10-13 01:20:35.824  2314  2314 D CarrierTextController: setText : Airtel NG | Emergency calls only
+10-13 01:20:35.824  2314  2314 D FaceWidgetPagesController: onRefreshCarrierInfo()
+10-13 01:20:35.824  2300  2300 V PhoneGlobals: handleServiceStateChanged
+10-13 01:20:35.825  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState id=7
+10-13 01:20:35.825   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:35.825  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+10-13 01:20:35.825  2314  2314 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+10-13 01:20:35.825  2300  2300 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+10-13 01:20:35.825  2300  2300 V PhoneGlobals: subId=8,mDefaultDataSubId=7,ss roaming=false
+10-13 01:20:35.825  2314  2314 D MultiSIMController: onReceive() - action = android.intent.action.SERVICE_STATE
+10-13 01:20:35.825  2314  2314 D KeyguardUpdateMonitor: received broadcast android.intent.action.SERVICE_STATE
+10-13 01:20:35.825  2314  2314 V KeyguardUpdateMonitor: action android.intent.action.SERVICE_STATE serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false} subId=8 slotId=1
+10-13 01:20:35.826  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/geolocPushAuth#simslot1
+10-13 01:20:35.826  2631  2822 I FeatureUpdater: isEnableGls: false
+10-13 01:20:35.827  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.827  2631  2822 I CapexInfo: getFeatureTag: features = 0 []
+10-13 01:20:35.827  2631  2822 I FeatureUpdater: updateFeatures: 
+10-13 01:20:35.827  2631  2822 I ImModule: FEATURE_CHATBOT_EXTENDED_MSG enabled ver:1.3
+10-13 01:20:35.827  2631  2822 I RcsUtils: isDualRcsReg: mIsDualRcsReg false
+10-13 01:20:35.827  2631  2822 I CapabilityUtil<1>: onNetworkChanged: mAvailablePhoneId = ! phoneId
+10-13 01:20:35.827  2631  2822 I SmsServiceModule: regInfo: null
+10-13 01:20:35.827  2631  2822 I SmsServiceModule: disallow sms Service
+10-13 01:20:35.827  2631  2822 I SmsServiceModule: Sms Service queryCapabilityStatus[1]: removeCapabilities CAPABILITY_TYPE_SMS
+10-13 01:20:35.827  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:35.827  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:35.827  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_domain_setting
+10-13 01:20:35.827  2631  2822 I UtServiceModule<1>: isUtEnabled with policy : CS_ALWAYS enabled = false
+10-13 01:20:35.827  2631  2822 I CapabilityDiscModule<1>: queryCapabilityStatus
+10-13 01:20:35.828  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:35.828  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:35.828  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:35.828  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:35.828  2631  2822 I RegiMgr-NetEvtCtr<1>: out of service.
+10-13 01:20:35.828  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:35.828  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:35.828  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:35.828  2631  2822 I SimManager: mSimState:LOADED, mIsimLoaded:false, hasIsim():false
+10-13 01:20:35.828  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:35.828  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:35.828  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:35.828  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_enable_in_roaming
+10-13 01:20:35.828  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged: tryRegister by phoneID
+10-13 01:20:35.828  2631  2822 I RegiMgr<1>: tryRegister:
+10-13 01:20:35.829  2631  2822 I RegiMgr<1>: RegisterTask(s): Global GC RCS (IDLE)
+10-13 01:20:35.829  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:35.829  2631  2822 I RegisterTask: isSuspended: mSuspended(false) mSuspendByIrat(false)
+10-13 01:20:35.829  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister id: 904
+10-13 01:20:35.829  2631  2822 I PdnController: isConnected: No callback exists
+10-13 01:20:35.829  2631  2822 I RegiMgr : isPdnConnected: false, PdnType: 0
+10-13 01:20:35.832  2631  2822 I PdnController: getDefaultNetworkBearer:  WIFI
+10-13 01:20:35.833  2631  2822 I PdnController: isWifiConnected: [type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: , failover: false, available: true, roaming: false]
+10-13 01:20:35.833  2631  2822 I RegiMgr-Utils<1>: findBestNetwork: WIFI needWifiNetwork = true
+10-13 01:20:35.834  2631  2822 I RegiGvnBase<1>: isReadyToDualRegister : true
+10-13 01:20:35.834  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkInitialRegistrationIsReady: APM ON [false], Roamimg [false]
+10-13 01:20:35.834  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:35.834  2631  2822 I ImsProfile: isRttSupportByCallApp : false ttyType : 1
+10-13 01:20:35.834  2631  2822 I RegiMgr-Utils<1>: getPriorityRegiedTask : isPriority  High? true
+10-13 01:20:35.835  2631  2822 I RegiGvnBase: checkRegiStatus: getState()=IDLE mIsUpdateRegistering=false
+10-13 01:20:35.835  2631  2822 I RegiMgr<1>: getTelephonyCallStatus:
+10-13 01:20:35.836  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:35.837  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.838  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.841  2314  2314 D MultiSIMController: MESSAGE_UPDATE_SERVICE_STATE
+10-13 01:20:35.842  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/version#simslot1
+10-13 01:20:35.843  2631  2822 I RegiGvnRcs: isReadyToRegister: User don't try RCS service yet
+10-13 01:20:35.843  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister: isReadyToRegister = false
+10-13 01:20:35.843  2631  2822 I GeolocationCon: handleMessage : what = SERVICE_STATE_CHANGED
+10-13 01:20:35.843  2631  2822 I PdnController<1>: onCellLocationChanged: ns=not null
+10-13 01:20:35.843  2631  2822 I ImsCallSessionManager: onCellLocationChanged, phoneId: 1
+10-13 01:20:35.843  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_DO_PENDING_UPDATE_REGISTRATION
+10-13 01:20:35.843  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_CELL_LOCATION_CHANGED
+10-13 01:20:35.845  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged:Changed Event: Operator(=>62130)
+10-13 01:20:35.845  2314  2314 D semImsManager[0]: getImsRegistration
+10-13 01:20:35.845  2631  2822 I ImModule: onWifiConnectionChanged: false
+10-13 01:20:35.845  2631  2822 I ImModule: updateFeatures: phoneId = 1
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.846  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:35.849  2314  2314 D semImsManager[1]: getImsRegistration
+10-13 01:20:35.850  2314  2314 D KeyguardUpdateMonitor: handleServiceStateChange(subId=8, slotId=1, serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:35.850  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/geolocPushAuth#simslot1
+10-13 01:20:35.851  2314  2314 D KeyguardBottomAreaShortcutView: mIndicationArea margin start : 163, end : 163, bottom : 150
+10-13 01:20:35.851  2314  2314 D CarrierTextController: onRefreshCarrierInfo(), mTelephonyCapable: true
+10-13 01:20:35.851  2314  2314 D CarrierTextController: updateCarrierText(): 2
+10-13 01:20:35.851  2314  2314 D CarrierTextController: Handling (subId=7): 5 Airtel NG
+10-13 01:20:35.851  2314  2314 D CarrierTextController: carrierTextForSimState = Airtel NG
+10-13 01:20:35.851  2631  2822 I FeatureUpdater: isEnableGls: false
+10-13 01:20:35.851  2314  2314 D CarrierTextController: SIM ready and in service: subId=7, ss={mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=3256, duplexMode()=1, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=IN_SERVICE, MobileDataRoamingType=home, MobileDataRat=LTE_CA, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 3 } nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:35.851  2314  2314 D CarrierTextController: Handling (subId=8): 5 Emergency calls only
+10-13 01:20:35.851  2314  2314 D CarrierTextController: carrierTextForSimState = Emergency calls only
+10-13 01:20:35.851  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:35.851  2314  2314 D CarrierTextController: setText : Airtel NG | Emergency calls only
+10-13 01:20:35.851  2631  2822 I CapexInfo: getFeatureTag: features = 0 []
+10-13 01:20:35.851  2314  2314 D FaceWidgetPagesController: onRefreshCarrierInfo()
+10-13 01:20:35.851  2631  2822 I FeatureUpdater: updateFeatures: 
+10-13 01:20:35.851  2631  2822 I ImModule: FEATURE_CHATBOT_EXTENDED_MSG enabled ver:1.3
+10-13 01:20:35.852  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState id=7
+10-13 01:20:35.852  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+10-13 01:20:35.852  2314  2314 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+10-13 01:20:35.853  2631  2822 I RcsUtils: isDualRcsReg: mIsDualRcsReg false
+10-13 01:20:35.853  2631  2822 I CapabilityUtil<1>: onNetworkChanged: mAvailablePhoneId = ! phoneId
+10-13 01:20:35.853  2631  2822 I SmsServiceModule: regInfo: null
+10-13 01:20:35.853  2631  2822 I SmsServiceModule: disallow sms Service
+10-13 01:20:35.853  2631  2822 I SmsServiceModule: Sms Service queryCapabilityStatus[1]: removeCapabilities CAPABILITY_TYPE_SMS
+10-13 01:20:35.853  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:35.853  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:35.853  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_domain_setting
+10-13 01:20:35.853  2631  2822 I UtServiceModule<1>: isUtEnabled with policy : CS_ALWAYS enabled = false
+10-13 01:20:35.853  2631  2822 I CapabilityDiscModule<1>: queryCapabilityStatus
+10-13 01:20:35.853  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:35.853  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:35.853  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:35.853  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:35.854  2631  2822 I RegiMgr-NetEvtCtr<1>: out of service.
+10-13 01:20:35.854  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:35.854  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:35.854  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:35.854  2631  2822 I SimManager: mSimState:LOADED, mIsimLoaded:false, hasIsim():false
+10-13 01:20:35.854  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:35.854  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:35.854  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:35.854  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_enable_in_roaming
+10-13 01:20:35.854  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged: tryRegister by phoneID
+10-13 01:20:35.854  2631  2822 I RegiMgr<1>: tryRegister:
+10-13 01:20:35.855  2631  2822 I RegiMgr<1>: RegisterTask(s): Global GC RCS (IDLE)
+10-13 01:20:35.855  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:35.855  2631  2822 I RegisterTask: isSuspended: mSuspended(false) mSuspendByIrat(false)
+10-13 01:20:35.855  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister id: 904
+10-13 01:20:35.855  2631  2822 I PdnController: isConnected: No callback exists
+10-13 01:20:35.855  2631  2822 I RegiMgr : isPdnConnected: false, PdnType: 0
+10-13 01:20:35.856  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.856  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.857  2631  2822 I PdnController: getDefaultNetworkBearer:  WIFI
+10-13 01:20:35.858  2631  2822 I PdnController: isWifiConnected: [type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: , failover: false, available: true, roaming: false]
+10-13 01:20:35.858  2631  2822 I RegiMgr-Utils<1>: findBestNetwork: WIFI needWifiNetwork = true
+10-13 01:20:35.859  2631  2822 I RegiGvnBase<1>: isReadyToDualRegister : true
+10-13 01:20:35.859  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkInitialRegistrationIsReady: APM ON [false], Roamimg [false]
+10-13 01:20:35.859  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:35.859  2631  2822 I ImsProfile: isRttSupportByCallApp : false ttyType : 1
+10-13 01:20:35.859  2631  2822 I RegiMgr-Utils<1>: getPriorityRegiedTask : isPriority  High? true
+10-13 01:20:35.859  2631  2822 I RegiGvnBase: checkRegiStatus: getState()=IDLE mIsUpdateRegistering=false
+10-13 01:20:35.859  2631  2822 I RegiMgr<1>: getTelephonyCallStatus:
+10-13 01:20:35.861  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:35.864  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/version#simslot1
+10-13 01:20:35.865  2631  2822 I RegiGvnRcs: isReadyToRegister: User don't try RCS service yet
+10-13 01:20:35.865  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister: isReadyToRegister = false
+10-13 01:20:35.865  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_DO_PENDING_UPDATE_REGISTRATION
+10-13 01:20:35.873  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.874  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:35.986 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:35.989 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0938, 0.0400, t(26820)], [0.1016, 0.0459, t(26824)], [0.0820, 0.0703, t(26828)], [0.1182, 0.0459, t(26832)], [0.1455, 0.0293, t(26836)], RMS: 41
+10-13 01:20:36.185 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:36.187 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0830, 0.0312, t(26840)], [0.0771, 0.0576, t(26844)], [0.0469, 0.0508, t(26848)], [0.0801, 0.0566, t(26852)], [0.0869, 0.0605, t(26856)], RMS: 40
+10-13 01:20:36.385 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:36.387 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0596, 0.1182, t(26860)], [0.1035, 0.0742, t(26864)], [0.2197, 0.0273, t(26868)], [0.0566, 0.1377, t(26872)], [0.1240, 0.0254, t(26876)], RMS: 43
+10-13 01:20:36.586 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:36.590 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0889, 0.0508, t(26880)], [0.0684, 0.0430, t(26884)], [0.1104, 0.0332, t(26888)], [0.0820, 0.0889, t(26892)], [0.0488, 0.0850, t(26896)], RMS: 40
+10-13 01:20:36.789 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:36.794 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0879, 0.0752, t(26900)], [0.0625, 0.1250, t(26904)], [0.0996, 0.0645, t(26908)], [0.1016, 0.0859, t(26912)], [0.1387, 0.0293, t(26916)], RMS: 41
+10-13 01:20:36.809  1152  1152 D FreecessController: UFZ : com.google.android.apps.photos(23829)
+10-13 01:20:36.819  1152  1152 D FreecessController: UFZ : com.google.android.apps.photos(24804)
+10-13 01:20:36.823  1152  3216 W LocationManagerService: onFreezeStateChanged, uid[10270]=false
+10-13 01:20:36.824  1152  1152 D FreecessController: UFZ : com.google.android.apps.photos(0), reason: bindService
+10-13 01:20:36.826  3238  5631 W BtGatt.GattService: unfreezeScan() - No AppScanStats found with uid: 10270
+10-13 01:20:36.826   839   908 E TrafficController: FREECESS
+10-13 01:20:36.828  1152  1152 D FreecessController: com.google.android.apps.photos(state: Initial -> Freezeable, Reason: bindService)
+10-13 01:20:36.829  1152  3216 I PowerManagerService: [PWL] SetWakeLockEnableDisable uid = 10270 , disable= false
+10-13 01:20:36.829  1152  3216 I PowerManagerService: [PWL] can not change uid =  10270
+10-13 01:20:36.829  1152  1152 D BaseRestrictionMgr: Package: com.google.android.apps.photos, userid: 0, hostingType: bindService is allowed by freecess, caller is: android
+10-13 01:20:36.836   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:36.840  1152  1152 W ProcessStats: Tracking association SourceState{12ed8b6 com.google.android.googlequicksearchbox:interactor/10237 BTopFgs #36346} whose proc state 2 is better than process ProcessState{9bde9b7 com.google.android.gms/10229 pkg=com.google.android.gms} proc state 3 (99 skipped)
+10-13 01:20:36.858  1152  2844 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:20:36.858  1152  2875 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:20:36.872 23829 23880 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4736)] [android.net.ConnectivityManager.registerDefaultNetworkCallbackForUid(ConnectivityManager.java:5461)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5428)] [android.net.ConnectivityManager.registerDefaultNetworkCallback(ConnectivityManager.java:5402)] [b$$ExternalSyntheticApiModelOutline0.m(D8$$SyntheticClass:68)] [bss.b(PG:248)] [bss.a(PG:52)] [crme.g(PG:3)] [crmb.b(PG:57)] [bezd.b(PG:67)] [cqzq.w(PG:11)] [crib.run(PG:124)] [jpw.run(PG:26)] [crsp.run(PG:3)] [crsj.e(PG:1)] [crsi.run(PG:76)]
+10-13 01:20:36.874  1152  2875 D ConnectivityService: requestNetwork for uid/pid:10270/23829 activeRequest: null callbackRequest: 1104 [NetworkRequest [ REQUEST id=1105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|BLK
+10-13 01:20:36.875  1152  2158 D ConnectivityService:    accepting network in place of null for NetworkRequest [ REQUEST id=1105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:20:36.879  1152  2158 D ConnectivityService: Rematched networks [computed 0ms] [applied 2ms] [issued 2]
+10-13 01:20:36.879  1152  2148 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=1105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:20:36.879  1152  2158 D ConnectivityService: NetworkReassignment :
+10-13 01:20:36.879  1152  2158 D ConnectivityService:   1105 : null → 100
+10-13 01:20:36.879  1152  2148 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:20:36.879  1152  2148 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=1105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10270 RequestorUid: 10270 RequestorPkg: com.google.android.apps.photos UnderlyingNetworks: Null] ]
+10-13 01:20:36.984 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:36.985 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1006, 0.0703, t(26920)], [0.0996, 0.0488, t(26924)], [0.1074, 0.0605, t(26928)], [0.1406, 0.0293, t(26932)], [0.0781, 0.0928, t(26936)], RMS: 40
+10-13 01:20:37.026  1152  1152 V SamsungAlarmManager: setLocked to kernel - W:26288801 / NW:25866826, now=25843852
+10-13 01:20:37.060  2314  2451 D MobileStatusTracker(0/7): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=Invalid,mTdscdma=Invalid,mLte=CellSignalStrengthLte: rssi=-59 rsrp=-90 rsrq=-11 rssnr=15 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=4 parametersUseForLevel=0,mNr=Invalid,SignalBarInfo{ lteLevel=4 },rat=14,primary=CellSignalStrengthLte} level=4
+10-13 01:20:37.061  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:37.061  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:37.061  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:37.062  1152  3185 W NetlinkSocket: maximum read
+10-13 01:20:37.068  2314  2451 D NetworkController: SignalStrength from intent slotId=0
+10-13 01:20:37.184 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:37.186 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1377, 0.0469, t(26940)], [0.1299, 0.0479, t(26944)], [0.1016, 0.1162, t(26948)], [0.0977, 0.0586, t(26952)], [0.1699, 0.0186, t(26956)], RMS: 40
+10-13 01:20:37.385 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:37.387 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1475, 0.0449, t(26960)], [0.0947, 0.0518, t(26964)], [0.1074, 0.0420, t(26968)], [0.1250, 0.0371, t(26972)], [0.0742, 0.0693, t(26976)], RMS: 41
+10-13 01:20:37.414   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:37.417   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:37.580 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:37.582 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1230, 0.0303, t(26980)], [0.1201, 0.0420, t(26984)], [0.0791, 0.0762, t(26988)], [0.0850, 0.0674, t(26992)], [0.0928, 0.0762, t(26996)], RMS: 38
+10-13 01:20:37.595  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-99 ber=2147483647 rscp=-100 ecno=-11 level=1,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=2 },rat=3,primary=CellSignalStrengthWcdma} level=2
+10-13 01:20:37.597  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:37.598  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:37.598  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:37.601  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:37.603  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:20:37.659  1152  2875 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:20:37.659  1152  2875 W UriGrantsManagerService: No permission grants found for com.google.android.apps.photos
+10-13 01:20:37.664   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:37.672   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:37.784 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:37.786 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1426, 0.0342, t(27000)], [0.1250, 0.0381, t(27004)], [0.1289, 0.0410, t(27008)], [0.1387, 0.0215, t(27012)], [0.2061, 0.0117, t(27016)], RMS: 39
+10-13 01:20:37.983 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:37.985 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0928, 0.0391, t(27020)], [0.1143, 0.0312, t(27024)], [0.1299, 0.0762, t(27028)], [0.1045, 0.0400, t(27032)], [0.1436, 0.0303, t(27036)], RMS: 42
+10-13 01:20:38.189 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:38.191 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0723, 0.0840, t(27040)], [0.0938, 0.0645, t(27044)], [0.0986, 0.0449, t(27048)], [0.1025, 0.0420, t(27052)], [0.0801, 0.0752, t(27056)], RMS: 43
+10-13 01:20:38.379 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:38.380 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0850, 0.0645, t(27060)], [0.0986, 0.1113, t(27064)], [0.1113, 0.0605, t(27068)], [0.0762, 0.0537, t(27072)], [0.1641, 0.0234, t(27076)], RMS: 46
+10-13 01:20:38.390  1152  2059 D PowerManagerService: [api] setDeviceIdleTempWhitelist: appids:  (uid: 1000 pid: 1152)
+10-13 01:20:38.583 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:38.585 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0693, 0.0732, t(27080)], [0.0859, 0.0381, t(27084)], [0.1045, 0.0449, t(27088)], [0.0869, 0.0459, t(27092)], [0.0508, 0.1006, t(27096)], RMS: 46
+10-13 01:20:38.663   614   614 D io_stats: !@   8,0 r 3883821 38709544 w 451152 13300644 d 0 0 f 0 0 iot 805270 0 th 0 0 0 pt 0 inp 0 0 24413.170
+10-13 01:20:38.785 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:38.786 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0850, 0.0430, t(27100)], [0.0771, 0.0488, t(27104)], [0.0459, 0.0986, t(27108)], [0.0596, 0.0713, t(27112)], [0.0723, 0.0908, t(27116)], RMS: 41
+10-13 01:20:38.990 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:38.991 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0928, 0.0752, t(27120)], [0.1396, 0.0352, t(27124)], [0.1123, 0.0684, t(27128)], [0.0801, 0.0742, t(27132)], [0.1777, 0.0225, t(27136)], RMS: 42
+10-13 01:20:39.179 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:39.181 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0977, 0.0918, t(27140)], [0.0830, 0.0381, t(27144)], [0.1348, 0.0293, t(27148)], [0.1123, 0.0498, t(27152)], [0.0820, 0.0742, t(27156)], RMS: 41
+10-13 01:20:39.388 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:39.394 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1357, 0.0488, t(27160)], [0.1289, 0.0488, t(27164)], [0.0898, 0.0586, t(27168)], [0.1123, 0.0586, t(27172)], [0.1201, 0.0635, t(27176)], RMS: 46
+10-13 01:20:39.590 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:39.592 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1045, 0.0518, t(27180)], [0.0762, 0.0801, t(27184)], [0.0840, 0.0684, t(27188)], [0.1406, 0.0303, t(27192)], [0.0732, 0.0645, t(27196)], RMS: 41
+10-13 01:20:39.633  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-99 ber=2147483647 rscp=-99 ecno=-10 level=1,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=2 },rat=3,primary=CellSignalStrengthWcdma} level=2
+10-13 01:20:39.638  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:39.638  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:39.639  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:39.641  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:39.643  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:20:39.643  2314  2451 D MobileStatusTracker(0/7): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=Invalid,mTdscdma=Invalid,mLte=CellSignalStrengthLte: rssi=-63 rsrp=-90 rsrq=-11 rssnr=15 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=4 parametersUseForLevel=0,mNr=Invalid,SignalBarInfo{ lteLevel=4 },rat=14,primary=CellSignalStrengthLte} level=4
+10-13 01:20:39.643  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:39.644  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:39.644  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:39.645  1152  3185 W NetlinkSocket: maximum read
+10-13 01:20:39.648  2314  2451 D NetworkController: SignalStrength from intent slotId=0
+10-13 01:20:39.682  2288  2288 I wpa_supplicant: Heartbeat 2533
+10-13 01:20:39.791 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:39.804 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0762, 0.0693, t(27200)], [0.0889, 0.0801, t(27204)], [0.1025, 0.0557, t(27208)], [0.0898, 0.0713, t(27212)], [0.0811, 0.0527, t(27216)], RMS: 40
+10-13 01:20:39.869  1152  2844 D OomAdjuster: SLOWDOWN::OOM Request PID = 23829, slowdown = true
+10-13 01:20:39.870  1152  2844 D SSRM:ProcessRestrictionManager: slowdown: start
+10-13 01:20:39.963 26039 26072 I AsyncCachedReader: Ph_[increasing RB:, f8.b[pos=6800640 lim=8720640 cap=1920000] inner::java.nio.HeapByteBuffer[pos=1040640 lim=1920000 cap=1920000]] [VF-ATP-1] 
+10-13 01:20:39.981 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:39.986 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0508, 0.1436, t(27220)], [0.1074, 0.0439, t(27224)], [0.1348, 0.0439, t(27228)], [0.1016, 0.0625, t(27232)], [0.0850, 0.0732, t(27236)], RMS: 41
+10-13 01:20:40.069  4763  5599 I SDHMS:C : SIOP:: AP:392(484,100) BAT:267(267,0) USB:0(0,0) CHG:483(483,0) PA:453(453,0) WIFI:467(467,0) BLK:0(0,0) SUBBAT:0(0,0) LRP:400(400,0) LRF:386(386) LRB:400(400) 
+10-13 01:20:40.184 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:40.187 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0898, 0.0557, t(27240)], [0.0625, 0.1211, t(27244)], [0.1143, 0.0293, t(27248)], [0.1201, 0.0303, t(27252)], [0.0713, 0.0508, t(27256)], RMS: 46
+10-13 01:20:40.387 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:40.394 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0811, 0.0371, t(27260)], [0.1055, 0.0352, t(27264)], [0.1328, 0.0381, t(27268)], [0.1523, 0.0430, t(27272)], [0.1104, 0.0449, t(27276)], RMS: 48
+10-13 01:20:40.629 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:40.632 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0801, 0.0967, t(27280)], [0.0811, 0.0762, t(27284)], [0.0947, 0.0508, t(27288)], [0.0762, 0.0879, t(27292)], [0.0762, 0.0996, t(27296)], RMS: 45
+10-13 01:20:40.665   614   614 D io_stats: !@   8,0 r 3883824 38709576 w 451176 13300852 d 0 0 f 0 0 iot 805280 0 th 0 0 0 pt 0 inp 0 0 24415.172
+10-13 01:20:40.726  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-97 ber=2147483647 rscp=-97 ecno=-9 level=2,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=3 },rat=3,primary=CellSignalStrengthWcdma} level=3
+10-13 01:20:40.729  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:40.730  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:40.730  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:40.734  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:40.736  1152  3185 W NetlinkSocket: maximum read
+10-13 01:20:40.740  2314  2451 D NetworkController.MobileSignalController(1/8): notifyListener: enabled=true, connected=true, dataConnected=false, networkType=UNKNOWN (Unknown), emergencyOnly=true, roaming=false, isDefault=false, fiveGAvailable=false, mmWave=false, showDisabledDataIcon=false, voWifiConnected=false, dataActivity=, simState=LOADED, cardOperator=OTHERS, simCardActivated=1
+10-13 01:20:40.741  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:20:40.741  2314  2451 D MobileStatusTracker(0/7): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=Invalid,mTdscdma=Invalid,mLte=CellSignalStrengthLte: rssi=-59 rsrp=-90 rsrq=-11 rssnr=15 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=4 parametersUseForLevel=0,mNr=Invalid,SignalBarInfo{ lteLevel=4 },rat=14,primary=CellSignalStrengthLte} level=4
+10-13 01:20:40.741  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:40.741  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:40.741  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:40.746  2314  2451 D NetworkController: SignalStrength from intent slotId=0
+10-13 01:20:40.826 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:40.828 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0537, 0.1494, t(27300)], [0.0312, 0.2373, t(27304)], [0.1270, 0.0439, t(27308)], [0.1016, 0.0498, t(27312)], [0.0869, 0.0635, t(27316)], RMS: 46
+10-13 01:20:41.027 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:41.029 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1465, 0.0205, t(27320)], [0.0996, 0.0586, t(27324)], [0.1133, 0.0234, t(27328)], [0.1562, 0.0381, t(27332)], [0.1064, 0.0361, t(27336)], RMS: 48
+10-13 01:20:41.226 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:41.227 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0693, 0.0537, t(27340)], [0.0879, 0.0430, t(27344)], [0.0635, 0.0918, t(27348)], [0.0645, 0.1523, t(27352)], [0.1230, 0.0518, t(27356)], RMS: 45
+10-13 01:20:41.426 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:41.427 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1016, 0.0762, t(27360)], [0.0654, 0.1133, t(27364)], [0.1289, 0.0742, t(27368)], [0.0889, 0.0801, t(27372)], [0.0781, 0.0723, t(27376)], RMS: 47
+10-13 01:20:41.621 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:41.623 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1143, 0.0479, t(27380)], [0.0908, 0.0518, t(27384)], [0.0781, 0.0693, t(27388)], [0.1201, 0.0410, t(27392)], [0.1064, 0.0596, t(27396)], RMS: 46
+10-13 01:20:41.833 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:41.835 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0811, 0.0664, t(27400)], [0.1016, 0.0410, t(27404)], [0.1484, 0.0488, t(27408)], [0.0830, 0.0879, t(27412)], [0.0977, 0.0352, t(27416)], RMS: 49
+10-13 01:20:41.878  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-95 ber=2147483647 rscp=-95 ecno=-8 level=2,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=3 },rat=3,primary=CellSignalStrengthWcdma} level=3
+10-13 01:20:41.881  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:41.881  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:41.881  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:41.888  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:41.890  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:20:42.036 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:42.038 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1328, 0.0293, t(27420)], [0.1367, 0.0439, t(27424)], [0.1123, 0.0508, t(27428)], [0.0742, 0.0674, t(27432)], [0.0674, 0.1045, t(27436)], RMS: 47
+10-13 01:20:42.221 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:42.224 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0674, 0.0850, t(27440)], [0.1260, 0.0566, t(27444)], [0.0898, 0.0840, t(27448)], [0.0596, 0.1045, t(27452)], [0.1230, 0.0488, t(27456)], RMS: 46
+10-13 01:20:42.434 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:42.436 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0566, 0.1367, t(27460)], [0.1201, 0.0273, t(27464)], [0.0557, 0.1328, t(27468)], [0.1201, 0.0312, t(27472)], [0.0918, 0.0518, t(27476)], RMS: 52
+10-13 01:20:42.441  2314  2451 D MobileStatusTracker(1/8): onSignalStrengthsChanged signalStrength=SignalStrength:{mCdma=Invalid,mGsm=Invalid,mWcdma=CellSignalStrengthWcdma: ss=-93 ber=2147483647 rscp=-93 ecno=-7 level=2,mTdscdma=Invalid,mLte=Invalid,mNr=Invalid,SignalBarInfo{ wcdmaLevel=3 },rat=3,primary=CellSignalStrengthWcdma} level=3
+10-13 01:20:42.444  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:42.444  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:42.444  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:42.451  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:42.453  2314  2451 D NetworkController: SignalStrength from intent slotId=1
+10-13 01:20:42.623 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:42.624 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0566, 0.0820, t(27480)], [0.0898, 0.0342, t(27484)], [0.0488, 0.0928, t(27488)], [0.0664, 0.0938, t(27492)], [0.0811, 0.0752, t(27496)], RMS: 42
+10-13 01:20:42.667   614   614 D io_stats: !@   8,0 r 3883828 38709596 w 451211 13301224 d 0 0 f 0 0 iot 805300 0 th 0 0 0 pt 0 inp 0 0 24417.175
+10-13 01:20:42.823 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:42.824 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0752, 0.0713, t(27500)], [0.0967, 0.0430, t(27504)], [0.1182, 0.0527, t(27508)], [0.0850, 0.0586, t(27512)], [0.0889, 0.0479, t(27516)], RMS: 42
+10-13 01:20:42.868  1152  2802 D BatteryService: Sending ACTION_BATTERY_CHANGED. scale:100, info:{.chargerAcOnline = false, .chargerUsbOnline = true, .chargerWirelessOnline = false, .maxChargingCurrent = 0, .maxChargingVoltage = 0, .batteryStatus = CHARGING, .batteryHealth = GOOD, .batteryPresent = true, .batteryLevel = 30, .batteryVoltage = 3884, .batteryTemperature = 267, .batteryCurrent = 1539, .batteryCycleCount = 0, .batteryFullCharge = 4400000, .batteryChargeCounter = 912000, .batteryTechnology = Li-ion}
+10-13 01:20:42.868  1152  2802 D BatteryService: online:19, current avg:1489, charge type:1, POGO powered:false, power sharing:false, high voltage charger:false, charger_type:0, capacity:280000, misc_event:0x0, current_event:0x8040, current_now:1539
+10-13 01:20:42.872  1152  2108 D MotionRecognitionService:   onReceive : ACTION_BATTERY_CHANGED, Plugged: 2
+10-13 01:20:42.872  1152  2108 I MotionRecognitionService: [TA] In/out: true, curr state: 1
+10-13 01:20:42.872  1152  1152 E PocketModeEvent: PocketModeSetting is off 
+10-13 01:20:42.872  1152  1152 D PhoneWindowManagerExt: ACTION_BATTERY_CHANGED - Level=30, status=2
+10-13 01:20:42.872  1152  1152 D SemWifiApBroadcastReceiver: Received : android.intent.action.BATTERY_CHANGED
+10-13 01:20:42.873  2300  2300 D SemBigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+10-13 01:20:42.873  2300  2300 D SemBigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+10-13 01:20:42.873  1152  1152 D AdaptiveBrightnessLongtermModelBuilder: Received android.intent.action.BATTERY_CHANGED
+10-13 01:20:42.874  2314  2314 I AODBatteryManager: updateBatteryData: ACTION_BATTERY_CHANGED
+10-13 01:20:42.874  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:20:42.874  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:20:42.874  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:20:42.875  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:20:42.875  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:20:42.875  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:20:42.875  1152  1969 D BaseRestrictionMgr: Package: com.facebook.katana, userid: 0, hostingType: broadcast is Restricted by policy: 4 caller is: null
+10-13 01:20:42.875  1152  1969 W BroadcastQueue: intent:Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) } is skipped in RestrictedPackage to ProcessRecord{92eee79 14586:com.facebook.katana/u0a147}
+10-13 01:20:42.876  2314  2314 I AODBatteryManager: saveBatteryData : AOD BatteryData [mBatteryLevel=30, mBatteryStatus=CHARGING, mBatteryPlugType=USB, mBatteryPlugged=true, mRemainingChargeTime=5600000, mBatteryChargingType=1, mBatteryChargerType=NORMAL, mBatteryOnline=NOT_DEFINED, mBatterySwellingMode=NONE, mBatteryProtectMode=false]
+10-13 01:20:42.877  2314  2314 I ChargingInfoManager: updateChargingInfo: newState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsFullyCharged=false, mIsBatteryProtectMode=false], oldState = AOD ChargingInfo [mState=BATTERY_AND_REMAIN_TIME, mIsCharging=true, mIsFullyCharged=false, mIsBatteryProtectMode=false]
+10-13 01:20:42.877  2314  2314 I PowerUI : mBootCompleted = true |  mFullyConnected = true
+10-13 01:20:42.877  2314  2314 I PowerUI : BATTERY_HEALTH_CHECK extraHealth=2 mBatteryMiscEvent=0
+10-13 01:20:42.877  2314  2314 D PowerUI : priorPlugType = 2 mPlugType = 2 priorBatteryStatus = 2 mBatteryStatus = 2
+10-13 01:20:42.877  2314  2314 I PowerUI : oldMisalign : false, curMisalign : false
+10-13 01:20:42.879  2314  2314 D PowerUI.Notification: showChargingNotice oldChargingType : 1 currentChargingType : 1 oldChargingTime : 5607000 mChargingTime : 5600000
+10-13 01:20:42.879  2314  2314 D PowerUI.Notification: showChargingNotification()
+10-13 01:20:42.879  2314 22728 D PowerUI.Notification: 1. restoreScreenTimeOut - saved_value : :
+10-13 01:20:42.879  2314 22728 E PowerUI.Notification: no saved value, so we do nothing !!
+10-13 01:20:42.883  1152  4899 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: packageName = com.android.systemui,userId = 0
+10-13 01:20:42.883  1152  4899 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: packageName = com.android.systemui,userId = -1
+10-13 01:20:42.883  1152  4899 D ApplicationPolicy: isStatusBarNotificationAllowedAsUser: converting userId from USER_ALLto 0
+10-13 01:20:42.884  2314  2314 D PowerUI : Battery swelling mode - priorBatterySwellingMode = 0 mBatterySwellingMode = 0 mBatteryStatus = 2
+10-13 01:20:42.884  2314  2314 I PowerUI : mBatteryMiscEvent = 0
+10-13 01:20:42.884  2314  2314 D KeyguardUpdateMonitor: received broadcast android.intent.action.BATTERY_CHANGED
+10-13 01:20:42.885  2314  2314 D KeyguardUpdateMonitor: handleBatteryUpdate
+10-13 01:20:42.888  2314  2314 D KeyguardSecIndicationController: addIndicationTimeout() returned - unlocking
+10-13 01:20:42.888  2314  2314 D KeyguardSecIndicationController: addIndication() returned - unlocking
+10-13 01:20:42.888  2314  2314 D KeyguardSecIndicationController: addBatteryIndication() status = BatteryStatus{status=2,level=30,plugged=2,health=2,maxChargingWattage=-1,remaining=5600000ultraFastCharger=0}
+10-13 01:20:42.894  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:42.896  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:42.896  2314  2314 V SecQSFragmentAnimatorBase: setQsExpansionPosition 0.0
+10-13 01:20:42.896  2314  2314 V QsExpandAnimator: setQsExpansionPosition 0.0 0
+10-13 01:20:42.897  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:42.902  2314  2314 D IndicatorGardenInputProperty: updateRotation() prv:-1 >> new:0
+10-13 01:20:42.902  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 72
+10-13 01:20:42.902  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 36
+10-13 01:20:42.902  2314  2314 D DeviceState: getDeviceResolutionPixelSize - currentDensity = 420 deviceDensity = 420 initialDisplaySizeFactor = 1080 currentDisplaySizeFactor = 1080 initialDisplayDensity = 420 proportionalDensity = 420 proportionalPixel = 17
+10-13 01:20:43.026 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:43.028 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0596, 0.1309, t(27520)], [0.1104, 0.0498, t(27524)], [0.1055, 0.0459, t(27528)], [0.0947, 0.0508, t(27532)], [0.1104, 0.0723, t(27536)], RMS: 45
+10-13 01:20:43.055  1256  1482 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.061  1256  1482 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.062  1256  1482 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.090  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.099  1256  1482 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.105  2776  2776 I Launcher.NotificationListener: onNotificationPosted : com.android.systemui number : 0
+10-13 01:20:43.113  9824  9824 I Edge.badge: updateBadge item=key=-1|com.android.systemui|2131428820|charging_state|10052, count=1
+10-13 01:20:43.113  1152  1152 D SmartAlertController: SmartAlert - Found Missed Event
+10-13 01:20:43.115  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.121  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.126  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.129  2314  2314 D InterruptionStateProvider: No bubble up: not allowed to bubble: -1|com.android.systemui|2131428820|charging_state|10052
+10-13 01:20:43.130  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.133  2314  2314 D InterruptionStateProvider: No heads up: unimportant notification: -1|com.android.systemui|2131428820|charging_state|10052
+10-13 01:20:43.135  1256  1503 D SemNativeCarrierFeature_vendor: getInstance
+10-13 01:20:43.143  2314  2451 D PeopleSpaceWidgetMgr: Sbn doesn't contain valid PeopleTileKey: null/-1/com.android.systemui
+10-13 01:20:43.156  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.157  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.166  1152  2875 I LocationAccessPolicy: checkLocationPermission - callingUid: 10052, callingPid: 2314, result: DENIED_SOFT
+10-13 01:20:43.166  1152  2875 I LocationAccessPolicy: checkLocationPermission - callingUid: 10052, callingPid: 2314, result: DENIED_SOFT
+10-13 01:20:43.167  2314  2451 D MobileStatusTracker(1/8): onServiceStateChanged voiceState=1 dataState=1
+10-13 01:20:43.167  2631  3001 I VolteServiceModule: onServiceStateChanged({mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityWcdma:{ mLac=1***4 mCid=1******31 mPsc=491 mUarfcn=2147483647 mMcc=621 mMnc=30 mAlphaLong=MTN Nigeria mAlphaShort=MTN Nigeria mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=CellIdentityWcdma:{ mLac=1***4 mCid=1******31 mPsc=491 mUarfcn=2147483647 mMcc=621 mMnc=30 mAlphaLong=MTN Nigeria mAlphaShort=MTN Nigeria mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false})
+10-13 01:20:43.167  1152  2875 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1275 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:2940 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1621 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:455 android.os.Binder.execTransactInternal:1220 
+10-13 01:20:43.167  2631  3001 I VolteServiceModule: mIsLteEpsOnlyAttached(1):false
+10-13 01:20:43.167  2631  2822 I PdnController<1>: Default Phone Id = :0MobileConnected=false
+10-13 01:20:43.167  1152  2875 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1325 android.content.Context.sendBroadcastMultiplePermissions:2220 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:2943 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1621 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:455 
+10-13 01:20:43.167  2631  2822 I PdnController<1>: onServiceStateChanged: state={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=CellIdentityWcdma:{ mLac=1***4 mCid=1******31 mPsc=491 mUarfcn=2147483647 mMcc=621 mMnc=30 mAlphaLong=MTN Nigeria mAlphaShort=MTN Nigeria mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=CellIdentityWcdma:{ mLac=1***4 mCid=1******31 mPsc=491 mUarfcn=2147483647 mMcc=621 mMnc=30 mAlphaLong=MTN Nigeria mAlphaShort=MTN Nigeria mAdditionalPlmns={} mCsgInfo=null} voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}Changed=
+10-13 01:20:43.167  2314  2451 D CscParser: OMC path : /optics/configs/carriers/ECT/conf/customer.xml
+10-13 01:20:43.167  2631  2822 I PdnController<1>: notifyDataConnectionState
+10-13 01:20:43.167  2631  2822 I PdnController<1>: notifyDataConnectionState: needNotify=false networkType=0 isEpdgConnected=false dataNetType=0=>0 dataRegState=1=>1
+10-13 01:20:43.167  2631  2822 I PdnController<1>: notifySnapshotState: snapshotState=0 old=0
+10-13 01:20:43.167  2631  2822 I GeolocationCon: handleMessage : what = SERVICE_STATE_CHANGED
+10-13 01:20:43.168  1152  1969 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 pkg=com.android.phone (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+10-13 01:20:43.168  2314  2451 I CscParser: getCustomerPath : omc customer file can read
+10-13 01:20:43.168  2314  2451 E CscParser: update(): xml file exist
+10-13 01:20:43.168  1152  1969 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 pkg=com.android.phone (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+10-13 01:20:43.169  1152  2875 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1325 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:2950 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1621 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:455 android.os.Binder.execTransactInternal:1220 
+10-13 01:20:43.171  1152  2875 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1325 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:2955 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1621 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:455 android.os.Binder.execTransactInternal:1220 
+10-13 01:20:43.172  1152  1969 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+10-13 01:20:43.173  1152  1969 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+10-13 01:20:43.173  1152  1152 D SemWifiService: received: android.intent.action.SERVICE_STATE
+10-13 01:20:43.173  1152  1969 W BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+10-13 01:20:43.173  2314  2451 D NetworkController.MobileSignalController(1/8): Display signal bar by emergency only[true][true]
+10-13 01:20:43.174  2314  2314 D MultiSIMController: onReceive() - action = android.intent.action.SERVICE_STATE
+10-13 01:20:43.174  2314  2314 D KeyguardUpdateMonitor: received broadcast android.intent.action.SERVICE_STATE
+10-13 01:20:43.174  2300  2300 D ServiceStateProvider: subId=8
+10-13 01:20:43.175  2314  2314 V KeyguardUpdateMonitor: action android.intent.action.SERVICE_STATE serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false} subId=8 slotId=1
+10-13 01:20:43.175  2314  2314 D MultiSIMController: MESSAGE_UPDATE_SERVICE_STATE
+10-13 01:20:43.175  1152  1969 W BroadcastQueue: Skipping delivery of excluded package Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) excludes package com.android.phone due to sender android (uid 1001)
+10-13 01:20:43.175  1152  1969 W BroadcastQueue: Skipping delivery of excluded package Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{4d15e7 2300:com.android.phone/1001} (pid=2300, uid=1001) excludes package com.android.phone due to sender android (uid 1001)
+10-13 01:20:43.175  1152  1152 D SemWifiService: received: android.intent.action.SERVICE_STATE
+10-13 01:20:43.178  2314  2314 D semImsManager[0]: getImsRegistration
+10-13 01:20:43.179   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:43.181  2314  2451 D NetworkController: ServiceState from intent slotId=1
+10-13 01:20:43.181  2314  2451 D NetworkController: ServiceState from intent slotId=1
+10-13 01:20:43.181 26809 26809 D CellBroadcastReceiver: onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 cmp=com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+10-13 01:20:43.182 26809 26809 D CellBroadcastReceiver: onServiceStateChanged, ss: 1
+10-13 01:20:43.182 26809 26809 D CellBroadcastReceiver: networkOperator: 62120
+10-13 01:20:43.183 26809 26809 D CellBroadcastReceiver: update supported roaming operator as 
+10-13 01:20:43.183  2314  2314 D semImsManager[1]: getImsRegistration
+10-13 01:20:43.183  2631  2822 I PdnController<1>: onCellLocationChanged: ns=not null
+10-13 01:20:43.183  2631  2822 I ImsCallSessionManager: onCellLocationChanged, phoneId: 1
+10-13 01:20:43.183  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_CELL_LOCATION_CHANGED
+10-13 01:20:43.184  2314  2314 D KeyguardUpdateMonitor: handleServiceStateChange(subId=8, slotId=1, serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:43.184  2314  2314 D KeyguardBottomAreaShortcutView: mIndicationArea margin start : 163, end : 163, bottom : 150
+10-13 01:20:43.184  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged:Changed Event: Operator(=>62130)
+10-13 01:20:43.185  2631  2822 I ImModule: updateFeatures: phoneId = 1
+10-13 01:20:43.185  2314  2314 D CarrierTextController: onRefreshCarrierInfo(), mTelephonyCapable: true
+10-13 01:20:43.185  2314  2314 D CarrierTextController: updateCarrierText(): 2
+10-13 01:20:43.185  2314  2314 D CarrierTextController: Handling (subId=7): 5 Airtel NG
+10-13 01:20:43.185  2314  2314 D CarrierTextController: carrierTextForSimState = Airtel NG
+10-13 01:20:43.185  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.185  2314  2314 D CarrierTextController: SIM ready and in service: subId=7, ss={mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=3256, duplexMode()=1, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=IN_SERVICE, MobileDataRoamingType=home, MobileDataRat=LTE_CA, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 3 } nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:43.185  2314  2314 D CarrierTextController: Handling (subId=8): 5 Emergency calls only
+10-13 01:20:43.185  2314  2314 D CarrierTextController: carrierTextForSimState = Emergency calls only
+10-13 01:20:43.185  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.185  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.185  2314  2314 D CarrierTextController: setText : Airtel NG | Emergency calls only
+10-13 01:20:43.185  2314  2314 D FaceWidgetPagesController: onRefreshCarrierInfo()
+10-13 01:20:43.186  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.186  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.186  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState id=7
+10-13 01:20:43.186  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+10-13 01:20:43.186  2314  2314 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+10-13 01:20:43.186  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.186  2300  2300 V PhoneGlobals: handleServiceStateChanged
+10-13 01:20:43.186  2314  2314 D MultiSIMController: onReceive() - action = android.intent.action.SERVICE_STATE
+10-13 01:20:43.186  2314  2314 D KeyguardUpdateMonitor: received broadcast android.intent.action.SERVICE_STATE
+10-13 01:20:43.186  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:43.186  2300  2300 D NotificationMgr: updateNetworkSelection, Use Samsung codes instead of AOSP codes
+10-13 01:20:43.186  2314  2314 V KeyguardUpdateMonitor: action android.intent.action.SERVICE_STATE serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false} subId=8 slotId=1
+10-13 01:20:43.186  2300  2300 V PhoneGlobals: subId=8,mDefaultDataSubId=7,ss roaming=false
+10-13 01:20:43.187   972 14096 V APM_AudioPolicyManager: setAppState(portId:117, state:2)
+10-13 01:20:43.192  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/geolocPushAuth#simslot1
+10-13 01:20:43.193  2631  2822 I FeatureUpdater: isEnableGls: false
+10-13 01:20:43.193  2631  2822 I ImsServiceSwitchEur[1]:  isRcsEnabled: true mDefaultSms true mUpsmEnabled false mEmergencyEnabled false
+10-13 01:20:43.193  2631  2822 I CapexInfo: getFeatureTag: features = 0 []
+10-13 01:20:43.193  2631  2822 I FeatureUpdater: updateFeatures: 
+10-13 01:20:43.193  2631  2822 I ImModule: FEATURE_CHATBOT_EXTENDED_MSG enabled ver:1.3
+10-13 01:20:43.193  2631  2822 I RcsUtils: isDualRcsReg: mIsDualRcsReg false
+10-13 01:20:43.193  2631  2822 I CapabilityUtil<1>: onNetworkChanged: mAvailablePhoneId = ! phoneId
+10-13 01:20:43.193  2631  2822 I SmsServiceModule: regInfo: null
+10-13 01:20:43.193  2631  2822 I SmsServiceModule: disallow sms Service
+10-13 01:20:43.194  2631  2822 I SmsServiceModule: Sms Service queryCapabilityStatus[1]: removeCapabilities CAPABILITY_TYPE_SMS
+10-13 01:20:43.194  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:43.194  2631  2822 E CmcServiceHelper: disallow Call Service
+10-13 01:20:43.194  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_domain_setting
+10-13 01:20:43.194  2631  2822 I UtServiceModule<1>: isUtEnabled with policy : CS_ALWAYS enabled = false
+10-13 01:20:43.194  2631  2822 I CapabilityDiscModule<1>: queryCapabilityStatus
+10-13 01:20:43.194  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:43.194  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:43.194  2631  2822 E CapabilityUtil<1>: checkModuleReady: config is null
+10-13 01:20:43.194  2631  2822 I CapabilityDiscModule<1>: isUceServiceAvailable: not ready
+10-13 01:20:43.194  2631  2822 I RegiMgr-NetEvtCtr<1>: out of service.
+10-13 01:20:43.194  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:43.194  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:43.194  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:43.194  2631  2822 I SimManager: mSimState:LOADED, mIsimLoaded:false, hasIsim():false
+10-13 01:20:43.194  2631  2822 I SimManager: getRilSimOperator: ETC
+10-13 01:20:43.194  2631  2822 I SimManager<1>: hasIsim: [false]
+10-13 01:20:43.194  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : use_usim_on_invalid_isim
+10-13 01:20:43.194  2631  2822 E GlobalSettingsRepoBase: globalgcsettings No matched key : ss_enable_in_roaming
+10-13 01:20:43.195  2631  2822 I RegiMgr-NetEvtCtr<1>: onNetworkEventChanged: tryRegister by phoneID
+10-13 01:20:43.195  2631  2822 I RegiMgr<1>: tryRegister:
+10-13 01:20:43.195  2631  2822 I RegiMgr<1>: RegisterTask(s): Global GC RCS (IDLE)
+10-13 01:20:43.195  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:43.195  2631  2822 I RegisterTask: isSuspended: mSuspended(false) mSuspendByIrat(false)
+10-13 01:20:43.195  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister id: 904
+10-13 01:20:43.195  2631  2822 I PdnController: isConnected: No callback exists
+10-13 01:20:43.195  2631  2822 I RegiMgr : isPdnConnected: false, PdnType: 0
+10-13 01:20:43.197  2631  2822 I PdnController: getDefaultNetworkBearer:  WIFI
+10-13 01:20:43.199  2631  2822 I PdnController: isWifiConnected: [type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: , failover: false, available: true, roaming: false]
+10-13 01:20:43.199  2631  2822 I RegiMgr-Utils<1>: findBestNetwork: WIFI needWifiNetwork = true
+10-13 01:20:43.200  2631  2822 I RegiGvnBase<1>: isReadyToDualRegister : true
+10-13 01:20:43.200  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkInitialRegistrationIsReady: APM ON [false], Roamimg [false]
+10-13 01:20:43.200  2631  2822 I RcsPolicyMgr<1>: pendingRcsRegister: mDefaultPhoneId = 0
+10-13 01:20:43.200  2631  2822 I ImsProfile: isRttSupportByCallApp : false ttyType : 1
+10-13 01:20:43.201  2631  2822 I RegiMgr-Utils<1>: getPriorityRegiedTask : isPriority  High? true
+10-13 01:20:43.201  2631  2822 I RegiGvnBase: checkRegiStatus: getState()=IDLE mIsUpdateRegistering=false
+10-13 01:20:43.201  2631  2822 I RegiMgr<1>: getTelephonyCallStatus:
+10-13 01:20:43.204  2631  2822 I ConfigProvider: query uri:xxxxx
+10-13 01:20:43.209  2631  2822 I ConfigProvider: queryStorage path content://com.samsung.rcs.autoconfigurationprovider/parameter/version#simslot1
+10-13 01:20:43.210  2631  2822 I RegiGvnRcs: isReadyToRegister: User don't try RCS service yet
+10-13 01:20:43.210  2631  2822 I RegiMgr<1>: [Global GC RCS|IDLE] checkForTryRegister: isReadyToRegister = false
+10-13 01:20:43.211  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.211  2631  2822 I RegiMgr-Handler: handleMessage: EVENT_DO_PENDING_UPDATE_REGISTRATION
+10-13 01:20:43.211  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.214  2314  2314 D MultiSIMController: MESSAGE_UPDATE_SERVICE_STATE
+10-13 01:20:43.217  2314  2314 D semImsManager[0]: getImsRegistration
+10-13 01:20:43.221  2314  2314 D semImsManager[1]: getImsRegistration
+10-13 01:20:43.223  2314  2314 D KeyguardUpdateMonitor: handleServiceStateChange(subId=8, slotId=1, serviceState={mVoiceRegState=1(OUT_OF_SERVICE), mDataRegState=1(OUT_OF_SERVICE), mChannelNumber=2147483647, duplexMode()=0, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=0(Unknown), getRilDataRadioTechnology=0(Unknown), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=OUT_OF_SERVICE, MobileDataRoamingType=home, MobileDataRat=Unknown, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=true, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=DENIED roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=true availableServices=[EMERGENCY] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=NOT_REG_OR_SEARCHING roamingType=NOT_ROAMING accessNetworkTechnology=UNKNOWN rejectCause=0 emergencyEnabled=false availableServices=[] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 1 mEmcBearerSupport = 1 } nrState=**** rRplmn=62130 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:43.223  2314  2314 D KeyguardBottomAreaShortcutView: mIndicationArea margin start : 163, end : 163, bottom : 150
+10-13 01:20:43.223  2314  2314 D CarrierTextController: onRefreshCarrierInfo(), mTelephonyCapable: true
+10-13 01:20:43.224  2314  2314 D CarrierTextController: updateCarrierText(): 2
+10-13 01:20:43.224  2314  2314 D CarrierTextController: Handling (subId=7): 5 Airtel NG
+10-13 01:20:43.224  2314  2314 D CarrierTextController: carrierTextForSimState = Airtel NG
+10-13 01:20:43.224  2314  2314 D CarrierTextController: SIM ready and in service: subId=7, ss={mVoiceRegState=0(IN_SERVICE), mDataRegState=0(IN_SERVICE), mChannelNumber=3256, duplexMode()=1, mCellBandwidths=[], mOperatorAlphaLong=<MASKED>, mOperatorAlphaShort=<MASKED>, isManualNetworkSelection=true(manual), getRilVoiceRadioTechnology=14(LTE), getRilDataRadioTechnology=14(LTE), mCssIndicator=unsupported, mNetworkId=<MASKED>, mSystemId=<MASKED>, mCdmaRoamingIndicator=-1, mCdmaDefaultRoamingIndicator=-1, VoiceRegType=0, Snap=0, MobileData=IN_SERVICE, MobileDataRoamingType=home, MobileDataRat=LTE_CA, OptRadioTech=0, PsOnly=false, FemtocellInd=0, SprDisplayRoam=false, mIsEmergencyOnly=false, isUsingCarrierAggregation=false, mArfcnRsrpBoost=0, mNetworkRegistrationInfos=[NetworkRegistrationInfo{ domain=CS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[VOICE,SMS,VIDEO] cellIdentity=null voiceSpecificInfo=VoiceSpecificRegistrationInfo { mCssSupported=false mRoamingIndicator=0 mSystemIsInPrl=0 mDefaultRoamingIndicator=0} dataSpecificInfo=null nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}, NetworkRegistrationInfo{ domain=PS transportType=WWAN registrationState=HOME roamingType=NOT_ROAMING accessNetworkTechnology=LTE rejectCause=0 emergencyEnabled=false availableServices=[DATA] cellIdentity=null voiceSpecificInfo=null dataSpecificInfo=android.telephony.DataSpecificRegistrationInfo :{ maxDataCalls = 4 isDcNrRestricted = false isNrAvailable = false isEnDcAvailable = false LteVopsSupportInfo :  mVopsSupport = 2 mEmcBearerSupport = 3 } nrState=**** rRplmn=62120 isUsingCarrierAggregation=false}], mNrFrequencyRange=0, mOperatorAlphaLongRaw=<MASKED>, mOperatorAlphaShortRaw=<MASKED>, mIsDataRoamingFromRegistration=false, mIsIwlanPreferred=false}
+10-13 01:20:43.224  2314  2314 D CarrierTextController: Handling (subId=8): 5 Emergency calls only
+10-13 01:20:43.224  2314  2314 D CarrierTextController: carrierTextForSimState = Emergency calls only
+10-13 01:20:43.224  2314  2314 D CarrierTextController: setText : Airtel NG | Emergency calls only
+10-13 01:20:43.224  2314  2314 D FaceWidgetPagesController: onRefreshCarrierInfo()
+10-13 01:20:43.224  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState id=7
+10-13 01:20:43.224  2314  2314 D FaceWidgetClockRoamManager: isNetworkRoamingState false
+10-13 01:20:43.224  2314  2314 D FaceWidgetClockRoamManager: onRefreshCarrierInfo(pre, now): false, false
+10-13 01:20:43.226  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.226  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.227 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:43.229 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1113, 0.0479, t(27540)], [0.1045, 0.0527, t(27544)], [0.1035, 0.0557, t(27548)], [0.1445, 0.0322, t(27552)], [0.0859, 0.0674, t(27556)], RMS: 46
+10-13 01:20:43.238  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.238  2314  2314 D QS      : setQSExpansion 0.0 -162.575
+10-13 01:20:43.320  1152  1962 E Watchdog: !@Sync: 813 heap: 139 / 154 [2026-10-13 01:20:43.319] sdogWay: softdog FD: 950
+10-13 01:20:43.430 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:43.432 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1104, 0.0869, t(27560)], [0.0664, 0.1240, t(27564)], [0.1211, 0.0654, t(27568)], [0.0859, 0.1133, t(27572)], [0.1006, 0.0781, t(27576)], RMS: 45
+10-13 01:20:43.631 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:43.634 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0605, 0.1533, t(27580)], [0.0674, 0.0732, t(27584)], [0.0947, 0.0488, t(27588)], [0.1201, 0.0566, t(27592)], [0.0732, 0.0703, t(27596)], RMS: 47
+10-13 01:20:43.834 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:43.836 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1270, 0.0332, t(27600)], [0.0928, 0.0654, t(27604)], [0.1211, 0.0488, t(27608)], [0.0518, 0.0908, t(27612)], [0.0566, 0.0771, t(27616)], RMS: 40
+10-13 01:20:43.903  1152  2188 D UsbStatsMonitor: 0 0 0 0 2 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10-13 01:20:44.027 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:44.029 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1367, 0.0234, t(27620)], [0.1309, 0.0439, t(27624)], [0.0762, 0.0537, t(27628)], [0.0850, 0.0459, t(27632)], [0.0771, 0.0684, t(27636)], RMS: 43
+10-13 01:20:44.228 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:44.230 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0781, 0.0625, t(27640)], [0.0752, 0.0967, t(27644)], [0.0850, 0.0459, t(27648)], [0.0811, 0.0576, t(27652)], [0.1484, 0.0391, t(27656)], RMS: 42
+10-13 01:20:44.428 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:44.430 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1084, 0.0332, t(27660)], [0.0645, 0.0771, t(27664)], [0.0518, 0.0977, t(27668)], [0.0654, 0.0811, t(27672)], [0.1318, 0.0449, t(27676)], RMS: 38
+10-13 01:20:44.632 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:44.634 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1309, 0.0371, t(27680)], [0.0488, 0.1787, t(27684)], [0.1445, 0.0254, t(27688)], [0.1191, 0.0264, t(27692)], [0.1289, 0.0186, t(27696)], RMS: 42
+10-13 01:20:44.783   932  4581 I sensors-hal: handle_sns_client_event:115, auto_rotation_event_2: mode:255, type:1:0/-0.676,-0.043,9.539
+10-13 01:20:44.835 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:44.837 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0840, 0.0625, t(27700)], [0.1025, 0.0586, t(27704)], [0.0977, 0.0352, t(27708)], [0.0947, 0.0420, t(27712)], [0.0576, 0.1035, t(27716)], RMS: 42
+10-13 01:20:45.025 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:45.026 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1104, 0.0635, t(27720)], [0.1104, 0.0801, t(27724)], [0.0596, 0.0596, t(27728)], [0.1260, 0.0547, t(27732)], [0.0771, 0.0576, t(27736)], RMS: 44
+10-13 01:20:45.229 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:45.231 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1357, 0.0381, t(27740)], [0.1230, 0.0400, t(27744)], [0.0830, 0.0811, t(27748)], [0.1377, 0.0605, t(27752)], [0.0977, 0.0703, t(27756)], RMS: 41
+10-13 01:20:45.421 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:45.423 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.0801, 0.0605, t(27760)], [0.1299, 0.0273, t(27764)], [0.0986, 0.0410, t(27768)], [0.0850, 0.0488, t(27772)], [0.0781, 0.0781, t(27776)], RMS: 42
+10-13 01:20:45.623 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:45.624 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1533, 0.0293, t(27780)], [0.0977, 0.0781, t(27784)], [0.1211, 0.0576, t(27788)], [0.0742, 0.1074, t(27792)], [0.1113, 0.0488, t(27796)], RMS: 43
+10-13 01:20:45.833 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:45.835 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1377, 0.0264, t(27800)], [0.0811, 0.0791, t(27804)], [0.1123, 0.0508, t(27808)], [0.1104, 0.0566, t(27812)], [0.1270, 0.0615, t(27816)], RMS: 43
+10-13 01:20:46.024 26039 26066 I BWU@Recorder: Ph_input stream available : 6400 ==> flush  [ForkJoinPool.commonPool-worker-1] 
+10-13 01:20:46.026 26039 26068 I ISG_Wakeup_Verify: [KWD] Normal - scores: [0.1338, 0.0527, t(27820)], [0.0576, 0.1133, t(27824)], [0.0781, 0.0830, t(27828)], [0.1074, 0.0410, t(27832)], [0.1221, 0.0381, t(27836)], RMS: 44
+10-13 01:20:46.078  1152  2295 I ChimeraAggressivePolicyHandler: executePolicy() - triggerSource: TRIGGER_SOURCE_LMKD
+10-13 01:20:46.079  1152  2295 I ChimeraAggressivePolicyHandler: available memory: 2224692, free memory target: 1468416, quit chimera

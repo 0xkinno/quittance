@@ -542,6 +542,19 @@ scripts/                   Experiments, env check, README generator, toolchain h
 docs/                      Runtime citations, dev-client guide, demo script, rules snapshot
 ```
 
+## Device proof
+
+Raw, unedited screen recordings from a Samsung Galaxy A71 (SM-A715F, Android 12), release APK, 2026-10-13. No voiceover, no cuts. Full clips and logcat captures are in [`evidence/device/`](evidence/device/).
+
+| Clip | What it shows | Full clip |
+|---|---|---|
+| ![P1](evidence/device/p1_cold_launch.gif) | **Cold launch to the circle.** Force-stop, launch, Thursday circle with twelve members. | [mp4](evidence/device/p1_cold_launch.mp4) · [logcat](evidence/device/p1_cold_launch.logcat.txt) |
+| ![P2](evidence/device/p2_wallet_check.gif) | **Wallet check (E8).** The capability probe, then the wallet chooser (Backpack, Phantom, Solflare). The run continued with Solflare 2.30.0 and ended at its refusal, shown in [this screenshot](evidence/device/p2_solflare_network_mismatch.png): "Network mismatch". The app reports "The wallet closed the request without signing. Nothing was sent." | [mp4](evidence/device/p2_wallet_check.mp4) |
+| ![P4](evidence/device/p4_pay_refusal_fallback.gif) | **Fallback on the Pay screen.** After a refusal the Pay screen says "This wallet refuses this kind of payment today. Nothing was sent. Use a wallet that carries it." | [mp4](evidence/device/p4_pay_refusal_fallback.mp4) · [logcat](evidence/device/p4_pay_refusal_fallback.logcat.txt) |
+| ![P5](evidence/device/p5_collection_day.gif) | **Collection day.** The payout screen with every member's state. | [mp4](evidence/device/p5_collection_day.mp4) |
+
+What these clips do not show: a payment signed by a wallet, an app kill during a wallet approval, or a resolved verdict after reopening. No wallet tried so far signs a durable-nonce transaction (see [Honesty: limitations](#honesty-limitations)), so those clips do not exist yet.
+
 ## Honesty: limitations
 
 Full detail in [`LIMITATIONS.md`](LIMITATIONS.md). The short version:

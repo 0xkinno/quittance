@@ -227,3 +227,18 @@ real desktop wallet on devnet and ended *Confirmed*: slot account created,
 payment built and hashed before sending, slot account advanced, confirmed
 message matched the recorded hash, rebroadcasts changed nothing, leftover SOL
 returned.
+
+## Device proof run, 2026-10-13
+
+Device SM-A715F (Galaxy A71), Android 12, release APK with SHA-256
+`2e26dd66c885ce7a4c97467888cb43d5fbbc5aa8b24564852707ec06fa5869ae`,
+Solflare 2.30.0.
+
+| Run | Result | Detail |
+|---|---|---|
+| E7 capability probe | PASS | Wallet reported `supports_sign_and_send_transactions: true`, versions `legacy`, `0`, `1`, `max_messages_per_request: 20` |
+| E8 durable-nonce payment | FAIL | Nonce account `CgKBNDjLZyAQm6hSnLDYooR5vuuUAbEVqrDMbPeeukPQ` created, transaction built, handed to Solflare. Solflare showed "Network mismatch: Your current network is set to devnet, but this transaction is for mainnet" with no approve button. App message: "The wallet closed the request without signing. Nothing was sent." |
+| Clips | recorded | `evidence/device/`: cold launch, wallet check, pay refusal fallback, collection day |
+
+Not run: control and control B on this build, the fault campaign, any
+signed payment, any kill during a wallet approval.
